@@ -1,0 +1,17 @@
+{
+    "name": "unstable-cacao/novel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexey Puchkov",
+            "email": "alexey.pkv@gmail.com"
+        },
+        {
+            "name": "Marina Puchkov",
+            "email": "marinashers@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
