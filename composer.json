@@ -13,5 +13,23 @@
         }
     ],
     "minimum-stability": "stable",
-    "require": {}
+	"require": {
+		"php": ">=7.1-stable",
+		"oktopost/objection": "^1.0.10",
+		"oktopost/skeleton": "^1.1.3",
+		"oktopost/squid": "^1.0.24"
+	},
+	"require-dev": {
+		"phpunit/phpunit": "^6.1",
+		"satooshi/php-coveralls": "^1.0"
+	},
+	"autoload": {
+		"psr-0": {
+			"Novel": "src"
+		}
+	},
+	"scripts": {
+		"test": "./vendor/bin/phpunit",
+        "test-cover": "./vendor/phpunit/phpunit/phpunit --coverage-html ./build/cover"
+	}
 }
