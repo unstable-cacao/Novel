@@ -12,16 +12,22 @@ use Novel\Core\Parsing\IParserSetup;
 
 class ParsersCollection implements IParserSetup
 {
+	/** @var array */
 	private $parsers = [];
 	
+	/** @var array */
 	private $chainParsers = [];
 	
+	/** @var array */
 	private $middlewareParsers = [];
 	
+	/** @var array */
 	private $parsersByType = [];
 	
+	/** @var array */
 	private $chainParsersByType = [];
 	
+	/** @var array */
 	private $middlewareParsersByType = [];
 	
 	
@@ -112,6 +118,11 @@ class ParsersCollection implements IParserSetup
 		return $this;
 	}
 	
+	
+	/**
+	 * @param IIdent $ident
+	 * @return IIdentParser[]
+	 */
 	public function getParsers(IIdent $ident): array
 	{
 		$result = [];
@@ -127,6 +138,11 @@ class ParsersCollection implements IParserSetup
 		return $result;
 	}
 	
+	
+	/**
+	 * @param IIdent $ident
+	 * @return IIdentMiddlewareParser[]
+	 */
 	public function getMiddlewareParsers(IIdent $ident): array 
 	{
 		$result = [];
@@ -142,6 +158,11 @@ class ParsersCollection implements IParserSetup
 		return $result;
 	}
 	
+	
+	/**
+	 * @param IIdent $ident
+	 * @return IIdentChainParser[]
+	 */
 	public function getChainParsers(IIdent $ident): array 
 	{
 		$result = [];
