@@ -2,14 +2,8 @@
 namespace Novel\Utils;
 
 
-use Objection\TStaticClass;
-
-
 class UseExtractor
 {
-	use TStaticClass;
-	
-	
 	public static function extract(string $fullPath): array 
 	{
 		$content = file_get_contents($fullPath);
@@ -22,7 +16,8 @@ class UseExtractor
 		$openCurlyBrackets = 0;
 		$closeCurlyBrackets = 0;
 		
-		foreach ($tokens as $token) {
+		foreach ($tokens as $token) 
+		{
 			if (is_array($token))
 			{
 			    if ($token[0] == T_NAMESPACE || ($token[0] == T_USE && !$insideClass))
