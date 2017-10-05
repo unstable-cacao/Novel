@@ -9,7 +9,7 @@ interface IIdentWriteStream
 {
 	/**
 	 * @param IIdent|IIdent[] $item
-	 * @return static|ITransformStream
+	 * @return static|IIdentWriteStream
 	 */
-	public function push($item): ITransformStream;
+	public function push($item): IIdentWriteStream;
 }

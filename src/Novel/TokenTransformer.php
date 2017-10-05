@@ -5,6 +5,7 @@ namespace Novel;
 use Novel\Core\IIdent;
 use Novel\Core\IToken;
 use Novel\Core\IMainTransformer;
+use Novel\Core\Transforming\ITransformSetup;
 
 use Novel\Stream\IdentWriteStream;
 use Novel\Stream\TransformStream;
@@ -15,8 +16,14 @@ class TokenTransformer implements IMainTransformer
 {
 	/** @var TransformCollection */
     private $setup;
-
-
+    
+    
+    public function __construct()
+	{
+		$this->setup = new TransformCollection();
+	}
+	
+	
 	/**
 	 * @param IToken $target
 	 * @return IIdent[]
@@ -39,7 +46,7 @@ class TokenTransformer implements IMainTransformer
         
         return [];
     }
-
+	
 	/**
 	 * @param IToken $target
 	 * @return IIdent[]
@@ -65,7 +72,7 @@ class TokenTransformer implements IMainTransformer
 		
 		return $callback();
 	}
-
+	
 	/**
 	 * @param IToken $target
 	 * @return IIdent[]
@@ -85,7 +92,7 @@ class TokenTransformer implements IMainTransformer
 		
 		return $result;
 	}
-
+	
 	/**
 	 * @param IToken $target
 	 * @return IIdent[]
@@ -106,7 +113,7 @@ class TokenTransformer implements IMainTransformer
 		return $result;
 	}
 	
-
+	
     /**
      * @param IToken $root
      * @return IIdent[]
@@ -121,4 +128,9 @@ class TokenTransformer implements IMainTransformer
 		
 		return $stream->result();
     }
+	
+	public function getSetup(): ITransformSetup
+	{
+		return $this->setup;
+	}
 }
