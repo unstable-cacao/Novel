@@ -2,6 +2,14 @@
 namespace Novel\Idents\WhiteSpace;
 
 
-class Tab
+use Novel\Consts\Idents\WhiteSpaceNames;
+use Novel\Core\IIdent;
+
+
+class Tab implements IIdent
 {
+	public function name()
+	{
+		return WhiteSpaceNames::TAB;
+	}
 }
