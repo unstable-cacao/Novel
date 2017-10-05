@@ -5,13 +5,15 @@ namespace Novel;
 use Novel\Core\IIdent;
 use Novel\Core\IToken;
 use Novel\Core\IMainTransformer;
-use Novel\Core\Transforming\ITokenTransformer;
 
+use Novel\Stream\IdentWriteStream;
 use Novel\Stream\TransformStream;
+use Novel\Transformation\TransformCollection;
 
 
 class TokenTransformer implements IMainTransformer
 {
+	/** @var TransformCollection */
     private $setup;
 
 
@@ -22,7 +24,7 @@ class TokenTransformer implements IMainTransformer
     private function executeMainTransformers(IToken $target): array
     {
     	$stream = new TransformStream($this);
-    	$main = []; //$this->setup->
+    	$main = $this->setup->getMainFor($target);
     	
         foreach ($main as $item)
         {
@@ -35,8 +37,74 @@ class TokenTransformer implements IMainTransformer
 			}
         }
         
-        throw new \Exception('No parser found for token ' . $target->name());
+        return [];
     }
+
+	/**
+	 * @param IToken $target
+	 * @return IIdent[]
+	 */
+    private function executeMiddleware(IToken $target): array 
+	{
+		$middle = $this->setup->getMiddlewareFor($target);
+		
+		$callback = function () use ($target)
+		{
+			return $this->executeMainTransformers($target);
+		};
+		
+		foreach ($middle as $item)
+		{
+			$callback = function () use ($target, $item, $callback)
+			{
+				$stream = new IdentWriteStream();
+				$item->executeTransform($target, $stream, $callback);
+				return $stream->getIdents();
+			};
+		}
+		
+		return $callback();
+	}
+
+	/**
+	 * @param IToken $target
+	 * @return IIdent[]
+	 */
+	private function executePreTransform(IToken $target): array 
+	{
+		$result = []; 
+		$chain = $this->setup->getChainFor($target);
+		
+		foreach ($chain as $item)
+		{
+			$result = array_merge(
+				$result, 
+				$item->preTransform($target)
+			);
+		}
+		
+		return $result;
+	}
+
+	/**
+	 * @param IToken $target
+	 * @return IIdent[]
+	 */
+	private function executePostTransform(IToken $target): array 
+	{
+		$result = []; 
+		$chain = $this->setup->getChainFor($target);
+		
+		foreach ($chain as $item)
+		{
+			$result = array_merge(
+				$result, 
+				$item->postTransform($target)
+			);
+		}
+		
+		return $result;
+	}
 	
 
     /**
@@ -45,6 +113,12 @@ class TokenTransformer implements IMainTransformer
      */
     public function transform(IToken $root): array
     {
-
+		$stream = new TransformStream($this);
+		
+		$stream->push($this->executePreTransform($root));
+		$stream->push($this->executeMiddleware($root));
+		$stream->push($this->executePostTransform($root));
+		
+		return $stream->result();
     }
 }
