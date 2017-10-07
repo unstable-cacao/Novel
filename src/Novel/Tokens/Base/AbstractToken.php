@@ -5,7 +5,7 @@ namespace Novel\Tokens\Base;
 use Novel\Core\IToken;
 
 
-abstract class AbstractToken implements IToken
+abstract class AbstractToken implements IToken, \IteratorAggregate
 {
 	private $name;
 	private $parent;
@@ -67,5 +67,10 @@ abstract class AbstractToken implements IToken
 	public function children(): array
 	{
 		return $this->children;
+	}
+	
+	public function getIterator()
+	{
+		return new \ArrayIterator($this->children);
 	}
 }

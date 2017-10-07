@@ -3,9 +3,10 @@ namespace Novel\Tokens\Base;
 
 
 use Novel\Core\IToken;
+use Traversable;
 
 
-abstract class AbstractSimpleToken implements IToken
+abstract class AbstractSimpleToken implements IToken, \IteratorAggregate
 {
 	private $name;
 	private $parent;
@@ -48,5 +49,10 @@ abstract class AbstractSimpleToken implements IToken
 	public function children(): array
 	{
 		return [];
+	}
+	
+	public function getIterator()
+	{
+		return new \ArrayIterator();
 	}
 }
