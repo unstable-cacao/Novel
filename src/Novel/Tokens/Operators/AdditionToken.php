@@ -7,7 +7,7 @@ use Novel\Consts\Tokens\BinaryOperatorNames;
 
 class AdditionToken extends AbstractOperatorToken
 {
-	public function __construct($name)
+	public function __construct()
 	{
 		parent::__construct(BinaryOperatorNames::ADDITION);
 	}
