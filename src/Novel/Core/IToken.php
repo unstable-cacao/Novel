@@ -2,7 +2,7 @@
 namespace Novel\Core;
 
 
-interface IToken extends \Traversable
+interface IToken extends \Iterator
 {
 	public function name(): string;
 	public function parent(): ?IToken;
