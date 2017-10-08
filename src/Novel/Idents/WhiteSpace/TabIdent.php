@@ -6,10 +6,10 @@ use Novel\Consts\Idents\WhiteSpaceNames;
 use Novel\Core\IIdent;
 
 
-class Space implements IIdent
+class TabIdent implements IIdent
 {
-	public function name(): string
+	public function name()
 	{
-		return WhiteSpaceNames::SPACE;
+		return WhiteSpaceNames::TAB;
 	}
 }

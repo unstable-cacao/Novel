@@ -5,7 +5,7 @@ namespace Novel;
 use Novel\Core\Parsing\IIdentChainParser;
 use Novel\Core\Parsing\IIdentMiddlewareParser;
 use Novel\Core\Parsing\IIdentParser;
-use Novel\Idents\WhiteSpace\Space;
+use Novel\Idents\WhiteSpace\SpaceIdent;
 use PHPUnit\Framework\TestCase;
 
 
@@ -51,7 +51,7 @@ class IdentParserTest extends TestCase
 		$subject = new IdentParser();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPreChainParser()]);
 		
-		self::assertEquals('PreSpace', $subject->parse([new Space()]));
+		self::assertEquals('PreSpace', $subject->parse([new SpaceIdent()]));
 	}
 	
 	public function test_parse_HasPostString_PostfixesTheResult()
@@ -59,7 +59,7 @@ class IdentParserTest extends TestCase
 		$subject = new IdentParser();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPostChainParser()]);
 		
-		self::assertEquals('SpacePost', $subject->parse([new Space()]));
+		self::assertEquals('SpacePost', $subject->parse([new SpaceIdent()]));
 	}
 	
 	/**
@@ -68,7 +68,7 @@ class IdentParserTest extends TestCase
 	public function test_parse_HasNoMain_ExceptionThrown()
 	{
 		$subject = new IdentParser();
-		$subject->parse([new Space()]);
+		$subject->parse([new SpaceIdent()]);
 	}
 	
 	public function test_parse_HasMiddleware_MiddlewareExecuted()
@@ -85,7 +85,7 @@ class IdentParserTest extends TestCase
 		));
 		$subject->getSetup()->add([$this->mockParser(), $middleware]);
 		
-		$subject->parse([new Space()]);
+		$subject->parse([new SpaceIdent()]);
 		
 		self::assertTrue($called);
 	}
@@ -97,7 +97,7 @@ class IdentParserTest extends TestCase
 		$middleware->method('parse')->willReturn('Middle');
 		$subject->getSetup()->add([$this->mockParser(), $middleware]);
 		
-		self::assertEquals('Middle', $subject->parse([new Space()]));
+		self::assertEquals('Middle', $subject->parse([new SpaceIdent()]));
 	}
 	
 	public function test_parse_HasTwoMiddlewares_FirstMiddlewareCalledBySecond()
@@ -125,7 +125,7 @@ class IdentParserTest extends TestCase
 		
 		$subject->getSetup()->add([$this->mockParser(), $middleware, $middleware2]);
 		
-		$subject->parse([new Space()]);
+		$subject->parse([new SpaceIdent()]);
 		
 		self::assertTrue($called);
 	}
