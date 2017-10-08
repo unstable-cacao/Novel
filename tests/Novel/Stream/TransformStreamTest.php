@@ -17,12 +17,12 @@ class TransformStreamTest extends TestCase
 	}
 	
 	/**
-	 * @return TransformStreamTestHelper|\PHPUnit_Framework_MockObject_MockObject
+	 * @return IToken|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	private function mockToken(): TransformStreamTestHelper
+	private function mockToken(): IToken
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(TransformStreamTestHelper::class)->getMock();
+		return $this->getMockBuilder(IToken::class)->getMock();
 	}
 
 	/**
@@ -127,5 +127,3 @@ class TransformStreamTest extends TestCase
 		$subject->transformChildren($token);
 	}
 }
-
-interface TransformStreamTestHelper extends \Iterator, IToken {};

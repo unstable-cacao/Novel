@@ -2,7 +2,7 @@
 namespace Novel\Core;
 
 
-interface IToken extends \Iterator
+interface IToken extends \IteratorAggregate
 {
 	public function name(): string;
 	public function parent(): ?IToken;

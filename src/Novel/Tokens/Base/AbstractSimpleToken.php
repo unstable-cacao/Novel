@@ -3,10 +3,9 @@ namespace Novel\Tokens\Base;
 
 
 use Novel\Core\IToken;
-use Traversable;
 
 
-abstract class AbstractSimpleToken implements IToken, \IteratorAggregate
+abstract class AbstractSimpleToken implements IToken
 {
 	private $name;
 	private $parent;

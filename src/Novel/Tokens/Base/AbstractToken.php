@@ -5,7 +5,7 @@ namespace Novel\Tokens\Base;
 use Novel\Core\IToken;
 
 
-abstract class AbstractToken implements IToken, \IteratorAggregate
+abstract class AbstractToken implements IToken
 {
 	private $name;
 	private $parent;
