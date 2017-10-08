@@ -43,6 +43,8 @@ class TransformStreamTest extends TestCase
 	public function test_validateClear_clear_NoExceptionThrown()
 	{
 		$this->subject()->validateClear();
+		
+		self::assertTrue(true);
 	}
 
 	/**
