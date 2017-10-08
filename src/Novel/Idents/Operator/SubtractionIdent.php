@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class SubtractionIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class SubtractionIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::SUBTRACTION;
+	}
 }

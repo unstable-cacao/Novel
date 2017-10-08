@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class ExponentiationIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class ExponentiationIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::EXPONENTIATION;
+	}
 }

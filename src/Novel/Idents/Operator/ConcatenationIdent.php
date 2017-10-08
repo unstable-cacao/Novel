@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class ConcatenationIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class ConcatenationIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::CONCATENATION;
+	}
 }

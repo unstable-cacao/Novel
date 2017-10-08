@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class DivisionIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class DivisionIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::DIVISION;
+	}
 }

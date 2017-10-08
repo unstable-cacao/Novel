@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class MultiplicationIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class MultiplicationIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::MULTIPLICATION;
+	}
 }

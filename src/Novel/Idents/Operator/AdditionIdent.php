@@ -2,7 +2,14 @@
 namespace Novel\Idents\Operator;
 
 
-class AdditionIdent
+use Novel\Consts\Idents\OperatorNames;
+use Novel\Core\IIdent;
+
+
+class AdditionIdent implements IIdent
 {
-	
+	public function name()
+	{
+		return OperatorNames::ADDITION;
+	}
 }
