@@ -9,7 +9,7 @@ use Novel\Idents\WhiteSpace\SpaceIdent;
 use PHPUnit\Framework\TestCase;
 
 
-class IdentParserTest extends TestCase
+class ParseMediatorTest extends TestCase
 {
 	private function mockParser(): IIdentParser
 	{
@@ -41,14 +41,14 @@ class IdentParserTest extends TestCase
 	
 	public function test_parse_Empty_ReturnEmptyString()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		
 		self::assertEquals('', $subject->parse([]));
 	}
 	
 	public function test_parse_HasPreString_PrefixesTheResult()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPreChainParser()]);
 		
 		self::assertEquals('PreSpace', $subject->parse([new SpaceIdent()]));
@@ -56,7 +56,7 @@ class IdentParserTest extends TestCase
 	
 	public function test_parse_HasPostString_PostfixesTheResult()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPostChainParser()]);
 		
 		self::assertEquals('SpacePost', $subject->parse([new SpaceIdent()]));
@@ -67,13 +67,13 @@ class IdentParserTest extends TestCase
 	 */
 	public function test_parse_HasNoMain_ExceptionThrown()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$subject->parse([new SpaceIdent()]);
 	}
 	
 	public function test_parse_HasMiddleware_MiddlewareExecuted()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$called = false;
 		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
 		$middleware->method('parse')->will($this->returnCallback(
@@ -92,7 +92,7 @@ class IdentParserTest extends TestCase
 	
 	public function test_parse_HasMiddleware_MiddlewareResultReturned()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
 		$middleware->method('parse')->willReturn('Middle');
 		$subject->getSetup()->add([$this->mockParser(), $middleware]);
@@ -102,7 +102,7 @@ class IdentParserTest extends TestCase
 	
 	public function test_parse_HasTwoMiddlewares_FirstMiddlewareCalledBySecond()
 	{
-		$subject = new IdentParser();
+		$subject = new ParseMediator();
 		$called = false;
 		
 		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();

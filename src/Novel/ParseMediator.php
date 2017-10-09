@@ -3,12 +3,12 @@ namespace Novel;
 
 
 use Novel\Core\IIdent;
-use Novel\Core\IMainParser;
+use Novel\Core\IParseMediator;
 use Novel\Core\Parsing\IParserSetup;
 use Novel\Parsing\ParsersCollection;
 
 
-class IdentParser implements IMainParser
+class ParseMediator implements IParseMediator
 {
 	/** @var ParsersCollection */
 	private $setup;

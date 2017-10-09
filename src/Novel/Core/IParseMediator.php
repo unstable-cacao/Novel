@@ -5,7 +5,7 @@ namespace Novel\Core;
 use Novel\Core\Parsing\IParserSetup;
 
 
-interface IMainParser
+interface IParseMediator
 {
 	public function getSetup(): IParserSetup;
 	
