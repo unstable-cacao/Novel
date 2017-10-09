@@ -4,10 +4,17 @@ namespace Novel\Idents\Keyword;
 
 use Novel\Consts\Idents\KeywordNames;
 use Novel\Core\IIdent;
+use Novel\Idents\Base\AbstractSingleStringIdent;
 
 
-class UnsetIdent implements IIdent
+class UnsetIdent extends AbstractSingleStringIdent implements IIdent
 {
+	public function __construct()
+	{
+		parent::__construct("unset");
+	}
+	
+	
 	public function name()
 	{
 		return KeywordNames::UNSET;

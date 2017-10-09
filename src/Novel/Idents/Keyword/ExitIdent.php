@@ -4,10 +4,17 @@ namespace Novel\Idents\Keyword;
 
 use Novel\Consts\Idents\KeywordNames;
 use Novel\Core\IIdent;
+use Novel\Idents\Base\AbstractSingleStringIdent;
 
 
-class ExitIdent implements IIdent
+class ExitIdent extends AbstractSingleStringIdent implements IIdent
 {
+	public function __construct()
+	{
+		parent::__construct("exit");
+	}
+	
+	
 	public function name()
 	{
 		return KeywordNames::EXIT;

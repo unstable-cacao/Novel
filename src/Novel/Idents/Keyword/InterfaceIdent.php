@@ -4,10 +4,17 @@ namespace Novel\Idents\Keyword;
 
 use Novel\Consts\Idents\KeywordNames;
 use Novel\Core\IIdent;
+use Novel\Idents\Base\AbstractSingleStringIdent;
 
 
-class InterfaceIdent implements IIdent
+class InterfaceIdent extends AbstractSingleStringIdent implements IIdent
 {
+	public function __construct()
+	{
+		parent::__construct("interface");
+	}
+	
+	
 	public function name()
 	{
 		return KeywordNames::INTERFACE;

@@ -4,10 +4,17 @@ namespace Novel\Idents\Keyword;
 
 use Novel\Consts\Idents\KeywordNames;
 use Novel\Core\IIdent;
+use Novel\Idents\Base\AbstractSingleStringIdent;
 
 
-class ExtendsIdent implements IIdent
+class ExtendsIdent extends AbstractSingleStringIdent implements IIdent
 {
+	public function __construct()
+	{
+		parent::__construct("extends");
+	}
+	
+	
 	public function name()
 	{
 		return KeywordNames::EXTENDS;
