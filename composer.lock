@@ -4,9 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "97cc5797dd6b98e07716bfc3402c0748",
-    "content-hash": "82fc56f1aaa540c7039762cbf0b9f57c",
-    "packages": [],
+    "hash": "4cfaa8d40094950ea7dd7aaec955a594",
+    "content-hash": "307e6a0938fbb3b0d2f18762863170b8",
+    "packages": [
+        {
+            "name": "oktopost/objection",
+            "version": "1.0.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Oktopost/Objection.git",
+                "reference": "ebcb8490f23ea01795fd57b733c22d339c3762eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Oktopost/Objection/zipball/ebcb8490f23ea01795fd57b733c22d339c3762eb",
+                "reference": "ebcb8490f23ea01795fd57b733c22d339c3762eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5-stable"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Objection": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Puchkov",
+                    "email": "alexey@oktopost.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Marina Sherstuk",
+                    "email": "marinashers@gmail.com",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Daniel Podrabinek",
+                    "email": "dpodrabinek@oktopost.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Objects in PHP",
+            "homepage": "https://github.com/Oktopost/Objection",
+            "time": "2017-09-18 05:28:08"
+        }
+    ],
     "packages-dev": [
         {
             "name": "doctrine/instantiator",
