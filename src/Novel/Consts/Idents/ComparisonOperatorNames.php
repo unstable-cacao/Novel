@@ -13,4 +13,5 @@ class ComparisonOperatorNames
 	const NOT_EQUAL 			= 'not equal';
 	const NOT_IDENTICAL 		= 'not identical';
 	const SPACESHIP 			= 'spaceship';
+	const NULL_COALESCING		= 'null coalescing';
 }

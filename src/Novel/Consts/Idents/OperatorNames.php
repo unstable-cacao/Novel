@@ -17,4 +17,6 @@ class OperatorNames
 	const MODULO 				= 'modulo';
 	const MULTIPLICATION 		= 'multiplication';
 	const SUBTRACTION 			= 'subtraction';
+	const ARROW 				= 'arrow';
+	const STATIC_SCOPE 			= 'static scope';
 }

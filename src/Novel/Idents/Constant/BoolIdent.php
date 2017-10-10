@@ -1,8 +1,8 @@
 <?php
-namespace Novel\Idents\TypeName;
+namespace Novel\Idents\Constant;
 
 
-use Novel\Consts\Idents\TypeNames;
+use Novel\Consts\Idents\ConstantNames;
 use Novel\Core\IIdent;
 use Novel\Idents\Base\AbstractSingleStringIdent;
 
@@ -17,6 +17,6 @@ class BoolIdent extends AbstractSingleStringIdent implements IIdent
 	
 	public function name()
 	{
-		return TypeNames::BOOL;
+		return ConstantNames::BOOL;
 	}
 }
