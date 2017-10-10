@@ -14,6 +14,13 @@ class Novel
 	private $parser;
 	
 	
+	public function __construct()
+	{
+		$this->transfer = new TokenTransformer();
+		$this->parser = new ParseMediator();
+	}
+	
+	
 	public function getConfig(): NovelConfig
 	{
 		$config =  new NovelConfig();
