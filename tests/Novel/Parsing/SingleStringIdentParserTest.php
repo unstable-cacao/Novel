@@ -2,26 +2,26 @@
 namespace Novel\Parsing;
 
 
-use Novel\Idents\ConstStringIdent;
-use Novel\Idents\Keyword\NewIdent;
+use Novel\Symbols\ConstStringSymbol;
+use Novel\Symbols\Keyword\NewSymbol;
 use PHPUnit\Framework\TestCase;
 
 
-class SingleStringIdentParserTest extends TestCase
+class SingleStringSymbolParserTest extends TestCase
 {
-	public function test_parse_InstanceOfAbstractSingleStringIdent_ReturnIdentString()
+	public function test_parse_InstanceOfAbstractSingleStringSymbol_ReturnSymbolString()
 	{
-		$subject = new SingleStringIdentParser();
-		$ident = new NewIdent();
+		$subject = new SingleStringSymbolParser();
+		$symbol = new NewSymbol();
 		
-		self::assertEquals("new", $subject->parse($ident));
+		self::assertEquals("new", $subject->parse($symbol));
 	}
 	
-	public function test_parse_NotInstanceOfAbstractSingleStringIdent_ReturnNull()
+	public function test_parse_NotInstanceOfAbstractSingleStringSymbol_ReturnNull()
 	{
-		$subject = new SingleStringIdentParser();
-		$ident = new ConstStringIdent();
+		$subject = new SingleStringSymbolParser();
+		$symbol = new ConstStringSymbol();
 		
-		self::assertNull($subject->parse($ident));
+		self::assertNull($subject->parse($symbol));
 	}
 }

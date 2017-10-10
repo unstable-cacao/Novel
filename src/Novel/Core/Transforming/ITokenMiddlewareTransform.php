@@ -3,15 +3,15 @@ namespace Novel\Core\Transforming;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Stream\IIdentWriteStream;
+use Novel\Core\Stream\ISymbolWriteStream;
 
 
 interface ITokenMiddlewareTransform
 {
 	/**
 	 * @param IToken $token
-	 * @param IIdentWriteStream $writer
+	 * @param ISymbolWriteStream $writer
 	 * @param callable $next
 	 */
-	public function executeTransform(IToken $token, IIdentWriteStream $writer, callable $next): void;
+	public function executeTransform(IToken $token, ISymbolWriteStream $writer, callable $next): void;
 }

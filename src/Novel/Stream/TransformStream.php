@@ -2,13 +2,13 @@
 namespace Novel\Stream;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IMainTransformer;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITransformStream;
 
 
-class TransformStream extends IdentWriteStream implements ITransformStream
+class TransformStream extends SymbolWriteStream implements ITransformStream
 {
 	/** @var IMainTransformer */
 	private $main;
@@ -22,7 +22,7 @@ class TransformStream extends IdentWriteStream implements ITransformStream
 	
 	public function validateClear(): void
 	{
-		if ($this->getIdents()) 
+		if ($this->getSymbols()) 
 		{
 			throw new \Exception('The transform stream have elements but thous ' . 
 				'elements were not returned by the transformer.');
@@ -45,10 +45,10 @@ class TransformStream extends IdentWriteStream implements ITransformStream
 	}
 
 	/**
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
 	public function result(): array
 	{
-		return $this->getIdents();
+		return $this->getSymbols();
 	}
 }

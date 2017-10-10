@@ -2,36 +2,36 @@
 namespace Novel;
 
 
-use Novel\Core\Parsing\IIdentChainParser;
-use Novel\Core\Parsing\IIdentMiddlewareParser;
-use Novel\Core\Parsing\IIdentParser;
-use Novel\Idents\WhiteSpace\SpaceIdent;
+use Novel\Core\Parsing\ISymbolChainParser;
+use Novel\Core\Parsing\ISymbolMiddlewareParser;
+use Novel\Core\Parsing\ISymbolParser;
+use Novel\Symbols\WhiteSpace\SpaceSymbol;
 use PHPUnit\Framework\TestCase;
 
 
 class ParseMediatorTest extends TestCase
 {
-	private function mockParser(): IIdentParser
+	private function mockParser(): ISymbolParser
 	{
-		$mock = $this->getMockBuilder(IIdentParser::class)->getMock();
+		$mock = $this->getMockBuilder(ISymbolParser::class)->getMock();
 		$mock->method('parse')->willReturn('Space');
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
 		return $mock;
 	}
 	
-	private function mockPreChainParser(): IIdentChainParser
+	private function mockPreChainParser(): ISymbolChainParser
 	{
-		$mock = $this->getMockBuilder(IIdentChainParser::class)->getMock();
+		$mock = $this->getMockBuilder(ISymbolChainParser::class)->getMock();
 		$mock->method('preParse')->willReturn('Pre');
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
 		return $mock;
 	}
 	
-	private function mockPostChainParser(): IIdentChainParser
+	private function mockPostChainParser(): ISymbolChainParser
 	{
-		$mock = $this->getMockBuilder(IIdentChainParser::class)->getMock();
+		$mock = $this->getMockBuilder(ISymbolChainParser::class)->getMock();
 		$mock->method('postParse')->willReturn('Post');
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
@@ -51,7 +51,7 @@ class ParseMediatorTest extends TestCase
 		$subject = new ParseMediator();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPreChainParser()]);
 		
-		self::assertEquals('PreSpace', $subject->parse([new SpaceIdent()]));
+		self::assertEquals('PreSpace', $subject->parse([new SpaceSymbol()]));
 	}
 	
 	public function test_parse_HasPostString_PostfixesTheResult()
@@ -59,7 +59,7 @@ class ParseMediatorTest extends TestCase
 		$subject = new ParseMediator();
 		$subject->getSetup()->add([$this->mockParser(), $this->mockPostChainParser()]);
 		
-		self::assertEquals('SpacePost', $subject->parse([new SpaceIdent()]));
+		self::assertEquals('SpacePost', $subject->parse([new SpaceSymbol()]));
 	}
 	
 	/**
@@ -68,14 +68,14 @@ class ParseMediatorTest extends TestCase
 	public function test_parse_HasNoMain_ExceptionThrown()
 	{
 		$subject = new ParseMediator();
-		$subject->parse([new SpaceIdent()]);
+		$subject->parse([new SpaceSymbol()]);
 	}
 	
 	public function test_parse_HasMiddleware_MiddlewareExecuted()
 	{
 		$subject = new ParseMediator();
 		$called = false;
-		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
+		$middleware = $this->getMockBuilder(ISymbolMiddlewareParser::class)->getMock();
 		$middleware->method('parse')->will($this->returnCallback(
 			function () use (&$called)
 			{
@@ -85,7 +85,7 @@ class ParseMediatorTest extends TestCase
 		));
 		$subject->getSetup()->add([$this->mockParser(), $middleware]);
 		
-		$subject->parse([new SpaceIdent()]);
+		$subject->parse([new SpaceSymbol()]);
 		
 		self::assertTrue($called);
 	}
@@ -93,11 +93,11 @@ class ParseMediatorTest extends TestCase
 	public function test_parse_HasMiddleware_MiddlewareResultReturned()
 	{
 		$subject = new ParseMediator();
-		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
+		$middleware = $this->getMockBuilder(ISymbolMiddlewareParser::class)->getMock();
 		$middleware->method('parse')->willReturn('Middle');
 		$subject->getSetup()->add([$this->mockParser(), $middleware]);
 		
-		self::assertEquals('Middle', $subject->parse([new SpaceIdent()]));
+		self::assertEquals('Middle', $subject->parse([new SpaceSymbol()]));
 	}
 	
 	public function test_parse_HasTwoMiddlewares_FirstMiddlewareCalledBySecond()
@@ -105,7 +105,7 @@ class ParseMediatorTest extends TestCase
 		$subject = new ParseMediator();
 		$called = false;
 		
-		$middleware = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
+		$middleware = $this->getMockBuilder(ISymbolMiddlewareParser::class)->getMock();
 		$middleware->method('parse')->will($this->returnCallback(
 			function () use (&$called)
 			{
@@ -114,9 +114,9 @@ class ParseMediatorTest extends TestCase
 			}
 		));
 		
-		$middleware2 = $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
+		$middleware2 = $this->getMockBuilder(ISymbolMiddlewareParser::class)->getMock();
 		$middleware2->method('parse')->will($this->returnCallback(
-			function ($ident, $callback)
+			function ($symbol, $callback)
 			{
 				$callback();
 				return '';
@@ -125,7 +125,7 @@ class ParseMediatorTest extends TestCase
 		
 		$subject->getSetup()->add([$this->mockParser(), $middleware, $middleware2]);
 		
-		$subject->parse([new SpaceIdent()]);
+		$subject->parse([new SpaceSymbol()]);
 		
 		self::assertTrue($called);
 	}

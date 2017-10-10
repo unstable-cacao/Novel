@@ -2,11 +2,11 @@
 namespace Novel\Core\Stream;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 
 
-interface ITransformStream extends IIdentWriteStream
+interface ITransformStream extends ISymbolWriteStream
 {
 	/**
 	 * @param IToken $of
@@ -15,7 +15,7 @@ interface ITransformStream extends IIdentWriteStream
 	public function transformChildren(IToken $of): ITransformStream;
 	
 	/**
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
 	public function result(): array;
 }

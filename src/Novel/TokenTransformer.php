@@ -2,12 +2,12 @@
 namespace Novel;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\IMainTransformer;
 use Novel\Core\Transforming\ITransformSetup;
 
-use Novel\Stream\IdentWriteStream;
+use Novel\Stream\SymbolWriteStream;
 use Novel\Stream\TransformStream;
 use Novel\Transformation\TransformCollection;
 
@@ -26,7 +26,7 @@ class TokenTransformer implements IMainTransformer
 	
 	/**
 	 * @param IToken $target
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
     private function executeMainTransformers(IToken $target): array
     {
@@ -49,7 +49,7 @@ class TokenTransformer implements IMainTransformer
 	
 	/**
 	 * @param IToken $target
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
     private function executeMiddleware(IToken $target): array 
 	{
@@ -64,9 +64,9 @@ class TokenTransformer implements IMainTransformer
 		{
 			$callback = function () use ($target, $item, $callback)
 			{
-				$stream = new IdentWriteStream();
+				$stream = new SymbolWriteStream();
 				$item->executeTransform($target, $stream, $callback);
-				return $stream->getIdents();
+				return $stream->getSymbols();
 			};
 		}
 		
@@ -75,7 +75,7 @@ class TokenTransformer implements IMainTransformer
 	
 	/**
 	 * @param IToken $target
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
 	private function executePreTransform(IToken $target): array 
 	{
@@ -95,7 +95,7 @@ class TokenTransformer implements IMainTransformer
 	
 	/**
 	 * @param IToken $target
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
 	private function executePostTransform(IToken $target): array 
 	{
@@ -116,7 +116,7 @@ class TokenTransformer implements IMainTransformer
 	
     /**
      * @param IToken $root
-     * @return IIdent[]
+     * @return ISymbol[]
      */
     public function transform(IToken $root): array
     {

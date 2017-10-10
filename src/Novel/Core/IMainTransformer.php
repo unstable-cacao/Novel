@@ -11,7 +11,7 @@ interface IMainTransformer
 	
 	/**
 	 * @param IToken $root
-	 * @return IIdent[]
+	 * @return ISymbol[]
 	 */
 	public function transform(IToken $root): array;
 }

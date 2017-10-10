@@ -2,32 +2,32 @@
 namespace Novel\Parsing;
 
 
-use Novel\Core\Parsing\IIdentChainParser;
-use Novel\Core\Parsing\IIdentMiddlewareParser;
-use Novel\Core\Parsing\IIdentParser;
-use Novel\Idents\WhiteSpace\SpaceIdent;
-use Novel\Idents\WhiteSpace\TabIdent;
+use Novel\Core\Parsing\ISymbolChainParser;
+use Novel\Core\Parsing\ISymbolMiddlewareParser;
+use Novel\Core\Parsing\ISymbolParser;
+use Novel\Symbols\WhiteSpace\SpaceSymbol;
+use Novel\Symbols\WhiteSpace\TabSymbol;
 use PHPUnit\Framework\TestCase;
 
 
 class ParsersCollectionTest extends TestCase
 {
-	private function mockParser(): IIdentParser
+	private function mockParser(): ISymbolParser
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IIdentParser::class)->getMock();
+		return $this->getMockBuilder(ISymbolParser::class)->getMock();
 	}
 	
-	private function mockMiddlewareParser(): IIdentMiddlewareParser
+	private function mockMiddlewareParser(): ISymbolMiddlewareParser
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IIdentMiddlewareParser::class)->getMock();
+		return $this->getMockBuilder(ISymbolMiddlewareParser::class)->getMock();
 	}
 	
-	private function mockChainParser(): IIdentChainParser
+	private function mockChainParser(): ISymbolChainParser
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IIdentChainParser::class)->getMock();
+		return $this->getMockBuilder(ISymbolChainParser::class)->getMock();
 	}
 	
 	
@@ -38,258 +38,258 @@ class ParsersCollectionTest extends TestCase
 		$subject = new ParsersCollection();
 		
 		self::assertEquals($subject, $subject->add($parser));
-		self::assertEquals($subject, $subject->addByType(SpaceIdent::class, $parser));
+		self::assertEquals($subject, $subject->addByType(SpaceSymbol::class, $parser));
 	}
 	
 	
 	public function test_getParsers_Empty_ReturnEmpty()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		
 		$subject = new ParsersCollection();
 		
-		self::assertEquals([], $subject->getParsers($ident));
+		self::assertEquals([], $subject->getParsers($symbol));
 	}
 	
 	public function test_getParsers_HasByType_ReturnByType()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
 	}
 	
 	public function test_getParsers_HasParsers_ReturnParsers()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
 	}
 	
 	public function test_getParsers_HasByTypeAndParsers_ReturnAll()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		$parser2 = $this->mockParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
-		$subject->addByType(SpaceIdent::class, $parser2);
+		$subject->addByType(SpaceSymbol::class, $parser2);
 		
-		self::assertEquals([$parser2, $parser], $subject->getParsers($ident));
+		self::assertEquals([$parser2, $parser], $subject->getParsers($symbol));
 	}
 	
 	public function test_getMiddlewareParsers_Empty_ReturnEmpty()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		
 		$subject = new ParsersCollection();
 		
-		self::assertEquals([], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_getMiddlewareParsers_HasByType_ReturnByType()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_getMiddlewareParsers_HasParsers_ReturnParsers()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_getMiddlewareParsers_HasByTypeAndParsers_ReturnAll()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockMiddlewareParser();
 		$parser2 = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
-		$subject->addByType(SpaceIdent::class, $parser2);
+		$subject->addByType(SpaceSymbol::class, $parser2);
 		
-		self::assertEquals([$parser2, $parser], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser2, $parser], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_getChainParsers_Empty_ReturnEmpty()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		
 		$subject = new ParsersCollection();
 		
-		self::assertEquals([], $subject->getChainParsers($ident));
+		self::assertEquals([], $subject->getChainParsers($symbol));
 	}
 	
 	public function test_getChainParsers_HasByType_ReturnByType()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockChainParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getChainParsers($ident));
+		self::assertEquals([$parser], $subject->getChainParsers($symbol));
 	}
 	
 	public function test_getChainParsers_HasParsers_ReturnParsers()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockChainParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getChainParsers($ident));
+		self::assertEquals([$parser], $subject->getChainParsers($symbol));
 	}
 	
 	public function test_getChainParsers_HasByTypeAndParsers_ReturnAll()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockChainParser();
 		$parser2 = $this->mockChainParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
-		$subject->addByType(SpaceIdent::class, $parser2);
+		$subject->addByType(SpaceSymbol::class, $parser2);
 		
-		self::assertEquals([$parser2, $parser], $subject->getChainParsers($ident));
+		self::assertEquals([$parser2, $parser], $subject->getChainParsers($symbol));
 	}
 	
 	
 	public function test_add_Parser_AddsToParsers()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
 	}
 	
 	public function test_add_Middleware_AddsToMiddlewares()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_add_Chain_AddsToChains()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockChainParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add($parser);
 		
-		self::assertEquals([$parser], $subject->getChainParsers($ident));
+		self::assertEquals([$parser], $subject->getChainParsers($symbol));
 	}
 	
 	public function test_add_SeveralParsers_AddsAll()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		$parser2 = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
 		$subject->add([$parser, $parser2]);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
-		self::assertEquals([$parser2], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
+		self::assertEquals([$parser2], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_addByType_Parser_AddsToParsers()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
 	}
 	
 	public function test_addByType_Middleware_AddsToMiddlewares()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockMiddlewareParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getMiddlewareParsers($ident));
+		self::assertEquals([$parser], $subject->getMiddlewareParsers($symbol));
 	}
 	
 	public function test_addByType_Chain_AddsToChains()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockChainParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, $parser);
+		$subject->addByType(SpaceSymbol::class, $parser);
 		
-		self::assertEquals([$parser], $subject->getChainParsers($ident));
+		self::assertEquals([$parser], $subject->getChainParsers($symbol));
 	}
 	
 	public function test_addByType_TwoTypesOneParser_AddsToBoth()
 	{
-		$ident = new SpaceIdent();
-		$ident2 = new TabIdent();
+		$symbol = new SpaceSymbol();
+		$symbol2 = new TabSymbol();
 		$parser = $this->mockParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType([SpaceIdent::class, TabIdent::class], $parser);
+		$subject->addByType([SpaceSymbol::class, TabSymbol::class], $parser);
 		
-		self::assertEquals([$parser], $subject->getParsers($ident));
-		self::assertEquals([$parser], $subject->getParsers($ident2));
+		self::assertEquals([$parser], $subject->getParsers($symbol));
+		self::assertEquals([$parser], $subject->getParsers($symbol2));
 	}
 	
 	public function test_addByType_OneTypeTwoParsers_AddsBothToType()
 	{
-		$ident = new SpaceIdent();
+		$symbol = new SpaceSymbol();
 		$parser = $this->mockParser();
 		$parser2 = $this->mockParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType(SpaceIdent::class, [$parser, $parser2]);
+		$subject->addByType(SpaceSymbol::class, [$parser, $parser2]);
 		
-		self::assertEquals([$parser, $parser2], $subject->getParsers($ident));
+		self::assertEquals([$parser, $parser2], $subject->getParsers($symbol));
 	}
 	
 	public function test_addByType_TwoTypesTwoParsers_AddsToAllTypesAllParsers()
 	{
-		$ident = new SpaceIdent();
-		$ident2 = new TabIdent();
+		$symbol = new SpaceSymbol();
+		$symbol2 = new TabSymbol();
 		$parser = $this->mockParser();
 		$parser2 = $this->mockParser();
 		
 		$subject = new ParsersCollection();
-		$subject->addByType([SpaceIdent::class, TabIdent::class], [$parser, $parser2]);
+		$subject->addByType([SpaceSymbol::class, TabSymbol::class], [$parser, $parser2]);
 		
-		self::assertEquals([$parser, $parser2], $subject->getParsers($ident));
-		self::assertEquals([$parser, $parser2], $subject->getParsers($ident2));
+		self::assertEquals([$parser, $parser2], $subject->getParsers($symbol));
+		self::assertEquals([$parser, $parser2], $subject->getParsers($symbol2));
 	}
 }

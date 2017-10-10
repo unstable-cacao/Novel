@@ -2,7 +2,7 @@
 namespace Novel\Stream;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IMainTransformer;
 use Novel\Core\IToken;
 use PHPUnit\Framework\TestCase;
@@ -10,10 +10,10 @@ use PHPUnit\Framework\TestCase;
 
 class TransformStreamTest extends TestCase
 {
-	private function mockIdent(): IIdent
+	private function mockSymbol(): ISymbol
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IIdent::class)->getMock();
+		return $this->getMockBuilder(ISymbol::class)->getMock();
 	}
 	
 	/**
@@ -53,31 +53,31 @@ class TransformStreamTest extends TestCase
 	public function test_validateClear_StreamIsNotEmpty_ExceptionThrown()
 	{
 		$subject = $this->subject();
-		$subject->push($this->mockIdent());
+		$subject->push($this->mockSymbol());
 		$subject->validateClear();
 	}
 	
 	
-	public function test_result_NoIdents_ReturnEmptyArray()
+	public function test_result_NoSymbols_ReturnEmptyArray()
 	{
 		self::assertEmpty($this->subject()->result());
 	}
 	
-	public function test_result_HasIdents_ReturnIdents()
+	public function test_result_HasSymbols_ReturnSymbols()
 	{
 		$subject = $this->subject();
 		
-		$ident1 = $this->mockIdent();
-		$ident2 = $this->mockIdent();
+		$symbol1 = $this->mockSymbol();
+		$symbol2 = $this->mockSymbol();
 		
-		$subject->push([$ident1, $ident2]);
+		$subject->push([$symbol1, $symbol2]);
 		
 		self::assertEquals(
 			[
-				$ident1,
-				$ident2
+				$symbol1,
+				$symbol2
 			],
-			$subject->getIdents()
+			$subject->getSymbols()
 		);
 	}
 	

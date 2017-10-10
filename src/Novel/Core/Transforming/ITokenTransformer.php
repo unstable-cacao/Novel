@@ -2,7 +2,7 @@
 namespace Novel\Core\Transforming;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITransformStream;
 
@@ -12,7 +12,7 @@ interface ITokenTransformer
 	/**
 	 * @param IToken $token
 	 * @param ITransformStream $stream
-	 * @return IIdent[]|null
+	 * @return ISymbol[]|null
 	 */
 	public function transform(IToken $token, ITransformStream $stream): ?array;
 }

@@ -2,7 +2,7 @@
 namespace Novel;
 
 
-use Novel\Core\IIdent;
+use Novel\Core\ISymbol;
 use Novel\Core\IParseMediator;
 use Novel\Core\Parsing\IParserSetup;
 use Novel\Parsing\ParsersCollection;
@@ -14,21 +14,21 @@ class ParseMediator implements IParseMediator
 	private $setup;
 	
 	
-	private function parseIdent(IIdent $ident): string 
+	private function parseSymbol(ISymbol $symbol): string 
 	{
-		return $this->getPreString($ident) .
-			$this->executeMiddleware($ident) .
-			$this->getPostString($ident);
+		return $this->getPreString($symbol) .
+			$this->executeMiddleware($symbol) .
+			$this->getPostString($symbol);
 	}
 	
-	private function getPreString(IIdent $ident): string 
+	private function getPreString(ISymbol $symbol): string 
 	{
-		$chainParsers = $this->setup->getChainParsers($ident);
+		$chainParsers = $this->setup->getChainParsers($symbol);
 		$result = '';
 		
 		foreach ($chainParsers as $chainParser)
 		{
-			$res = $chainParser->preParse($ident);
+			$res = $chainParser->preParse($symbol);
 			
 			if (!is_null($res))
 				$result .= $res;
@@ -37,14 +37,14 @@ class ParseMediator implements IParseMediator
 		return $result;
 	}
 	
-	private function getPostString(IIdent $ident): string 
+	private function getPostString(ISymbol $symbol): string 
 	{
-		$chainParsers = $this->setup->getChainParsers($ident);
+		$chainParsers = $this->setup->getChainParsers($symbol);
 		$result = '';
 		
 		foreach ($chainParsers as $chainParser)
 		{
-			$res = $chainParser->postParse($ident);
+			$res = $chainParser->postParse($symbol);
 			
 			if (!is_null($res))
 				$result .= $res;
@@ -53,39 +53,39 @@ class ParseMediator implements IParseMediator
 		return $result;
 	}
 	
-	private function executeMiddleware(IIdent $ident): string 
+	private function executeMiddleware(ISymbol $symbol): string 
 	{
-		$middlewareParsers = $this->setup->getMiddlewareParsers($ident);
+		$middlewareParsers = $this->setup->getMiddlewareParsers($symbol);
 		
-		$callback = function() use ($ident) 
+		$callback = function() use ($symbol) 
 		{
-			return $this->getMainString($ident);
+			return $this->getMainString($symbol);
 		};
 		
 		foreach ($middlewareParsers as $middlewareParser)
 		{
-			$callback = function() use ($callback, $middlewareParser, $ident)
+			$callback = function() use ($callback, $middlewareParser, $symbol)
 			{
-				return $middlewareParser->parse($ident, $callback);
+				return $middlewareParser->parse($symbol, $callback);
 			};
 		}
 		
 		return $callback();
 	}
 	
-	private function getMainString(IIdent $ident): string 
+	private function getMainString(ISymbol $symbol): string 
 	{
-		$parsers = $this->setup->getParsers($ident);
+		$parsers = $this->setup->getParsers($symbol);
 		
 		foreach ($parsers as $parser)
 		{
-			$result = $parser->parse($ident);
+			$result = $parser->parse($symbol);
 			
 			if (!is_null($result))
 				return $result;
 		}
 		
-		throw new \Exception("Parser for Ident of type " . get_class($ident) . " was not found");
+		throw new \Exception("Parser for Symbol of type " . get_class($symbol) . " was not found");
 	}
 	
 	
@@ -101,16 +101,16 @@ class ParseMediator implements IParseMediator
 	}
 	
 	/**
-	 * @param IIdent[] $idents
+	 * @param ISymbol[] $symbols
 	 * @return string
 	 */
-	public function parse(array $idents): string
+	public function parse(array $symbols): string
 	{
 		$result = [];
 		
-		foreach ($idents as $ident)
+		foreach ($symbols as $symbol)
 		{
-			$result[] = $this->parseIdent($ident);
+			$result[] = $this->parseSymbol($symbol);
 		}
 		
 		return implode('', $result);

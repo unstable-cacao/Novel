@@ -10,8 +10,8 @@ interface IParseMediator
 	public function getSetup(): IParserSetup;
 	
 	/**
-	 * @param IIdent[] $idents
+	 * @param ISymbol[] $symbols
 	 * @return string
 	 */
-	public function parse(array $idents): string;
+	public function parse(array $symbols): string;
 }

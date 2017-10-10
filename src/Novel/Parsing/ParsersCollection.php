@@ -2,11 +2,11 @@
 namespace Novel\Parsing;
 
 
-use Novel\Core\IIdent;
-use Novel\Core\Parsing\IIdentChainParser;
-use Novel\Core\Parsing\IIdentMiddlewareParser;
-use Novel\Core\Parsing\IIdentParser;
-use Novel\Core\Parsing\IIdentParsingObject;
+use Novel\Core\ISymbol;
+use Novel\Core\Parsing\ISymbolChainParser;
+use Novel\Core\Parsing\ISymbolMiddlewareParser;
+use Novel\Core\Parsing\ISymbolParser;
+use Novel\Core\Parsing\ISymbolParsingObject;
 use Novel\Core\Parsing\IParserSetup;
 
 
@@ -35,7 +35,7 @@ class ParsersCollection implements IParserSetup
 	{
 		foreach ($objects as $object) 
 		{
-			if ($object instanceof IIdentParser)
+			if ($object instanceof ISymbolParser)
 			{
 				if (!key_exists($type, $this->parsersByType))
 					$this->parsersByType[$type] = [];
@@ -43,7 +43,7 @@ class ParsersCollection implements IParserSetup
 				$this->parsersByType[$type][] = $object;
 			}
 			
-			if ($object instanceof IIdentMiddlewareParser)
+			if ($object instanceof ISymbolMiddlewareParser)
 			{
 				if (!key_exists($type, $this->middlewareParsersByType))
 					$this->middlewareParsersByType[$type] = [];
@@ -51,7 +51,7 @@ class ParsersCollection implements IParserSetup
 				$this->middlewareParsersByType[$type][] = $object;
 			}
 			
-			if ($object instanceof IIdentChainParser)
+			if ($object instanceof ISymbolChainParser)
 			{
 				if (!key_exists($type, $this->chainParsersByType))
 					$this->chainParsersByType[$type] = [];
@@ -63,7 +63,7 @@ class ParsersCollection implements IParserSetup
 	
 	
 	/**
-	 * @param IIdentParsingObject|IIdentParsingObject[] $object
+	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
 	 * @return IParserSetup
 	 */
 	public function add($object): IParserSetup
@@ -77,13 +77,13 @@ class ParsersCollection implements IParserSetup
 		}
 		else
 		{
-			if ($object instanceof IIdentParser)
+			if ($object instanceof ISymbolParser)
 				$this->parsers[] = $object;
 			
-			if ($object instanceof IIdentMiddlewareParser)
+			if ($object instanceof ISymbolMiddlewareParser)
 				$this->middlewareParsers[] = $object;
 			
-			if ($object instanceof IIdentChainParser)
+			if ($object instanceof ISymbolChainParser)
 				$this->chainParsers[] = $object;
 		}
 		
@@ -92,7 +92,7 @@ class ParsersCollection implements IParserSetup
 
 	/**
 	 * @param string|array $type
-	 * @param IIdentParsingObject|IIdentParsingObject[] $object
+	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
 	 * @return IParserSetup
 	 */
 	public function addByType($type, $object): IParserSetup
@@ -120,13 +120,13 @@ class ParsersCollection implements IParserSetup
 	
 	
 	/**
-	 * @param IIdent $ident
-	 * @return IIdentParser[]
+	 * @param ISymbol $symbol
+	 * @return ISymbolParser[]
 	 */
-	public function getParsers(IIdent $ident): array
+	public function getParsers(ISymbol $symbol): array
 	{
 		$result = [];
-		$type = get_class($ident);
+		$type = get_class($symbol);
 		
 		if (key_exists($type, $this->parsersByType))
 		{
@@ -140,13 +140,13 @@ class ParsersCollection implements IParserSetup
 	
 	
 	/**
-	 * @param IIdent $ident
-	 * @return IIdentMiddlewareParser[]
+	 * @param ISymbol $symbol
+	 * @return ISymbolMiddlewareParser[]
 	 */
-	public function getMiddlewareParsers(IIdent $ident): array 
+	public function getMiddlewareParsers(ISymbol $symbol): array 
 	{
 		$result = [];
-		$type = get_class($ident);
+		$type = get_class($symbol);
 		
 		if (key_exists($type, $this->middlewareParsersByType))
 		{
@@ -160,13 +160,13 @@ class ParsersCollection implements IParserSetup
 	
 	
 	/**
-	 * @param IIdent $ident
-	 * @return IIdentChainParser[]
+	 * @param ISymbol $symbol
+	 * @return ISymbolChainParser[]
 	 */
-	public function getChainParsers(IIdent $ident): array 
+	public function getChainParsers(ISymbol $symbol): array 
 	{
 		$result = [];
-		$type = get_class($ident);
+		$type = get_class($symbol);
 		
 		if (key_exists($type, $this->chainParsersByType))
 		{
