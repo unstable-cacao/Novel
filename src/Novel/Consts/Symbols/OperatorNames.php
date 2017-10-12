@@ -4,19 +4,19 @@ namespace Novel\Consts\Symbols;
 
 class OperatorNames
 {
-	const ADDITION 				= 'addition';
-	const CONCATENATION 		= 'concatenation';
-	const DIVISION 				= 'division';
-	const EQUAL_ADDITION 		= 'equal addition';
-	const EQUAL_CONCATENATION 	= 'equal concatenation';
-	const EQUAL_DIVISION 		= 'equal division';
-	const EQUAL 				= 'equal';
-	const EQUAL_MULTIPLICATION 	= 'equal multiplication';
-	const EQUAL_SUBTRACTION 	= 'equal subtraction';
-	const EXPONENTIATION 		= 'exponentiation';
-	const MODULO 				= 'modulo';
-	const MULTIPLICATION 		= 'multiplication';
-	const SUBTRACTION 			= 'subtraction';
-	const ARROW 				= 'arrow';
-	const STATIC_SCOPE 			= 'static scope';
+	const ADDITION 				= '+';
+	const CONCATENATION 		= '.';
+	const DIVISION 				= '/';
+	const EQUAL_ADDITION 		= '+=';
+	const EQUAL_CONCATENATION 	= '.=';
+	const EQUAL_DIVISION 		= '/=';
+	const EQUAL 				= '=';
+	const EQUAL_MULTIPLICATION 	= '*=';
+	const EQUAL_SUBTRACTION 	= '-=';
+	const EXPONENTIATION 		= '**';
+	const MODULO 				= '%';
+	const MULTIPLICATION 		= '*';
+	const SUBTRACTION 			= '-';
+	const ARROW 				= '->';
+	const STATIC_SCOPE 			= '::';
 }

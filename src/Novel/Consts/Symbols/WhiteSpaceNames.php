@@ -6,5 +6,5 @@ class WhiteSpaceNames
 {
 	const SPACE 	= 'space';
 	const TAB 		= 'tab';
-	const NEW_LINE 	= 'new line';
+	const NEW_LINE 	= 'new_line';
 }

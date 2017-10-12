@@ -4,14 +4,14 @@ namespace Novel\Consts\Symbols;
 
 class ComparisonOperatorNames
 {
-	const EQUAL_COMPARISON 		= 'equal comparison';
-	const GREATER_THAN_EQUAL 	= 'greater than or equal to';
-	const GREATER_THAN 			= 'greater than';
-	const IDENTICAL 			= 'identical';
-	const LESS_THAN_EQUAL 		= 'less than or equal to';
-	const LESS_THAN 			= 'less than';
-	const NOT_EQUAL 			= 'not equal';
-	const NOT_IDENTICAL 		= 'not identical';
-	const SPACESHIP 			= 'spaceship';
-	const NULL_COALESCING		= 'null coalescing';
+	const EQUAL_COMPARISON 		= '==';
+	const GREATER_THAN_EQUAL 	= '>=';
+	const GREATER_THAN 			= '>';
+	const IDENTICAL 			= '===';
+	const LESS_THAN_EQUAL 		= '<=';
+	const LESS_THAN 			= '<';
+	const NOT_EQUAL 			= '!=';
+	const NOT_IDENTICAL 		= '!==';
+	const SPACESHIP 			= '<=>';
+	const NULL_COALESCING		= '??';
 }

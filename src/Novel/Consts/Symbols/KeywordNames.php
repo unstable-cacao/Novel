@@ -6,7 +6,7 @@ class KeywordNames
 {
 	const ABSTRACT 			= 'abstract';
 	const AND 				= 'and';
-	const ARRAY_CONSTRUCTOR = 'array constructor';
+	const ARRAY_CONSTRUCTOR = 'array_constructor';
 	const AS 				= 'as';
 	const BREAK 			= 'break';
 	const CALLABLE 			= 'callable';
@@ -22,14 +22,14 @@ class KeywordNames
 	const DO 				= 'do';
 	const ECHO 				= 'echo';
 	const ELSE 				= 'else';
-	const ELSE_IF 			= 'else if';
+	const ELSE_IF 			= 'else_if';
 	const EMPTY 			= 'empty';
-	const END_DECLARE 		= 'end declare';
-	const END_FOREACH 		= 'end foreach';
-	const END_FOR 			= 'end for';
-	const END_IF 			= 'end if';
-	const END_SWITCH 		= 'end switch';
-	const END_WHILE 		= 'end while';
+	const END_DECLARE 		= 'end_declare';
+	const END_FOREACH 		= 'end_foreach';
+	const END_FOR 			= 'end_for';
+	const END_IF 			= 'end_if';
+	const END_SWITCH 		= 'end_switch';
+	const END_WHILE 		= 'end_while';
 	const EVAL 				= 'eval';
 	const EXIT 				= 'exit';
 	const EXTENDS 			= 'extends';
@@ -43,9 +43,9 @@ class KeywordNames
 	const IF 				= 'if';
 	const IMPLEMENTS 		= 'implements';
 	const INCLUDE 			= 'include';
-	const INCLUDE_ONCE 		= 'include once';
-	const INSTANCE_OF 		= 'instance of';
-	const INSTEAD_OF 		= 'instead of';
+	const INCLUDE_ONCE 		= 'include_once';
+	const INSTANCE_OF 		= 'instance_of';
+	const INSTEAD_OF 		= 'instead_of';
 	const INTERFACE 		= 'interface';
 	const ISSET 			= 'isset';
 	const LIST 				= 'list';
@@ -57,7 +57,7 @@ class KeywordNames
 	const PROTECTED 		= 'protected';
 	const PUBLIC 			= 'public';
 	const REQUIRE 			= 'require';
-	const REQUIRE_ONCE 		= 'require once';
+	const REQUIRE_ONCE 		= 'require_once';
 	const RETURN 			= 'return';
 	const STATIC 			= 'static';
 	const SWITCH 			= 'switch';
