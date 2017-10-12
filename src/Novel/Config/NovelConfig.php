@@ -2,14 +2,14 @@
 namespace Novel\Config;
 
 
-use Novel\Core\Parsing\IParserSetup;
+use Novel\Core\Parsing\IParseSetup;
 use Novel\Core\Transforming\ITransformSetup;
 use Objection\LiteObject;
 use Objection\LiteSetup;
 
 
 /**
- * @property IParserSetup 		$ParserConfig
+ * @property IParseSetup 		$ParserConfig
  * @property ITransformSetup 	$TransferConfig
  */
 class NovelConfig extends LiteObject
@@ -20,7 +20,7 @@ class NovelConfig extends LiteObject
 	protected function _setup()
 	{
 		return [
-			'ParserConfig' 		=> LiteSetup::createInstanceOf(IParserSetup::class),
+			'ParserConfig' 		=> LiteSetup::createInstanceOf(IParseSetup::class),
 			'TransferConfig' 	=> LiteSetup::createInstanceOf(ITransformSetup::class)
 		];
 	}

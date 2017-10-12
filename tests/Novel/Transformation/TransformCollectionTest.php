@@ -5,7 +5,7 @@ namespace Novel\Transformation;
 use Novel\Core\IToken;
 use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
-use Novel\Core\Transforming\ITokenTransformer;
+use Novel\Core\Transforming\ITokenTransform;
 use Novel\Tokens\Operators\AdditionToken;
 use PHPUnit\Framework\TestCase;
 
@@ -18,10 +18,10 @@ class TransformCollectionTest extends TestCase
 		return $this->getMockBuilder(IToken::class)->getMock();
 	}
 	
-	private function mockTransformer(): ITokenTransformer
+	private function mockTransformer(): ITokenTransform
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(ITokenTransformer::class)->getMock();
+		return $this->getMockBuilder(ITokenTransform::class)->getMock();
 	}
 	
 	private function mockMiddlewareTransformer(): ITokenMiddlewareTransform

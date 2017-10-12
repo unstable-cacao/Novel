@@ -2,7 +2,7 @@
 namespace Novel\Consts\Tokens;
 
 
-class OperationName
+class OperationNames
 {
 	public const UNARY_OPERATION	= 'unary_operation';
 	public const BINARY_EXPRESSION	= 'binary_operation';

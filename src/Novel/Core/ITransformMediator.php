@@ -5,7 +5,7 @@ namespace Novel\Core;
 use Novel\Core\Transforming\ITransformSetup;
 
 
-interface IMainTransformer
+interface ITransformMediator
 {
 	public function getSetup(): ITransformSetup;
 	

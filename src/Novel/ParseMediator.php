@@ -4,7 +4,7 @@ namespace Novel;
 
 use Novel\Core\ISymbol;
 use Novel\Core\IParseMediator;
-use Novel\Core\Parsing\IParserSetup;
+use Novel\Core\Parsing\IParseSetup;
 use Novel\Parsing\ParsersCollection;
 
 
@@ -95,7 +95,7 @@ class ParseMediator implements IParseMediator
 	}
 	
 	
-	public function getSetup(): IParserSetup
+	public function getSetup(): IParseSetup
 	{
 		return $this->setup;
 	}

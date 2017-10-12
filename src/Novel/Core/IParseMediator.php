@@ -2,12 +2,12 @@
 namespace Novel\Core;
 
 
-use Novel\Core\Parsing\IParserSetup;
+use Novel\Core\Parsing\IParseSetup;
 
 
 interface IParseMediator
 {
-	public function getSetup(): IParserSetup;
+	public function getSetup(): IParseSetup;
 	
 	/**
 	 * @param ISymbol[] $symbols

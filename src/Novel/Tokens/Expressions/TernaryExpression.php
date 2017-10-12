@@ -5,14 +5,14 @@ namespace Novel\Tokens\Expressions;
 use Novel\Core\IToken;
 use Novel\Tokens\Base\AbstractToken;
 use Novel\Tokens\Base\IExpressionToken;
-use Novel\Consts\Tokens\OperationName;
+use Novel\Consts\Tokens\OperationNames;
 
 
 class TernaryExpression extends AbstractToken implements IExpressionToken
 {
 	public function __construct()
 	{
-		parent::__construct(OperationName::TERNARY_EXPRESSION);
+		parent::__construct(OperationNames::TERNARY_EXPRESSION);
 	}
 
 

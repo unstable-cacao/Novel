@@ -5,7 +5,7 @@ namespace Novel\Transformation;
 use Novel\Core\IToken;
 use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
-use Novel\Core\Transforming\ITokenTransformer;
+use Novel\Core\Transforming\ITokenTransform;
 use Novel\Core\Transforming\ITransformSetup;
 
 
@@ -34,7 +34,7 @@ class TransformCollection implements ITransformSetup
 	{
 		foreach ($objects as $object) 
 		{
-			if ($object instanceof ITokenTransformer)
+			if ($object instanceof ITokenTransform)
 			{
 				if (!key_exists($type, $this->transformersByType))
 					$this->transformersByType[$type] = [];
@@ -76,7 +76,7 @@ class TransformCollection implements ITransformSetup
 		}
 		else
 		{
-			if ($object instanceof ITokenTransformer)
+			if ($object instanceof ITokenTransform)
 				$this->transformers[] = $object;
 			
 			if ($object instanceof ITokenMiddlewareTransform)
@@ -120,7 +120,7 @@ class TransformCollection implements ITransformSetup
 
 	/**
 	 * @param IToken $token
-	 * @return ITokenTransformer[]
+	 * @return ITokenTransform[]
 	 */
 	public function getMainFor(IToken $token): array 
 	{

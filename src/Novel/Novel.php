@@ -7,7 +7,7 @@ use Novel\Config\NovelConfig;
 
 class Novel
 {
-	/** @var TokenTransformer */
+	/** @var TransformMediator */
 	private $transfer;
 	
 	/** @var ParseMediator */
@@ -16,7 +16,7 @@ class Novel
 	
 	public function __construct()
 	{
-		$this->transfer = new TokenTransformer();
+		$this->transfer = new TransformMediator();
 		$this->parser = new ParseMediator();
 	}
 	

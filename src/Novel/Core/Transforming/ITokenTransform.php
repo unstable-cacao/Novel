@@ -7,7 +7,7 @@ use Novel\Core\IToken;
 use Novel\Core\Stream\ITransformStream;
 
 
-interface ITokenTransformer
+interface ITokenTransform
 {
 	/**
 	 * @param IToken $token

@@ -3,7 +3,7 @@ namespace Novel\Stream;
 
 
 use Novel\Core\ISymbol;
-use Novel\Core\IMainTransformer;
+use Novel\Core\ITransformMediator;
 use Novel\Core\IToken;
 use PHPUnit\Framework\TestCase;
 
@@ -26,12 +26,12 @@ class TransformStreamTest extends TestCase
 	}
 
 	/**
-	 * @return IMainTransformer|\PHPUnit_Framework_MockObject_MockObject
+	 * @return ITransformMediator|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	private function mockMain(): IMainTransformer
+	private function mockMain(): ITransformMediator
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IMainTransformer::class)->getMock();
+		return $this->getMockBuilder(ITransformMediator::class)->getMock();
 	}
 
 	private function subject(): TransformStream

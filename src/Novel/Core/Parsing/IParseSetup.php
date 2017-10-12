@@ -2,18 +2,18 @@
 namespace Novel\Core\Parsing;
 
 
-interface IParserSetup
+interface IParseSetup
 {
 	/**
 	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
-	 * @return IParserSetup
+	 * @return IParseSetup
 	 */
-	public function add($object): IParserSetup;
+	public function add($object): IParseSetup;
 	
 	/**
 	 * @param string|array $type
 	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
-	 * @return IParserSetup
+	 * @return IParseSetup
 	 */
-	public function addByType($type, $object): IParserSetup;
+	public function addByType($type, $object): IParseSetup;
 }

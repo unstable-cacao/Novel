@@ -7,7 +7,7 @@ use Novel\Core\IToken;
 use Novel\Core\Stream\ISymbolWriteStream;
 use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
-use Novel\Core\Transforming\ITokenTransformer;
+use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\WhiteSpace\SpaceSymbol;
 use PHPUnit\Framework\TestCase;
 
@@ -22,9 +22,9 @@ class TokenTransformerTest extends TestCase
 		return $mock;
 	}
 	
-	private function mockMainTransform(ISymbol $symbol): ITokenTransformer
+	private function mockMainTransform(ISymbol $symbol): ITokenTransform
 	{
-		$mock = $this->getMockBuilder(ITokenTransformer::class)->getMock();
+		$mock = $this->getMockBuilder(ITokenTransform::class)->getMock();
 		$mock->method('transform')->willReturn([$symbol]);
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
@@ -52,7 +52,7 @@ class TokenTransformerTest extends TestCase
 	
 	public function test_transform_HasPreTransform()
 	{
-		$subject = new TokenTransformer();
+		$subject = new TransformMediator();
 		$mainSymbol = new SpaceSymbol();
 		$preSymbol = new SpaceSymbol();
 		$subject->getSetup()->add([
@@ -65,7 +65,7 @@ class TokenTransformerTest extends TestCase
 	
 	public function test_transform_HasPostTransform()
 	{
-		$subject = new TokenTransformer();
+		$subject = new TransformMediator();
 		$mainSymbol = new SpaceSymbol();
 		$postSymbol = new SpaceSymbol();
 		$subject->getSetup()->add([
@@ -78,7 +78,7 @@ class TokenTransformerTest extends TestCase
 	
 	public function test_transform_HasMiddleware_MiddlewareExecuted()
 	{
-		$subject = new TokenTransformer();
+		$subject = new TransformMediator();
 		$mainSymbol = new SpaceSymbol();
 		$called = false;
 		
@@ -102,7 +102,7 @@ class TokenTransformerTest extends TestCase
 	
 	public function test_transform_HasTwoMiddlewares_FirstMiddlewareCalledBySecond()
 	{
-		$subject = new TokenTransformer();
+		$subject = new TransformMediator();
 		$called = false;
 		
 		$middleware = $this->getMockBuilder(ITokenMiddlewareTransform::class)->getMock();

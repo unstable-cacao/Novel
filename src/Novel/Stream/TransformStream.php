@@ -3,18 +3,18 @@ namespace Novel\Stream;
 
 
 use Novel\Core\ISymbol;
-use Novel\Core\IMainTransformer;
+use Novel\Core\ITransformMediator;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITransformStream;
 
 
 class TransformStream extends SymbolWriteStream implements ITransformStream
 {
-	/** @var IMainTransformer */
+	/** @var ITransformMediator */
 	private $main;
 	
 	
-	public function __construct(IMainTransformer $transformer)
+	public function __construct(ITransformMediator $transformer)
 	{
 		$this->main = $transformer;
 	}

@@ -7,10 +7,10 @@ use Novel\Core\Parsing\ISymbolChainParser;
 use Novel\Core\Parsing\ISymbolMiddlewareParser;
 use Novel\Core\Parsing\ISymbolParser;
 use Novel\Core\Parsing\ISymbolParsingObject;
-use Novel\Core\Parsing\IParserSetup;
+use Novel\Core\Parsing\IParseSetup;
 
 
-class ParsersCollection implements IParserSetup
+class ParsersCollection implements IParseSetup
 {
 	/** @var array */
 	private $parsers = [];
@@ -64,9 +64,9 @@ class ParsersCollection implements IParserSetup
 	
 	/**
 	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
-	 * @return IParserSetup
+	 * @return IParseSetup
 	 */
-	public function add($object): IParserSetup
+	public function add($object): IParseSetup
 	{
 		if (is_array($object))
 		{
@@ -93,9 +93,9 @@ class ParsersCollection implements IParserSetup
 	/**
 	 * @param string|array $type
 	 * @param ISymbolParsingObject|ISymbolParsingObject[] $object
-	 * @return IParserSetup
+	 * @return IParseSetup
 	 */
-	public function addByType($type, $object): IParserSetup
+	public function addByType($type, $object): IParseSetup
 	{
 		if (is_array($type))
 		{

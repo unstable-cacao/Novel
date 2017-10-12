@@ -4,7 +4,7 @@ namespace Novel;
 
 use Novel\Core\ISymbol;
 use Novel\Core\IToken;
-use Novel\Core\IMainTransformer;
+use Novel\Core\ITransformMediator;
 use Novel\Core\Transforming\ITransformSetup;
 
 use Novel\Stream\SymbolWriteStream;
@@ -12,7 +12,7 @@ use Novel\Stream\TransformStream;
 use Novel\Transformation\TransformCollection;
 
 
-class TokenTransformer implements IMainTransformer
+class TransformMediator implements ITransformMediator
 {
 	/** @var TransformCollection */
     private $setup;

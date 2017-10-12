@@ -3,7 +3,7 @@ namespace Novel\Tokens\Expressions;
 
 
 use Novel\Core\IToken;
-use Novel\Consts\Tokens\OperationName;
+use Novel\Consts\Tokens\OperationNames;
 use Novel\Tokens\Base\AbstractToken;
 use Novel\Tokens\Base\IOperatorToken;
 use Novel\Tokens\Base\IExpressionToken;
@@ -13,7 +13,7 @@ class BinaryExpression extends AbstractToken implements IExpressionToken
 {
 	public function __construct()
 	{
-		parent::__construct(OperationName::BINARY_EXPRESSION);
+		parent::__construct(OperationNames::BINARY_EXPRESSION);
 	}
 
 
