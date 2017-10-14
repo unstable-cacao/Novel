@@ -3,9 +3,10 @@ namespace Novel\Tokens;
 
 
 use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\IExpressionToken;
 
 
-class NamedToken extends AbstractToken
+class NamedToken extends AbstractToken implements IExpressionToken
 {
 	/** @var string */
 	private $name;

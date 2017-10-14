@@ -2,7 +2,7 @@
 namespace Novel\Tokens\Base;
 
 
-abstract class AbstractStatementToken
+abstract class AbstractStatementToken extends AbstractToken
 {
 	
 }

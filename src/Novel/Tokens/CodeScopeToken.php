@@ -2,23 +2,24 @@
 namespace Novel\Tokens;
 
 
+use Novel\Core\IToken;
 use Novel\Tokens\Base\AbstractToken;
-use Novel\Tokens\Base\IExpressionToken;
 
 
 class CodeScopeToken extends AbstractToken
 {
 	public function __construct()
 	{
+		// TODO
 		parent::__construct('');
 	}
 	
-	
+
 	/**
-	 * @param IExpressionToken|IExpressionToken[] $expression
+	 * @param IToken|IToken[] $token
 	 */
-	public function addExpressionStatement($expression)
+	public function add($token)
 	{
-		
+		$this->addChildrenToArray($token);
 	}
 }

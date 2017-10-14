@@ -10,21 +10,48 @@ abstract class AbstractToken implements IToken
 	private $name;
 	private $parent;
 	private $children = [];
-	
+
+
+	/**
+	 * @param string|IToken $token
+	 * @return IToken
+	 */
+	protected function setupChild($token): IToken
+	{
+		if (is_string($token))
+		{
+			/** @var IToken $token */
+			$token = new $token;
+		}
+		
+		$token->setParent($this);
+		return $token;
+	}
 	
 	protected function setChildrenArray(array $children): void
 	{
 		$this->children = $children;
 	}
 	
+	protected function setChild(int $index, IToken $child): void
+	{
+		$child->setParent($this);
+		$this->children[$index] = $child;
+	}
+	
 	protected function addChildrenToArray($children): void
 	{
 		if (is_array($children))
 		{
-			$this->children = array_merge($this->children, $children);
+			foreach ($children as $child)
+			{
+				$this->addChildrenToArray($children);
+			}
 		}
 		else
 		{
+			/** @var IToken $children */
+			$children->setParent($this);
 			$this->children[] = $children;
 		}
 	}
