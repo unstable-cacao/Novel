@@ -58,7 +58,6 @@ class IfStatement extends AbstractStatementToken
 		if (!$this->elseScope)
 		{
 			$this->elseScope = $this->setupChild(ElseScope::class);
-			$this->elseScope->setParent($this);
 		}
 		
 		if ($body)

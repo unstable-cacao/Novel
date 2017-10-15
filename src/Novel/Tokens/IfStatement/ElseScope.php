@@ -21,7 +21,7 @@ class ElseScope extends AbstractToken
 	{
 		parent::__construct(StatementNames::ELSE_SCOPE);
 		
-		$this->body = new CodeScopeToken();
+		$this->body = $this->setupChild(CodeScopeToken::class);
 		
 		if ($body)
 		{
