@@ -4,8 +4,8 @@ namespace Novel\Consts\Symbols;
 
 class LogicOperatorNames
 {
-	const NEGATE 		= '!';
-	const AND 			= '&&';
-	const OR 			= '||';
-	const QUESTION_MARK = '?';
+	public const NEGATE 		= '!';
+	public const AND 			= '&&';
+	public const OR 			= '||';
+	public const QUESTION_MARK 	= '?';
 }

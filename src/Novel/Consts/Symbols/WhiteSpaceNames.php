@@ -4,7 +4,7 @@ namespace Novel\Consts\Symbols;
 
 class WhiteSpaceNames
 {
-	const SPACE 	= 'space';
-	const TAB 		= 'tab';
-	const NEW_LINE 	= 'new_line';
+	public const SPACE 		= 'space';
+	public const TAB 		= 'tab';
+	public const NEW_LINE 	= 'new_line';
 }

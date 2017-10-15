@@ -4,14 +4,14 @@ namespace Novel\Consts\Symbols;
 
 class ConstantNames
 {
-	const BOOL 		= 'bool';
-	const BOOLEAN 	= 'boolean';
-	const INT 		= 'int';
-	const INTEGER 	= 'integer';
-	const FLOAT 	= 'float';
-	const DOUBLE 	= 'double';
-	const STRING 	= 'string';
-	const NULL 		= 'null';
-	const TRUE 		= 'true';
-	const FALSE 	= 'false';
+	public const BOOL 		= 'bool';
+	public const BOOLEAN 	= 'boolean';
+	public const INT 		= 'int';
+	public const INTEGER 	= 'integer';
+	public const FLOAT 		= 'float';
+	public const DOUBLE 	= 'double';
+	public const STRING 	= 'string';
+	public const NULL 		= 'null';
+	public const TRUE 		= 'true';
+	public const FALSE 		= 'false';
 }

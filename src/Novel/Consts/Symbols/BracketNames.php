@@ -4,10 +4,10 @@ namespace Novel\Consts\Symbols;
 
 class BracketNames
 {
-	const CURLY_CLOSE 	= '}';
-	const CURLY_OPEN 	= '{';
-	const ROUND_CLOSE 	= ')';
-	const ROUND_OPEN 	= '(';
-	const SQUARE_CLOSE 	= ']';
-	const SQUARE_OPEN 	= '[';
+	public const CURLY_CLOSE 	= '}';
+	public const CURLY_OPEN 	= '{';
+	public const ROUND_CLOSE 	= ')';
+	public const ROUND_OPEN 	= '(';
+	public const SQUARE_CLOSE 	= ']';
+	public const SQUARE_OPEN 	= '[';
 }
