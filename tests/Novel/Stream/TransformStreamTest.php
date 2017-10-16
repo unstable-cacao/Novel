@@ -56,12 +56,7 @@ class TransformStreamTest extends TestCase
 		$subject->push($this->mockSymbol());
 		$subject->validateClear();
 	}
-	
-	
-	public function test_result_NoSymbols_ReturnEmptyArray()
-	{
-		self::assertEmpty($this->subject()->result());
-	}
+    
 	
 	public function test_result_HasSymbols_ReturnSymbols()
 	{
@@ -88,7 +83,7 @@ class TransformStreamTest extends TestCase
 		
 		$token->method('children')->willReturn([]);
 		
-		self::assertEquals($subject, $subject->transformChildren($token));
+		self::assertEquals([], $subject->transformChildren($token));
 	}
 	
 	public function test_transformChildren_NoChildren_MainTransformNotInvoked()

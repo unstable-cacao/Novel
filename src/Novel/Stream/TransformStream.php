@@ -24,7 +24,7 @@ class TransformStream extends SymbolWriteStream implements ITransformStream
 	{
 		if ($this->getSymbols()) 
 		{
-			throw new \Exception('The transform stream have elements but thous ' . 
+			throw new \Exception('The transform stream have elements but those ' . 
 				'elements were not returned by the transformer.');
 		}
 	}
@@ -32,23 +32,25 @@ class TransformStream extends SymbolWriteStream implements ITransformStream
 	
 	/**
 	 * @param IToken $of
-	 * @return ITransformStream
+	 * @return ISymbol[]
 	 */
-	public function transformChildren(IToken $of): ITransformStream
+	public function transformChildren(IToken $of): array
 	{
 		foreach ($of->children() as $child)
 		{
 			$this->push($this->main->transform($child));
 		}
 		
-		return $this;
-	}
-
-	/**
-	 * @return ISymbol[]
-	 */
-	public function result(): array
-	{
 		return $this->getSymbols();
 	}
+    
+    /**
+     * @param IToken $token
+     * @return ISymbol[]
+     */
+    public function transformToken(IToken $token): array
+    {
+        $this->push($this->main->transform($token));
+        return $this->getSymbols();
+    }
 }

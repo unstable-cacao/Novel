@@ -6,6 +6,7 @@ use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITransformStream;
 use Novel\Core\Transforming\ITokenTransform;
+use Novel\Stream\SymbolWriteStream;
 use Novel\Symbols\Bracket\CurlyBracketCloseSymbol;
 use Novel\Symbols\Bracket\CurlyBracketOpenSymbol;
 use Novel\Tokens\CodeScopeToken;
@@ -22,11 +23,12 @@ class CodeScopeTransform implements ITokenTransform
 	{
 		if ($token instanceof CodeScopeToken)
 		{
-			$result = [new CurlyBracketOpenSymbol()];
-			$result = array_merge($result, $stream->transformChildren($token)->result());
-			$result[] = new CurlyBracketCloseSymbol();
+		    $writer = new SymbolWriteStream();
+		    $writer->push(new CurlyBracketOpenSymbol());
+            $writer->push($stream->transformChildren($token));
+            $writer->push(new CurlyBracketCloseSymbol());
 			
-			return $result;
+			return $writer->getSymbols();
 		}
 		
 		return null;

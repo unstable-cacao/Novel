@@ -36,6 +36,8 @@ class SymbolWriteStream implements ISymbolWriteStream
 	 */
 	public function getSymbols(): array
 	{
-		return $this->symbols;
+	    $result = $this->symbols;
+	    $this->symbols = [];
+		return $result;
 	}
 }

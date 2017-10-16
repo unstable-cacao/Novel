@@ -10,12 +10,13 @@ interface ITransformStream extends ISymbolWriteStream
 {
 	/**
 	 * @param IToken $of
-	 * @return ITransformStream
-	 */
-	public function transformChildren(IToken $of): ITransformStream;
-	
-	/**
 	 * @return ISymbol[]
 	 */
-	public function result(): array;
+	public function transformChildren(IToken $of): array;
+    
+    /**
+     * @param IToken $token
+     * @return ISymbol[]
+     */
+    public function transformToken(IToken $token): array;
 }

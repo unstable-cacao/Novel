@@ -126,7 +126,7 @@ class TransformMediator implements ITransformMediator
 		$stream->push($this->executeMiddleware($root));
 		$stream->push($this->executePostTransform($root));
 		
-		return $stream->result();
+		return $stream->getSymbols();
     }
 	
 	public function getSetup(): ITransformSetup
