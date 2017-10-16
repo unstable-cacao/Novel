@@ -12,7 +12,7 @@ use Novel\Symbols\Bracket\CurlyBracketOpenSymbol;
 use Novel\Tokens\CodeScopeToken;
 
 
-class CodeScopeTransform implements ITokenTransform
+class CodeScopeTokenTransform implements ITokenTransform
 {
 	/**
 	 * @param IToken $token
