@@ -56,7 +56,7 @@ class TransformStreamTest extends TestCase
 		$subject->push($this->mockSymbol());
 		$subject->validateClear();
 	}
-    
+	
 	
 	public function test_result_HasSymbols_ReturnSymbols()
 	{

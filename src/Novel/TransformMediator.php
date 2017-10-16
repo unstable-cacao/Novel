@@ -15,10 +15,10 @@ use Novel\Transformation\TransformCollection;
 class TransformMediator implements ITransformMediator
 {
 	/** @var TransformCollection */
-    private $setup;
-    
-    
-    public function __construct()
+	private $setup;
+	
+	
+	public function __construct()
 	{
 		$this->setup = new TransformCollection();
 	}
@@ -28,30 +28,30 @@ class TransformMediator implements ITransformMediator
 	 * @param IToken $target
 	 * @return ISymbol[]
 	 */
-    private function executeMainTransformers(IToken $target): array
-    {
-    	$stream = new TransformStream($this);
-    	$main = $this->setup->getMainFor($target);
-    	
-        foreach ($main as $item)
-        {
-        	$stream->validateClear();
-            $result = $item->transform($target, $stream);
+	private function executeMainTransformers(IToken $target): array
+	{
+		$stream = new TransformStream($this);
+		$main = $this->setup->getMainFor($target);
+		
+		foreach ($main as $item)
+		{
+			$stream->validateClear();
+			$result = $item->transform($target, $stream);
 			
-            if ($result)
+			if ($result)
 			{
 				return $result;
 			}
-        }
-        
-        return [];
-    }
+		}
+		
+		return [];
+	}
 	
 	/**
 	 * @param IToken $target
 	 * @return ISymbol[]
 	 */
-    private function executeMiddleware(IToken $target): array 
+	private function executeMiddleware(IToken $target): array 
 	{
 		$middle = $this->setup->getMiddlewareFor($target);
 		
@@ -114,12 +114,12 @@ class TransformMediator implements ITransformMediator
 	}
 	
 	
-    /**
-     * @param IToken $root
-     * @return ISymbol[]
-     */
-    public function transform(IToken $root): array
-    {
+	/**
+	 * @param IToken $root
+	 * @return ISymbol[]
+	 */
+	public function transform(IToken $root): array
+	{
 		$stream = new TransformStream($this);
 		
 		$stream->push($this->executePreTransform($root));
@@ -127,7 +127,7 @@ class TransformMediator implements ITransformMediator
 		$stream->push($this->executePostTransform($root));
 		
 		return $stream->getSymbols();
-    }
+	}
 	
 	public function getSetup(): ITransformSetup
 	{

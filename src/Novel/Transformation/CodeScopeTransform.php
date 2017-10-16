@@ -23,10 +23,10 @@ class CodeScopeTransform implements ITokenTransform
 	{
 		if ($token instanceof CodeScopeToken)
 		{
-		    $writer = new SymbolWriteStream();
-		    $writer->push(new CurlyBracketOpenSymbol());
-            $writer->push($stream->transformChildren($token));
-            $writer->push(new CurlyBracketCloseSymbol());
+			$writer = new SymbolWriteStream();
+			$writer->push(new CurlyBracketOpenSymbol());
+			$writer->push($stream->transformChildren($token));
+			$writer->push(new CurlyBracketCloseSymbol());
 			
 			return $writer->getSymbols();
 		}

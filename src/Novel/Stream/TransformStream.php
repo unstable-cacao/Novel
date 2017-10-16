@@ -43,14 +43,14 @@ class TransformStream extends SymbolWriteStream implements ITransformStream
 		
 		return $this->getSymbols();
 	}
-    
-    /**
-     * @param IToken $token
-     * @return ISymbol[]
-     */
-    public function transformToken(IToken $token): array
-    {
-        $this->push($this->main->transform($token));
-        return $this->getSymbols();
-    }
+	
+	/**
+	 * @param IToken $token
+	 * @return ISymbol[]
+	 */
+	public function transformToken(IToken $token): array
+	{
+		$this->push($this->main->transform($token));
+		return $this->getSymbols();
+	}
 }
