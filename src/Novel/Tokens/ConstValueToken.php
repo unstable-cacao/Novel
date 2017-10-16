@@ -16,9 +16,22 @@ class ConstValueToken extends AbstractToken implements IExpressionToken
 	public function __construct($value)
 	{
 		parent::__construct(TokenNames::CONST_VALUE);
+		
+		if (!is_scalar($value) && !is_null($value))
+			throw new \Exception("ConstValue must be scalar or null");
+		
 		$this->value = $value;
 	}
-
+	
+	
+	/**
+	 * @return mixed
+	 */
+	public function value()
+	{
+		return $this->value;
+	}
+	
 
 	public static function true(): ConstValueToken 
 	{
@@ -28,5 +41,10 @@ class ConstValueToken extends AbstractToken implements IExpressionToken
 	public static function false(): ConstValueToken
 	{
 		return new static(false);
+	}
+	
+	public static function null(): ConstValueToken
+	{
+		return new static(null);
 	}
 }
