@@ -7,4 +7,5 @@ class TokenNames
 	public const CONST_VALUE 	= 'const_value';
 	public const USE 			= 'use';
 	public const NAMESPACE 		= 'namespace';
+	public const CODE_SCOPE		= 'code_scope';
 }
