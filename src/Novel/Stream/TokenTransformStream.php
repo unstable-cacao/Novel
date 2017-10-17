@@ -2,10 +2,10 @@
 namespace Novel\Stream;
 
 
-use Novel\Core\ISymbol;
-use Novel\Core\ITransformMediator;
 use Novel\Core\IToken;
+use Novel\Core\ISymbol;
 use Novel\Core\ITreeToken;
+use Novel\Core\ITransformMediator;
 use Novel\Core\Stream\ITokenTransformStream;
 
 
@@ -24,7 +24,7 @@ class TokenTransformStream implements ITokenTransformStream
 	
 	
 	/**
-	 * @param ISymbol|ISymbol[]|IToken|IToken[] $item
+	 * @param string|string[]|ISymbol|ISymbol[]|IToken|IToken[] $item
 	 * @return array
 	 */
 	public function push($item): array
@@ -48,6 +48,10 @@ class TokenTransformStream implements ITokenTransformStream
 		{
 			$this->symbols[] = $item;
 			return $item;
+		}
+		else if (is_string($item))
+		{
+			return $this->push(new $item);
 		}
 		else
 		{

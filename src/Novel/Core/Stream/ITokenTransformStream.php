@@ -14,7 +14,7 @@ interface ITokenTransformStream
 	public function clear(): void;
 	
 	/**
-	 * @param ISymbol|ISymbol[]|IToken|IToken[] $item
+	 * @param string|string[]|ISymbol|ISymbol[]|IToken|IToken[] $item
 	 * @return array
 	 */
 	public function push($item): array;

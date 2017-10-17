@@ -2,11 +2,9 @@
 namespace Novel\Transformation;
 
 
-use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Stream\SymbolWriteStream;
 use Novel\Symbols\Bracket\CurlyBracketCloseSymbol;
 use Novel\Symbols\Bracket\CurlyBracketOpenSymbol;
 use Novel\Tokens\CodeScopeToken;
@@ -14,23 +12,13 @@ use Novel\Tokens\CodeScopeToken;
 
 class CodeScopeTokenTransform implements ITokenTransform
 {
-	/**
-	 * @param IToken $token
-	 * @param ITokenTransformStream $stream
-	 * @return ISymbol[]|null
-	 */
-	public function transform(IToken $token, ITokenTransformStream $stream): ?array
+	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if ($token instanceof CodeScopeToken)
-		{
-			$writer = new SymbolWriteStream();
-			$writer->push(new CurlyBracketOpenSymbol());
-			$writer->push($stream->transformChildren($token));
-			$writer->push(new CurlyBracketCloseSymbol());
-			
-			return $writer->getSymbols();
-		}
+		if (!($token instanceof CodeScopeToken))
+			return;
 		
-		return null;
+		$stream->push(CurlyBracketOpenSymbol::class);
+		$stream->push($stream->transformChildren($token));
+		$stream->push(CurlyBracketCloseSymbol::class);
 	}
 }
