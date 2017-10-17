@@ -3,10 +3,10 @@ namespace Novel\Tokens\Operators;
 
 
 use Novel\Tokens\Base\IOperatorToken;
-use Novel\Tokens\Base\AbstractSimpleToken;
+use Novel\Tokens\Base\AbstractToken;
 
 
-class AbstractOperatorToken extends AbstractSimpleToken implements IOperatorToken
+class AbstractOperatorToken extends AbstractToken implements IOperatorToken
 {
 	public function getOperator(): string
 	{

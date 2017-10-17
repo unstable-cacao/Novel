@@ -2,13 +2,12 @@
 namespace Novel;
 
 
-use Novel\Core\ISymbol;
 use Novel\Core\IToken;
+use Novel\Core\ISymbol;
 use Novel\Core\ITransformMediator;
 use Novel\Core\Transforming\ITransformSetup;
 
-use Novel\Stream\SymbolWriteStream;
-use Novel\Stream\TransformStream;
+use Novel\Stream\TokenTransformStream;
 use Novel\Transformation\TransformCollection;
 
 
@@ -30,28 +29,23 @@ class TransformMediator implements ITransformMediator
 	 */
 	private function executeMainTransformers(IToken $target): array
 	{
-		$stream = new TransformStream($this);
+		$stream = new TokenTransformStream($this);
 		$main = $this->setup->getMainFor($target);
 		
 		foreach ($main as $item)
 		{
-			$stream->validateClear();
-			$result = $item->transform($target, $stream);
+			$item->transform($target, $stream);
 			
-			if ($result)
+			if (!$stream->isEmpty())
 			{
-				return $result;
+				break;
 			}
 		}
 		
-		return [];
+		return $stream->getSymbols();
 	}
 	
-	/**
-	 * @param IToken $target
-	 * @return ISymbol[]
-	 */
-	private function executeMiddleware(IToken $target): array 
+	private function executeMiddleware(IToken $target, TokenTransformStream $stream): void 
 	{
 		$middle = $this->setup->getMiddlewareFor($target);
 		
@@ -64,67 +58,47 @@ class TransformMediator implements ITransformMediator
 		{
 			$callback = function () use ($target, $item, $callback)
 			{
-				$stream = new SymbolWriteStream();
+				$stream = new TokenTransformStream($this);
 				$item->executeTransform($target, $stream, $callback);
 				return $stream->getSymbols();
 			};
 		}
 		
-		return $callback();
+		$stream->push($callback());
 	}
 	
-	/**
-	 * @param IToken $target
-	 * @return ISymbol[]
-	 */
-	private function executePreTransform(IToken $target): array 
+	private function executePreTransform(IToken $target, TokenTransformStream $stream): void 
 	{
-		$result = []; 
 		$chain = $this->setup->getChainFor($target);
 		
 		foreach ($chain as $item)
 		{
-			$result = array_merge(
-				$result, 
-				$item->preTransform($target)
-			);
+			$item->preTransform($target, $stream);
 		}
-		
-		return $result;
 	}
 	
-	/**
-	 * @param IToken $target
-	 * @return ISymbol[]
-	 */
-	private function executePostTransform(IToken $target): array 
+	private function executePostTransform(IToken $target, TokenTransformStream $stream): void
 	{
-		$result = []; 
 		$chain = $this->setup->getChainFor($target);
 		
 		foreach ($chain as $item)
 		{
-			$result = array_merge(
-				$result, 
-				$item->postTransform($target)
-			);
+			$item->postTransform($target, $stream);
 		}
-		
-		return $result;
 	}
 	
 	
 	/**
-	 * @param IToken $root
+	 * @param IToken $token
 	 * @return ISymbol[]
 	 */
-	public function transform(IToken $root): array
+	public function transform(IToken $token): array
 	{
-		$stream = new TransformStream($this);
+		$stream = new TokenTransformStream($this);
 		
-		$stream->push($this->executePreTransform($root));
-		$stream->push($this->executeMiddleware($root));
-		$stream->push($this->executePostTransform($root));
+		$this->executePreTransform($token, $stream);
+		$this->executeMiddleware($token, $stream);
+		$this->executePostTransform($token, $stream);
 		
 		return $stream->getSymbols();
 	}

@@ -2,10 +2,10 @@
 namespace Novel\Tokens;
 
 
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class GlobalScopeToken extends AbstractToken
+class GlobalScopeToken extends AbstractTreeToken
 {
 
 }

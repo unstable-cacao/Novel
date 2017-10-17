@@ -2,11 +2,11 @@
 namespace Novel\Tokens;
 
 
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IExpressionToken;
 
 
-class NamedToken extends AbstractToken implements IExpressionToken
+class NamedToken extends AbstractTreeToken implements IExpressionToken
 {
 	/** @var string */
 	private $name;

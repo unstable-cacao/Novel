@@ -2,10 +2,10 @@
 namespace Novel\Tokens;
 
 
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class AccessibilityToken extends AbstractToken
+class AccessibilityToken extends AbstractTreeToken
 {
 	
 }

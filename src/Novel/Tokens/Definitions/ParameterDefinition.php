@@ -4,10 +4,10 @@ namespace Novel\Tokens\Definitions;
 
 use Novel\Tokens\NamedToken;
 use Novel\Tokens\ConstValueToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class ParameterDefinition extends AbstractToken
+class ParameterDefinition extends AbstractTreeToken
 {
 	/** @var TypeDefinition|null */
 	private $type;

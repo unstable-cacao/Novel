@@ -3,10 +3,10 @@ namespace Novel\Tokens;
 
 
 use Novel\Consts\Tokens\TokenNames;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class NamespaceToken extends AbstractToken
+class NamespaceToken extends AbstractTreeToken
 {
 	/** @var string */
 	private $namespace;

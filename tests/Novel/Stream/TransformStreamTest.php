@@ -34,9 +34,9 @@ class TransformStreamTest extends TestCase
 		return $this->getMockBuilder(ITransformMediator::class)->getMock();
 	}
 
-	private function subject(): TransformStream
+	private function subject(): TokenTransformStream
 	{
-		return new TransformStream($this->mockMain());
+		return new TokenTransformStream($this->mockMain());
 	}
 	
 	
@@ -90,7 +90,7 @@ class TransformStreamTest extends TestCase
 	{
 		$main = $this->mockMain();
 		$token = $this->mockToken();
-		$subject = new TransformStream($main);
+		$subject = new TokenTransformStream($main);
 		
 		$token->method('children')->willReturn([]);
 		
@@ -107,7 +107,7 @@ class TransformStreamTest extends TestCase
 		$child1 = $this->mockToken();
 		$child2 = $this->mockToken();
 		
-		$subject = new TransformStream($main);
+		$subject = new TokenTransformStream($main);
 		
 		$token->method('children')->willReturn([$child1, $child2]);
 		

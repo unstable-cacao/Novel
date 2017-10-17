@@ -5,10 +5,10 @@ namespace Novel\Tokens\IfStatement;
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class ElseScope extends AbstractToken
+class ElseScope extends AbstractTreeToken
 {
 	/** @var CodeScopeToken */
 	private $body;

@@ -4,11 +4,11 @@ namespace Novel\Tokens\Expressions;
 
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\OperationNames;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IExpressionToken;
 
 
-class ForeachIterationExpression extends AbstractToken implements IExpressionToken
+class ForeachIterationExpression extends AbstractTreeToken implements IExpressionToken
 {
 	/** @var IToken */
 	private $traversable;

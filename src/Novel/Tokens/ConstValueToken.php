@@ -3,11 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Consts\Tokens\TokenNames;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IExpressionToken;
 
 
-class ConstValueToken extends AbstractToken implements IExpressionToken
+class ConstValueToken extends AbstractTreeToken implements IExpressionToken
 {
 	/** @var mixed */
 	private $value;

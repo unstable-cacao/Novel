@@ -3,10 +3,10 @@ namespace Novel\Tokens\Definitions;
 
 
 use Novel\Tokens\NamedToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class TypeDefinition extends AbstractToken
+class TypeDefinition extends AbstractTreeToken
 {
 	private $isNullable;
 	

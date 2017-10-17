@@ -4,7 +4,7 @@ namespace Novel\Transformation;
 
 use Novel\Core\ISymbol;
 use Novel\Core\IToken;
-use Novel\Core\Stream\ITransformStream;
+use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Stream\SymbolWriteStream;
 use Novel\Symbols\ConstStringSymbol;
@@ -18,10 +18,10 @@ class NamespaceTokenTransform implements ITokenTransform
 {
 	/**
 	 * @param IToken $token
-	 * @param ITransformStream $stream
+	 * @param ITokenTransformStream $stream
 	 * @return ISymbol[]|null
 	 */
-	public function transform(IToken $token, ITransformStream $stream): ?array
+	public function transform(IToken $token, ITokenTransformStream $stream): ?array
 	{
 		if ($token instanceof NamespaceToken)
 		{

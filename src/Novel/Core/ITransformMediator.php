@@ -10,8 +10,8 @@ interface ITransformMediator
 	public function getSetup(): ITransformSetup;
 	
 	/**
-	 * @param IToken $root
+	 * @param IToken $token
 	 * @return ISymbol[]
 	 */
-	public function transform(IToken $root): array;
+	public function transform(IToken $token): array;
 }

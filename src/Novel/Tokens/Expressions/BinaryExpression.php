@@ -4,12 +4,12 @@ namespace Novel\Tokens\Expressions;
 
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\OperationNames;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IOperatorToken;
 use Novel\Tokens\Base\IExpressionToken;
 
 
-class BinaryExpression extends AbstractToken implements IExpressionToken
+class BinaryExpression extends AbstractTreeToken implements IExpressionToken
 {
 	public function __construct()
 	{

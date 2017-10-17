@@ -6,11 +6,11 @@ use Novel\Core\IToken;
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Tokens\Base\IExpressionToken;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\ConstValueToken;
 
 
-class IfScope extends AbstractToken
+class IfScope extends AbstractTreeToken
 {
 	/** @var CodeScopeToken */
 	private $body;

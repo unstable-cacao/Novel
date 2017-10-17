@@ -3,12 +3,12 @@ namespace Novel\Tokens\Expressions;
 
 
 use Novel\Core\IToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IExpressionToken;
 use Novel\Consts\Tokens\OperationNames;
 
 
-class TernaryExpression extends AbstractToken implements IExpressionToken
+class TernaryExpression extends AbstractTreeToken implements IExpressionToken
 {
 	public function __construct()
 	{
