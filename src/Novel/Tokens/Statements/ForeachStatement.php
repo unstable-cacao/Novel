@@ -51,8 +51,9 @@ class ForeachStatement extends AbstractStatementToken
 		$this->iterationExpression = $this->setupChild($expr);
 	}
 	
-	public function addToScope(IToken $token)
+	public function addToScope(IToken $token): ForeachStatement
 	{
 		$this->scope()->add($token);
+		return $this;
 	}
 }
