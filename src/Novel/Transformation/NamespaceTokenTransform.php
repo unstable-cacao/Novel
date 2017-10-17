@@ -2,11 +2,9 @@
 namespace Novel\Transformation;
 
 
-use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Stream\SymbolWriteStream;
 use Novel\Symbols\ConstStringSymbol;
 use Novel\Symbols\EndOfStatementSymbol;
 use Novel\Symbols\Keyword\NamespaceSymbol;
@@ -16,23 +14,13 @@ use Novel\Tokens\NamespaceToken;
 
 class NamespaceTokenTransform implements ITokenTransform
 {
-	/**
-	 * @param IToken $token
-	 * @param ITokenTransformStream $stream
-	 * @return ISymbol[]|null
-	 */
-	public function transform(IToken $token, ITokenTransformStream $stream): ?array
+	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if ($token instanceof NamespaceToken)
-		{
-			$writer = new SymbolWriteStream();
-			$writer->push([new NamespaceSymbol(), new SpaceSymbol()]);
-			$writer->push(new ConstStringSymbol($token->getNamespace()));
-			$writer->push(new EndOfStatementSymbol());
-			
-			return $writer->getSymbols();
-		}
+		if (!($token instanceof NamespaceToken))
+			return;
 		
-		return null;
+		$stream->push([NamespaceSymbol::class, SpaceSymbol::class]);
+		$stream->push(new ConstStringSymbol($token->getNamespace()));
+		$stream->push(EndOfStatementSymbol::class);
 	}
 }

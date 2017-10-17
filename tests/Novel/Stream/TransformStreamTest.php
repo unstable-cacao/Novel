@@ -5,6 +5,7 @@ namespace Novel\Stream;
 use Novel\Core\ISymbol;
 use Novel\Core\ITransformMediator;
 use Novel\Core\IToken;
+use Novel\Core\ITreeToken;
 use PHPUnit\Framework\TestCase;
 
 
@@ -17,12 +18,12 @@ class TransformStreamTest extends TestCase
 	}
 	
 	/**
-	 * @return IToken|\PHPUnit_Framework_MockObject_MockObject
+	 * @return ITreeToken|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	private function mockToken(): IToken
+	private function mockToken(): ITreeToken
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(IToken::class)->getMock();
+		return $this->getMockBuilder(ITreeToken::class)->getMock();
 	}
 
 	/**
@@ -37,24 +38,6 @@ class TransformStreamTest extends TestCase
 	private function subject(): TokenTransformStream
 	{
 		return new TokenTransformStream($this->mockMain());
-	}
-	
-	
-	public function test_validateClear_clear_NoExceptionThrown()
-	{
-		$this->subject()->validateClear();
-		
-		self::assertTrue(true);
-	}
-
-	/**
-	 * @expectedException \Exception
-	 */
-	public function test_validateClear_StreamIsNotEmpty_ExceptionThrown()
-	{
-		$subject = $this->subject();
-		$subject->push($this->mockSymbol());
-		$subject->validateClear();
 	}
 	
 	

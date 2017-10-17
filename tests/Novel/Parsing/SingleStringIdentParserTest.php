@@ -20,7 +20,7 @@ class SingleStringSymbolParserTest extends TestCase
 	public function test_parse_NotInstanceOfAbstractSingleStringSymbol_ReturnNull()
 	{
 		$subject = new SingleStringSymbolParser();
-		$symbol = new ConstStringSymbol();
+		$symbol = new ConstStringSymbol("test");
 		
 		self::assertNull($subject->parse($symbol));
 	}

@@ -2,11 +2,9 @@
 namespace Novel\Transformation;
 
 
-use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Stream\SymbolWriteStream;
 use Novel\Symbols\ConstStringSymbol;
 use Novel\Symbols\EndOfStatementSymbol;
 use Novel\Symbols\Keyword\AsSymbol;
@@ -17,30 +15,20 @@ use Novel\Tokens\UseToken;
 
 class UseTokenTransform implements ITokenTransform
 {
-	/**
-	 * @param IToken $token
-	 * @param ITokenTransformStream $stream
-	 * @return ISymbol[]|null
-	 */
-	public function transform(IToken $token, ITokenTransformStream $stream): ?array
+	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if ($token instanceof UseToken)
+		if (!($token instanceof UseToken))
+			return;
+		
+		$stream->push([UseSymbol::class, SpaceSymbol::class]);
+		$stream->push(new ConstStringSymbol($token->fullName()));
+		
+		if ($token->getAs())
 		{
-			$writer = new SymbolWriteStream();
-			$writer->push([new UseSymbol(), new SpaceSymbol()]);
-			$writer->push(new ConstStringSymbol($token->fullName()));
-			
-			if ($token->getAs())
-			{
-				$writer->push([new SpaceSymbol(), new AsSymbol()]);
-				$writer->push(new ConstStringSymbol($token->getAs()));
-			}
-			
-			$writer->push(new EndOfStatementSymbol());
-			
-			return $writer->getSymbols();
+			$stream->push([SpaceSymbol::class, AsSymbol::class]);
+			$stream->push(new ConstStringSymbol($token->getAs()));
 		}
 		
-		return null;
+		$stream->push(EndOfStatementSymbol::class);
 	}
 }

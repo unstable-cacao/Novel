@@ -15,7 +15,7 @@ interface ITokenTransformStream
 	
 	/**
 	 * @param string|string[]|ISymbol|ISymbol[]|IToken|IToken[] $item
-	 * @return array
+	 * @return ISymbol[]
 	 */
 	public function push($item): array;
     

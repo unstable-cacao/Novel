@@ -11,7 +11,8 @@ use Novel\Core\Stream\ITokenTransformStream;
 
 class TokenTransformStream implements ITokenTransformStream
 {
-	private $symbols;
+	/** @var array */
+	private $symbols = [];
 	
 	/** @var ITransformMediator */
 	private $main;
@@ -25,7 +26,7 @@ class TokenTransformStream implements ITokenTransformStream
 	
 	/**
 	 * @param string|string[]|ISymbol|ISymbol[]|IToken|IToken[] $item
-	 * @return array
+	 * @return ISymbol[]
 	 */
 	public function push($item): array
 	{
@@ -38,7 +39,7 @@ class TokenTransformStream implements ITokenTransformStream
 				$results[] = $this->push($singleItem);
 			}
 			
-			return array_merge(...$results);
+			return $results ? array_merge(...$results) : $results;
 		}
 		else if ($item instanceof IToken)
 		{
@@ -47,7 +48,7 @@ class TokenTransformStream implements ITokenTransformStream
 		else if ($item instanceof ISymbol)
 		{
 			$this->symbols[] = $item;
-			return $item;
+			return [$item];
 		}
 		else if (is_string($item))
 		{
@@ -71,6 +72,9 @@ class TokenTransformStream implements ITokenTransformStream
 		{
 			$results[] = $this->main->transform($child);
 		}
+		
+		if (!$results)
+			return [];
 		
 		$result = array_merge(...$results);
 		$this->symbols = array_merge($this->symbols, $result);
@@ -97,7 +101,7 @@ class TokenTransformStream implements ITokenTransformStream
 
 	public function isEmpty(): bool
 	{
-		return $this->symbols;
+		return (bool)$this->symbols;
 	}
 
 	public function clear(): void
