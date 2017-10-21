@@ -2,10 +2,9 @@
 namespace Novel\Stream;
 
 
+use Novel\Core\IToken;
 use Novel\Core\ISymbol;
 use Novel\Core\ITransformMediator;
-use Novel\Core\IToken;
-use Novel\Core\ITreeToken;
 use PHPUnit\Framework\TestCase;
 
 
@@ -18,12 +17,12 @@ class TransformStreamTest extends TestCase
 	}
 	
 	/**
-	 * @return ITreeToken|\PHPUnit_Framework_MockObject_MockObject
+	 * @return IToken|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	private function mockToken(): ITreeToken
+	private function mockToken(): IToken
 	{
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
-		return $this->getMockBuilder(ITreeToken::class)->getMock();
+		return $this->getMockBuilder(IToken::class)->getMock();
 	}
 
 	/**
