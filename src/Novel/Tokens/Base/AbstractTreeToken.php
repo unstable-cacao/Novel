@@ -3,10 +3,9 @@ namespace Novel\Tokens\Base;
 
 
 use Novel\Core\IToken;
-use Novel\Core\ITreeToken;
 
 
-abstract class AbstractTreeToken implements ITreeToken
+abstract class AbstractTreeToken implements IToken
 {
 	private $name;
 	private $parent;

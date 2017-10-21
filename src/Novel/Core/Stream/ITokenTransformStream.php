@@ -4,7 +4,6 @@ namespace Novel\Core\Stream;
 
 use Novel\Core\IToken;
 use Novel\Core\ISymbol;
-use Novel\Core\ITreeToken;
 
 
 interface ITokenTransformStream
@@ -26,10 +25,10 @@ interface ITokenTransformStream
     public function transformToken(IToken $token): array;
 	
 	/**
-	 * @param ITreeToken $of
+	 * @param IToken $of
 	 * @return ISymbol[]
 	 */
-	public function transformChildren(ITreeToken $of): array;
+	public function transformChildren(IToken $of): array;
 
 	/**
 	 * @return ISymbol[]

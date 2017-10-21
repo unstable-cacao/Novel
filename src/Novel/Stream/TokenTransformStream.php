@@ -4,7 +4,6 @@ namespace Novel\Stream;
 
 use Novel\Core\IToken;
 use Novel\Core\ISymbol;
-use Novel\Core\ITreeToken;
 use Novel\Core\ITransformMediator;
 use Novel\Core\Stream\ITokenTransformStream;
 
@@ -61,10 +60,10 @@ class TokenTransformStream implements ITokenTransformStream
 	}
 	
 	/**
-	 * @param ITreeToken $of
+	 * @param IToken $of
 	 * @return ISymbol[]
 	 */
-	public function transformChildren(ITreeToken $of): array
+	public function transformChildren(IToken $of): array
 	{
 		$results = [];
 		
