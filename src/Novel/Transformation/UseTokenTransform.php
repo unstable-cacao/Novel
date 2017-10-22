@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\ConstStringSymbol;
-use Novel\Symbols\EndOfStatementSymbol;
+use Novel\Symbols\SemicolonSymbol;
 use Novel\Symbols\Keyword\AsSymbol;
 use Novel\Symbols\Keyword\UseSymbol;
 use Novel\Symbols\WhiteSpace\SpaceSymbol;
@@ -29,6 +29,6 @@ class UseTokenTransform implements ITokenTransform
 			$stream->push(new ConstStringSymbol($token->getAs()));
 		}
 		
-		$stream->push(EndOfStatementSymbol::class);
+		$stream->push(SemicolonSymbol::class);
 	}
 }

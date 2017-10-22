@@ -6,7 +6,8 @@ class PHPNames
 {
 	public const PHP 					= '<?php';
 	public const CLOSE_PHP 				= '?>';
-	public const END_OF_STATEMENT 		= ';';
+	public const ARRAY_ARROW			= '=>';
+	public const SEMICOLON 		= ';';
 	public const BACKSLASH 				= '\\';
 	public const COMMA 					= ',';
 	public const DOLLAR					= '$';

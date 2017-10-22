@@ -7,16 +7,16 @@ use Novel\Core\ISymbol;
 use Novel\Symbols\Base\AbstractSingleStringSymbol;
 
 
-class EndOfStatementSymbol extends AbstractSingleStringSymbol implements ISymbol
+class ArrayArrowSymbol extends AbstractSingleStringSymbol implements ISymbol
 {
 	public function __construct()
 	{
-		parent::__construct(";");
+		parent::__construct("=>");
 	}
 	
 	
 	public function name()
 	{
-		return PHPNames::END_OF_STATEMENT;
+		return PHPNames::ARRAY_ARROW;
 	}
 }
