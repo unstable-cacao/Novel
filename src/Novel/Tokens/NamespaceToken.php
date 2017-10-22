@@ -3,10 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Consts\Tokens\TokenNames;
+use Novel\Core\Tokens\INamespaceToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class NamespaceToken extends AbstractTreeToken
+class NamespaceToken extends AbstractTreeToken implements INamespaceToken
 {
 	/** @var string */
 	private $namespace;
@@ -22,5 +23,10 @@ class NamespaceToken extends AbstractTreeToken
 	public function getNamespace(): string 
 	{
 		return $this->namespace;
+	}
+	
+	public function setNamespace(string $namespace)
+	{
+		$this->namespace = $namespace;
 	}
 }

@@ -4,20 +4,20 @@ namespace Novel\Transformation;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
+use Novel\Core\Tokens\IUseToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\ConstStringSymbol;
 use Novel\Symbols\SemicolonSymbol;
 use Novel\Symbols\Keyword\AsSymbol;
 use Novel\Symbols\Keyword\UseSymbol;
 use Novel\Symbols\WhiteSpace\SpaceSymbol;
-use Novel\Tokens\UseToken;
 
 
 class UseTokenTransform implements ITokenTransform
 {
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if (!($token instanceof UseToken))
+		if (!($token instanceof IUseToken))
 			return;
 		
 		$stream->push([UseSymbol::class, SpaceSymbol::class]);

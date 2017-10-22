@@ -4,10 +4,11 @@ namespace Novel\Tokens;
 
 use Novel\Consts\Tokens\TokenNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class CodeScopeToken extends AbstractTreeToken
+class CodeScopeToken extends AbstractTreeToken implements ICodeScopeToken
 {
 	public function __construct()
 	{

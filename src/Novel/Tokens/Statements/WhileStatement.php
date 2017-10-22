@@ -4,26 +4,27 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\Statements\IWhileStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
-use Novel\Tokens\Base\IExpressionToken;
 use Novel\Tokens\CodeScopeToken;
 use Novel\Tokens\ConstValueToken;
 
 
-class WhileStatement extends AbstractStatementToken
+class WhileStatement extends AbstractStatementToken implements IWhileStatement
 {
 	/** @var CodeScopeToken */
 	private $body;
 	
-	/** @var IExpressionToken */
+	/** @var IExpression */
 	private $condition;
 	
 	
 	/**
-	 * @param IExpressionToken|null $condition
+	 * @param IExpression|null $condition
 	 * @param IToken|IToken[]|null $body
 	 */
-	public function __construct(IExpressionToken $condition = null, $body = null)
+	public function __construct(IExpression $condition = null, $body = null)
 	{
 		parent::__construct(StatementNames::WHILE_STATEMENT);
 		
@@ -42,12 +43,12 @@ class WhileStatement extends AbstractStatementToken
 		return $this->body;
 	}
 	
-	public function condition(): IExpressionToken
+	public function condition(): IExpression
 	{
 		return $this->condition;
 	}
 	
-	public function setCondition(IExpressionToken $expr): void
+	public function setCondition(IExpression $expr): void
 	{
 		$this->condition = $this->setupChild($expr);
 	}

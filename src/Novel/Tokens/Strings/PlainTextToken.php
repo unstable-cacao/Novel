@@ -2,6 +2,7 @@
 namespace Novel\Tokens\Strings;
 
 
+use Novel\Core\Tokens\Strings\IPlainTextToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
 
@@ -13,7 +14,7 @@ use Novel\Tokens\Base\AbstractChildlessToken;
  * PlainTextToken: 
  * hello world  
  */
-class PlainTextToken extends AbstractChildlessToken
+class PlainTextToken extends AbstractChildlessToken implements IPlainTextToken
 {
 	/** @var string|null */
 	private $text = null;
@@ -34,5 +35,10 @@ class PlainTextToken extends AbstractChildlessToken
 	public function getText(): string
 	{
 		return $this->text ?: '';
+	}
+	
+	public function getToken(): string
+	{
+		// TODO: Implement getToken() method.
 	}
 }

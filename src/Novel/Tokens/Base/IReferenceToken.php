@@ -2,7 +2,10 @@
 namespace Novel\Tokens\Base;
 
 
-interface IReferenceToken extends IExpressionToken
+use Novel\Core\Tokens\Expressions\IExpression;
+
+
+interface IReferenceToken extends IExpression
 {
 
 }

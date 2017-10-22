@@ -4,25 +4,27 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\Expressions\IForeachIterationExpression;
+use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Statements\IForStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\Expressions\ForeachIterationExpression;
 
 
-class ForeachStatement extends AbstractStatementToken
+class ForeachStatement extends AbstractStatementToken implements IForStatement
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
-	/** @var ForeachIterationExpression */
+	/** @var IForeachIterationExpression */
 	private $iterationExpression;
 	
 	
 	/**
-	 * @param ForeachIterationExpression $iterationExpression
+	 * @param IForeachIterationExpression $iterationExpression
 	 * @param IToken|IToken[]|null $body
 	 */
-	public function __construct(ForeachIterationExpression $iterationExpression, $body = null)
+	public function __construct(IForeachIterationExpression $iterationExpression, $body = null)
 	{
 		parent::__construct(StatementNames::FOREACH_STATEMENT);
 		
@@ -36,17 +38,22 @@ class ForeachStatement extends AbstractStatementToken
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}
 	
-	public function iterationExpression(): ForeachIterationExpression
+	public function setScope(ICodeScopeToken $scope)
+	{
+		$this->body = $this->setupChild($scope);
+	}
+	
+	public function iterationExpression(): IForeachIterationExpression
 	{
 		return $this->iterationExpression;
 	}
 	
-	public function setIterationExpression(ForeachIterationExpression $expr): void
+	public function setIterationExpression(IForeachIterationExpression $expr): void
 	{
 		$this->iterationExpression = $this->setupChild($expr);
 	}

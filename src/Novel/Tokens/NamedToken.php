@@ -2,11 +2,11 @@
 namespace Novel\Tokens;
 
 
+use Novel\Core\Tokens\INamedToken;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IExpressionToken;
 
 
-class NamedToken extends AbstractTreeToken implements IExpressionToken
+class NamedToken extends AbstractTreeToken implements INamedToken
 {
 	/** @var string */
 	private $name;
@@ -22,5 +22,10 @@ class NamedToken extends AbstractTreeToken implements IExpressionToken
 	public function getName(): string 
 	{
 		return $this->name;
+	}
+	
+	public function setName(string $name)
+	{
+		$this->name = $name;
 	}
 }

@@ -4,11 +4,11 @@ namespace Novel\Tokens\ScopeResolution;
 
 use Novel\Consts\Tokens\ScopeResolutionNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\ScopeResolution\IInstanceScope;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IScopeResolution;
 
 
-class InstanceScope extends AbstractTreeToken implements IScopeResolution
+class InstanceScope extends AbstractTreeToken implements IInstanceScope
 {
 	/** @var IToken */
 	private $scopeSource;

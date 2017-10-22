@@ -3,10 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Consts\Tokens\TokenNames;
+use Novel\Core\Tokens\IUseToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class UseToken extends AbstractTreeToken
+class UseToken extends AbstractTreeToken implements IUseToken
 {
 	/** @var string */
 	private $fullName;
@@ -31,6 +32,11 @@ class UseToken extends AbstractTreeToken
 	public function getAs(): ?string 
 	{
 		return $this->as;
+	}
+	
+	public function setFullName(string $fullName)
+	{
+		$this->fullName = $fullName;
 	}
 	
 	public function setAs(string $as): void

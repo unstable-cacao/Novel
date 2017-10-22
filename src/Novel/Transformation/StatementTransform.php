@@ -3,8 +3,8 @@ namespace Novel\Transformation;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\IStatement;
 use Novel\Core\Stream\ITokenTransformStream;
+use Novel\Core\Tokens\Statements\IStatement;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\SemicolonSymbol;
 

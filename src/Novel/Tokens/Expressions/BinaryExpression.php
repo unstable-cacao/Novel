@@ -4,12 +4,13 @@ namespace Novel\Tokens\Expressions;
 
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\OperationNames;
+use Novel\Core\Tokens\Expressions\IBinaryExpression;
+use Novel\Core\Tokens\Expressions\IExpression;
 use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\Base\IOperatorToken;
-use Novel\Tokens\Base\IExpressionToken;
 
 
-class BinaryExpression extends AbstractTreeToken implements IExpressionToken
+class BinaryExpression extends AbstractTreeToken implements IBinaryExpression
 {
 	public function __construct()
 	{
@@ -17,7 +18,7 @@ class BinaryExpression extends AbstractTreeToken implements IExpressionToken
 	}
 
 
-	public function set(IExpressionToken $left, IOperatorToken $operator, IExpressionToken $right)
+	public function set(IExpression $left, IOperatorToken $operator, IExpression $right)
 	{
 		$this->setChildrenArray([$left, $operator, $right]);
 	}

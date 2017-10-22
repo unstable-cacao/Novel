@@ -3,13 +3,14 @@ namespace Novel\Tokens\Statements;
 
 
 use Novel\Consts\Tokens\StatementNames;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\Statements\IIfStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
-use Novel\Tokens\Base\IExpressionToken;
 use Novel\Tokens\IfStatement\ElseScope;
 use Novel\Tokens\IfStatement\IfScope;
 
 
-class IfStatement extends AbstractStatementToken
+class IfStatement extends AbstractStatementToken implements IIfStatement
 {
 	/** @var IfScope[] */
 	private $ifScopes = [];
@@ -37,7 +38,7 @@ class IfStatement extends AbstractStatementToken
 		return $this->ifScopes[$index] ?? null;
 	}
 	
-	public function addIfStatement(IExpressionToken $expr = null, $body = null, &$index = null): ?IfScope
+	public function addIfStatement(IExpression $expr = null, $body = null, &$index = null): ?IfScope
 	{
 		$index = count($this->ifScopes);
 		

@@ -2,10 +2,11 @@
 namespace Novel\Tokens;
 
 
+use Novel\Core\Tokens\IFunctionToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class FunctionToken extends AbstractTreeToken
+class FunctionToken extends AbstractTreeToken implements IFunctionToken
 {
 	public function __construct($name)
 	{

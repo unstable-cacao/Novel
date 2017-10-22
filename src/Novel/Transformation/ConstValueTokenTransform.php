@@ -4,19 +4,19 @@ namespace Novel\Transformation;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
+use Novel\Core\Tokens\IConstValueToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\Constant\FalseSymbol;
 use Novel\Symbols\Constant\NullSymbol;
 use Novel\Symbols\Constant\TrueSymbol;
 use Novel\Symbols\ConstStringSymbol;
-use Novel\Tokens\ConstValueToken;
 
 
 class ConstValueTokenTransform implements ITokenTransform
 {
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if (!($token instanceof ConstValueToken))
+		if (!($token instanceof IConstValueToken))
 			return;
 		
 		$value = $token->value();

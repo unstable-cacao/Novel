@@ -4,30 +4,32 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\IConstValueToken;
+use Novel\Core\Tokens\Statements\IDoWhileStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
-use Novel\Tokens\Base\IExpressionToken;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\ConstValueToken;
 
 
-class DoWhileStatement extends AbstractStatementToken
+class DoWhileStatement extends AbstractStatementToken implements IDoWhileStatement
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
-	/** @var IExpressionToken */
+	/** @var IExpression */
 	private $condition;
 	
 	
 	/**
-	 * @param IExpressionToken|null $condition
+	 * @param IExpression|null $condition
 	 * @param IToken|IToken[]|null $body
 	 */
-	public function __construct(IExpressionToken $condition = null, $body = null)
+	public function __construct(IExpression $condition = null, $body = null)
 	{
 		parent::__construct(StatementNames::DO_WHILE_STATEMENT);
 		
-		$this->condition = $this->setupChild($condition ?: ConstValueToken::false());
+		$this->condition = $this->setupChild($condition ?: IConstValueToken::false());
 		$this->body = $this->setupChild(CodeScopeToken::class);
 		
 		if ($body)
@@ -37,17 +39,22 @@ class DoWhileStatement extends AbstractStatementToken
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}
 	
-	public function condition(): IExpressionToken
+	public function setScope(ICodeScopeToken $scope)
+	{
+		$this->body = $this->setupChild($scope);
+	}
+	
+	public function condition(): IExpression
 	{
 		return $this->condition;
 	}
 	
-	public function setCondition(IExpressionToken $expr): void
+	public function setCondition(IExpression $expr): void
 	{
 		$this->condition = $this->setupChild($expr);
 	}

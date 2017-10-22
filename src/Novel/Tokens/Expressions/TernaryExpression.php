@@ -3,12 +3,13 @@ namespace Novel\Tokens\Expressions;
 
 
 use Novel\Core\IToken;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\Expressions\ITernaryExpression;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IExpressionToken;
 use Novel\Consts\Tokens\OperationNames;
 
 
-class TernaryExpression extends AbstractTreeToken implements IExpressionToken
+class TernaryExpression extends AbstractTreeToken implements ITernaryExpression
 {
 	public function __construct()
 	{
@@ -16,7 +17,7 @@ class TernaryExpression extends AbstractTreeToken implements IExpressionToken
 	}
 
 
-	public function set(IExpressionToken $condition, ?IExpressionToken $trueValue, IExpressionToken $falseValue)
+	public function set(IExpression $condition, ?IExpression $trueValue, IExpression $falseValue)
 	{
 		if ($trueValue)
 		{

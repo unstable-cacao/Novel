@@ -4,26 +4,27 @@ namespace Novel\Tokens\IfStatement;
 
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\StatementNames;
-use Novel\Tokens\Base\IExpressionToken;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\IfStatement\IIfScope;
 use Novel\Tokens\CodeScopeToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 use Novel\Tokens\ConstValueToken;
 
 
-class IfScope extends AbstractTreeToken
+class IfScope extends AbstractTreeToken implements IIfScope
 {
 	/** @var CodeScopeToken */
 	private $body;
 	
-	/** @var IExpressionToken */
+	/** @var IExpression */
 	private $condition;
 	
 	
 	/**
-	 * @param IExpressionToken|null $condition
+	 * @param IExpression|null $condition
 	 * @param IToken|IToken[]|null $body
 	 */
-	public function __construct(IExpressionToken $condition = null, $body = null)
+	public function __construct(IExpression $condition = null, $body = null)
 	{
 		parent::__construct(StatementNames::IF_SCOPE);
 		
@@ -42,12 +43,12 @@ class IfScope extends AbstractTreeToken
 		return $this->body;
 	}
 	
-	public function condition(): IExpressionToken
+	public function condition(): IExpression
 	{
 		return $this->condition;
 	}
 	
-	public function setCondition(IExpressionToken $expr): void
+	public function setCondition(IExpression $expr): void
 	{
 		$this->condition = $this->setupChild($expr);
 	}

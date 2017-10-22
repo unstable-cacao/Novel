@@ -3,11 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Consts\Tokens\TokenNames;
+use Novel\Core\Tokens\IConstValueToken;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IExpressionToken;
 
 
-class ConstValueToken extends AbstractTreeToken implements IExpressionToken
+class ConstValueToken extends AbstractTreeToken implements IConstValueToken
 {
 	/** @var mixed */
 	private $value;
@@ -32,18 +32,26 @@ class ConstValueToken extends AbstractTreeToken implements IExpressionToken
 		return $this->value;
 	}
 	
+	/**
+	 * @param mixed $value
+	 */
+	public function setValue($value)
+	{
+		$this->value = $value;
+	}
+	
 
-	public static function true(): ConstValueToken 
+	public static function true(): IConstValueToken 
 	{
 		return new static(true);
 	}
 	
-	public static function false(): ConstValueToken
+	public static function false(): IConstValueToken
 	{
 		return new static(false);
 	}
 	
-	public static function null(): ConstValueToken
+	public static function null(): IConstValueToken
 	{
 		return new static(null);
 	}

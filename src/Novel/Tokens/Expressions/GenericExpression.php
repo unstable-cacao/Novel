@@ -2,11 +2,11 @@
 namespace Novel\Tokens\Expressions;
 
 
+use Novel\Core\Tokens\Expressions\IGenericExpression;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IExpressionToken;
 
 
-class GenericExpression extends AbstractTreeToken implements IExpressionToken
+class GenericExpression extends AbstractTreeToken implements IGenericExpression
 {
 
 }

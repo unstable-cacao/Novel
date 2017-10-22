@@ -4,41 +4,43 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
+use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\IConstValueToken;
+use Novel\Core\Tokens\Statements\IForStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
-use Novel\Tokens\Base\IExpressionToken;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\ConstValueToken;
 
 
-class ForStatement extends AbstractStatementToken
+class ForStatement extends AbstractStatementToken implements IForStatement
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
-	/** @var IExpressionToken */
+	/** @var IExpression */
 	private $condition;
 	
-	/** @var IExpressionToken|null */
+	/** @var IExpression|null */
 	private $initStatement = null;
 	
-	/** @var IExpressionToken|null */
+	/** @var IExpression|null */
 	private $loopStatement = null;
 	
 	
 	/**
-	 * @param IExpressionToken|null $condition
-	 * @param IExpressionToken|null $initStatement
-	 * @param IExpressionToken|null $loopStatement
+	 * @param IExpression|null $condition
+	 * @param IExpression|null $initStatement
+	 * @param IExpression|null $loopStatement
 	 * @param IToken|IToken[]|null $body
 	 */
-	public function __construct(IExpressionToken $condition = null, 
-								?IExpressionToken $initStatement = null, 
-								?IExpressionToken $loopStatement = null, 
+	public function __construct(IExpression $condition = null,
+								?IExpression $initStatement = null,
+								?IExpression $loopStatement = null,
 								$body = null)
 	{
 		parent::__construct(StatementNames::FOR_STATEMENT);
 		
-		$this->condition = $this->setupChild($condition ?: ConstValueToken::false());
+		$this->condition = $this->setupChild($condition ?: IConstValueToken::false());
 		$this->body = $this->setupChild(CodeScopeToken::class);
 		
 		if ($initStatement)
@@ -58,27 +60,32 @@ class ForStatement extends AbstractStatementToken
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}
 	
-	public function condition(): IExpressionToken
+	public function setScope(ICodeScopeToken $scope)
+	{
+		$this->body = $this->setupChild($scope);
+	}
+	
+	public function condition(): IExpression
 	{
 		return $this->condition;
 	}
 	
-	public function initStatement(): ?IExpressionToken
+	public function initStatement(): ?IExpression
 	{
 		return $this->initStatement;
 	}
 	
-	public function loopStatement(): ?IExpressionToken
+	public function loopStatement(): ?IExpression
 	{
 		return $this->loopStatement;
 	}
 	
-	public function setCondition(IExpressionToken $expr): void
+	public function setCondition(IExpression $expr): void
 	{
 		$this->condition = $this->setupChild($expr);
 	}
@@ -88,12 +95,12 @@ class ForStatement extends AbstractStatementToken
 		$this->scope()->add($token);
 	}
 	
-	public function setInitStatement(IExpressionToken $expr): void
+	public function setInitStatement(IExpression $expr): void
 	{
 		$this->initStatement = $this->setupChild($expr);
 	}
 	
-	public function setLoopStatement(IExpressionToken $expr): void
+	public function setLoopStatement(IExpression $expr): void
 	{
 		$this->loopStatement = $this->setupChild($expr);
 	}
