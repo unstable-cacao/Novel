@@ -34,4 +34,22 @@ class TestExtensionInUse implements IToken
 	{
 		// TODO: Implement setParent() method.
 	}
+	
+	public function count(): int
+	{
+		// TODO: Implement count() method.
+	}
+	
+	public function hasChildren(): bool
+	{
+		// TODO: Implement hasChildren() method.
+	}
+	
+	/**
+	 * @return IToken[]
+	 */
+	public function children(): array
+	{
+		// TODO: Implement children() method.
+	}
 }

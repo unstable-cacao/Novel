@@ -44,11 +44,19 @@ class ClassExtractor
 		foreach ($useMap as $usePath)
 		{
 			$parts = explode('\\', $usePath);
-			$lastElement = $parts[count($parts) - 1];
+			
+			if (count($parts) > 1)
+			{
+				$lastElement = array_pop($parts);
+			}
+			else
+			{
+				$lastElement = $parts[0] ?? [];
+			}
 			
 			if ($lastElement == $element)
 			{
-				return $usePath;
+				return implode('\\', $parts);
 			}
 		}
 		
@@ -80,58 +88,73 @@ class ClassExtractor
 				if ($token[0] == T_WHITESPACE)
 					continue;
 				
-				if ($saveNamespace && $token[1])
+				switch ($token[0])
 				{
-					if (is_string($namespace))
-						throw new \Exception("Namespace already set");
+					case T_WHITESPACE:
+						continue;
+					case T_NAMESPACE:
+						$saveNamespace = true;
+						continue;
+					case T_CLASS:
+					case T_INTERFACE:
+					case T_TRAIT:
+						$saveClass = true;
+						continue;
+					case T_EXTENDS:
+					case T_IMPLEMENTS:
+						if ($class)
+						{
+							$fullClassName = $namespace . '\\' . implode('', $class);
+							$classesMap[$fullClassName] = [];
+							$class = [];
+							$lastClass = $fullClassName;
+						}
+						
+						if ($saveImplements && $implement)
+						{
+							$classesMap[$lastClass][] = self::findFullName($implement, $useMap, $namespace);
+							$implement = [];
+						}
+						else
+						{
+							$saveImplements = true;
+						}
+						
+						$saveClass = false;
+						continue;
+					case T_USE:
+						$saveUses = true;
+						continue;
+					case T_STRING:
+					case T_NS_SEPARATOR:
+						if ($saveNamespace)
+						{
+							if (is_string($namespace))
+								throw new \Exception("Namespace already set");
+							
+							$namespace[] = $token[1];
+							continue;
+						}
+						
+						if ($saveClass)
+						{
+							$class[] = $token[1];
+							continue;
+						}
+						
+						if ($saveImplements)
+						{
+							$implement[] = $token[1];
+							continue;
+						}
+						
+						if ($saveUses)
+						{
+							$use[] = $token[1];
+							continue;
+						}
 					
-					$namespace[] = $token[1];
-					continue;
-				}
-				
-				if ($saveClass && $token[1])
-				{
-					$class[] = $token[1];
-					continue;
-				}
-				
-				if ($saveImplements && $token[1])
-				{
-					$implement[] = $token[1];
-					continue;
-				}
-				
-				if ($saveUses && trim($token[1]))
-				{
-					$use[] = $token[1];
-					continue;
-				}
-				
-				if ($token[0] == T_NAMESPACE)
-				{
-					$saveNamespace = true;
-				}
-				else if ($token[0] == T_CLASS || $token[0] == T_INTERFACE || $token[0] == T_TRAIT)
-				{
-					$saveClass = true;
-				}
-				else if ($token[0] == T_EXTENDS || $token[0] == T_IMPLEMENTS)
-				{
-					if ($saveImplements && $implement)
-					{
-						$classesMap[$lastClass][] = self::findFullName($implement, $useMap, $namespace);
-						$implement = [];
-					}
-					else
-					{
-						$saveImplements = true;
-					}
-					
-					$saveClass = false;
-				}
-				else if ($token[0] == T_USE)
-				{
-					$saveUses = true;
+						continue;
 				}
 			}
 			else 
@@ -175,28 +198,6 @@ class ClassExtractor
 					{
 						$classesMap[$lastClass][] = self::findFullName($implement, $useMap, $namespace);
 						$implement = [];
-					}
-				}
-				else
-				{
-					if ($saveClass)
-					{
-						$class[] = $token;
-					}
-					else if ($saveNamespace)
-					{
-						if (is_string($namespace))
-							throw new \Exception("Namespace already set");
-						
-						$namespace[] = $token;
-					}
-					else if ($saveImplements)
-					{
-						$implement[] = $token;
-					}
-					else if ($saveUses)
-					{
-						$use[] = $token;
 					}
 				}
 			}
