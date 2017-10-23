@@ -2,6 +2,7 @@
 namespace Novel\Tokens\Definitions;
 
 
+use Novel\Core\Tokens\IConstValueToken;
 use Novel\Tokens\NamedToken;
 use Novel\Tokens\ConstValueToken;
 use Novel\Tokens\Base\AbstractTreeToken;
@@ -15,7 +16,7 @@ class ParameterDefinition extends AbstractTreeToken
 	/** @var string */
 	private $name;
 	
-	/** @var ConstValueToken */
+	/** @var IConstValueToken */
 	private $default;
 	
 	
@@ -23,7 +24,7 @@ class ParameterDefinition extends AbstractTreeToken
 	 * ParameterDefinition constructor.
 	 * @param string|NamedToken|TypeDefinition|null $type
 	 * @param string $name
-	 * @param ConstValueToken|mixed|null $def
+	 * @param IConstValueToken|mixed|null $def
 	 */
 	public function __construct($type, $name, $def)
 	{
@@ -61,7 +62,7 @@ class ParameterDefinition extends AbstractTreeToken
 	
 	public function setDefaultValue($value): void
 	{
-		if (!($value instanceof ConstValueToken))
+		if (!($value instanceof IConstValueToken))
 		{
 			$value = new ConstValueToken($value);
 		}

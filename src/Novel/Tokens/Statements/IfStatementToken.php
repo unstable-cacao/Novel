@@ -4,6 +4,8 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\IfStatement\IElseScope;
+use Novel\Core\Tokens\IfStatement\IIfScope;
 use Novel\Core\Tokens\Statements\IIfStatementToken;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\IfStatement\ElseScope;
@@ -12,10 +14,10 @@ use Novel\Tokens\IfStatement\IfScope;
 
 class IfStatementToken extends AbstractStatementToken implements IIfStatementToken
 {
-	/** @var IfScope[] */
+	/** @var IIfScope[] */
 	private $ifScopes = [];
 	
-	/** @var ElseScope|null */
+	/** @var IElseScope|null */
 	private $elseScope = null;
 	
 	
@@ -26,7 +28,7 @@ class IfStatementToken extends AbstractStatementToken implements IIfStatementTok
 
 
 	/**
-	 * @return IfScope[]
+	 * @return IIfScope[]
 	 */
 	public function getAllStatements(): array
 	{
@@ -38,23 +40,23 @@ class IfStatementToken extends AbstractStatementToken implements IIfStatementTok
 		return $this->ifScopes[$index] ?? null;
 	}
 	
-	public function addIfStatement(IExpression $expr = null, $body = null, &$index = null): ?IfScope
+	public function addIfStatement(IExpression $expr = null, $body = null, &$index = null): ?IIfScope
 	{
 		$index = count($this->ifScopes);
 		
-		/** @var IfScope $ifScope */
+		/** @var IIfScope $ifScope */
 		$ifScope = $this->setupChild(new IfScope($expr, $body));
 		$this->ifScopes[] = $ifScope;
 		
 		return $ifScope;
 	}
 	
-	public function getElseScope(): ?ElseScope
+	public function getElseScope(): ?IElseScope
 	{
 		return $this->elseScope;
 	}
 	
-	public function addElseScope($body = null): ElseScope
+	public function addElseScope($body = null): IElseScope
 	{
 		if (!$this->elseScope)
 		{

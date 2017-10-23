@@ -6,8 +6,8 @@ use Novel\Core\IToken;
 use Novel\Consts\Tokens\OperationNames;
 use Novel\Core\Tokens\Expressions\IBinaryExpression;
 use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\Operators\IOperator;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\Base\IOperatorToken;
 
 
 class BinaryExpression extends AbstractTreeToken implements IBinaryExpression
@@ -18,7 +18,7 @@ class BinaryExpression extends AbstractTreeToken implements IBinaryExpression
 	}
 
 
-	public function set(IExpression $left, IOperatorToken $operator, IExpression $right)
+	public function set(IExpression $left, IOperator $operator, IExpression $right)
 	{
 		$this->setChildrenArray([$left, $operator, $right]);
 	}

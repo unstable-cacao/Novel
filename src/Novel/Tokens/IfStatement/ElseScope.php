@@ -4,6 +4,7 @@ namespace Novel\Tokens\IfStatement;
 
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\StatementNames;
+use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\IfStatement\IElseScope;
 use Novel\Tokens\CodeScopeToken;
 use Novel\Tokens\Base\AbstractTreeToken;
@@ -11,7 +12,7 @@ use Novel\Tokens\Base\AbstractTreeToken;
 
 class ElseScope extends AbstractTreeToken implements IElseScope
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
 	
@@ -31,7 +32,7 @@ class ElseScope extends AbstractTreeToken implements IElseScope
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}

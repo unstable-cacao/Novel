@@ -5,15 +5,16 @@ namespace Novel\Tokens\Statements;
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\IConstValueToken;
 use Novel\Core\Tokens\Statements\IWhileStatement;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\CodeScopeToken;
-use Novel\Tokens\ConstValueToken;
 
 
 class WhileStatement extends AbstractStatementToken implements IWhileStatement
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
 	/** @var IExpression */
@@ -28,7 +29,7 @@ class WhileStatement extends AbstractStatementToken implements IWhileStatement
 	{
 		parent::__construct(StatementNames::WHILE_STATEMENT);
 		
-		$this->condition = $this->setupChild($condition ?: ConstValueToken::false());
+		$this->condition = $this->setupChild($condition ?: IConstValueToken::false());
 		$this->body = $this->setupChild(CodeScopeToken::class);
 		
 		if ($body)
@@ -38,7 +39,7 @@ class WhileStatement extends AbstractStatementToken implements IWhileStatement
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}

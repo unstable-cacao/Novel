@@ -2,7 +2,6 @@
 namespace Novel\Transformation\Functions;
 
 
-use Novel\Core\ISymbol;
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Tokens\Functions\IAccessibilityToken;

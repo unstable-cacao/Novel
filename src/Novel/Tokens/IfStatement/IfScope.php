@@ -5,15 +5,16 @@ namespace Novel\Tokens\IfStatement;
 use Novel\Core\IToken;
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\IConstValueToken;
 use Novel\Core\Tokens\IfStatement\IIfScope;
 use Novel\Tokens\CodeScopeToken;
 use Novel\Tokens\Base\AbstractTreeToken;
-use Novel\Tokens\ConstValueToken;
 
 
 class IfScope extends AbstractTreeToken implements IIfScope
 {
-	/** @var CodeScopeToken */
+	/** @var ICodeScopeToken */
 	private $body;
 	
 	/** @var IExpression */
@@ -28,7 +29,7 @@ class IfScope extends AbstractTreeToken implements IIfScope
 	{
 		parent::__construct(StatementNames::IF_SCOPE);
 		
-		$this->condition = $this->setupChild($condition ?: ConstValueToken::false()); 
+		$this->condition = $this->setupChild($condition ?: IConstValueToken::false()); 
 		$this->body = $this->setupChild(CodeScopeToken::class);
 		
 		if ($body)
@@ -38,7 +39,7 @@ class IfScope extends AbstractTreeToken implements IIfScope
 	}
 	
 	
-	public function scope(): CodeScopeToken
+	public function scope(): ICodeScopeToken
 	{
 		return $this->body;
 	}
