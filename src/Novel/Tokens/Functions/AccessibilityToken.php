@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Tokens;
+namespace Novel\Tokens\Functions;
 
 
 use Novel\Core\Tokens\Functions\IAccessibilityToken;
@@ -18,10 +18,12 @@ class AccessibilityToken extends AbstractTreeToken implements IAccessibilityToke
 		// TODO: Implement getLevel() method.
 	}
 	
+	
 	public function isDefined(): bool
 	{
 		// TODO: Implement isDefined() method.
 	}
+	
 	
 	public function isPrivate(): bool
 	{

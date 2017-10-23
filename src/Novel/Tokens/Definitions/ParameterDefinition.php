@@ -2,13 +2,14 @@
 namespace Novel\Tokens\Definitions;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\IConstValueToken;
+use Novel\Tokens\Base\AbstractToken;
 use Novel\Tokens\NamedToken;
 use Novel\Tokens\ConstValueToken;
-use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class ParameterDefinition extends AbstractTreeToken
+class ParameterDefinition extends AbstractToken
 {
 	/** @var TypeDefinition|null */
 	private $type;
@@ -18,6 +19,9 @@ class ParameterDefinition extends AbstractTreeToken
 	
 	/** @var IConstValueToken */
 	private $default;
+	
+	/** @var IToken[] */
+	private $children = [];
 	
 	
 	/**
@@ -66,5 +70,29 @@ class ParameterDefinition extends AbstractTreeToken
 		{
 			$value = new ConstValueToken($value);
 		}
+	}
+	
+	public function count(): int
+	{
+		return count($this->children);
+	}
+	
+	public function hasChildren(): bool
+	{
+		return $this->children ? true : false;
+	}
+	
+	/**
+	 * @return IToken[]
+	 */
+	public function children(): array
+	{
+		return $this->children;
+	}
+	
+	public function setupChild(IToken $child)
+	{
+		$child->setParent($this);
+		$this->children[] = $child;
 	}
 }
