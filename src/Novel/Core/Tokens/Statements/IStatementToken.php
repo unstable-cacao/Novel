@@ -5,7 +5,7 @@ namespace Novel\Core\Tokens\Statements;
 use Novel\Core\IToken;
 
 
-interface IStatement extends IToken
+interface IStatementToken extends IToken
 {
 	/**
 	 * @param IToken[]|IToken $item

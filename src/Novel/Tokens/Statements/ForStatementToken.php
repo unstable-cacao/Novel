@@ -7,12 +7,12 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\Expressions\IExpression;
 use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\IConstValueToken;
-use Novel\Core\Tokens\Statements\IForStatement;
+use Novel\Core\Tokens\Statements\IForStatementToken;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\CodeScopeToken;
 
 
-class ForStatement extends AbstractStatementToken implements IForStatement
+class ForStatementToken extends AbstractStatementToken implements IForStatementToken
 {
 	/** @var ICodeScopeToken */
 	private $body;

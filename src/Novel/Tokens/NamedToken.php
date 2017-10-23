@@ -2,11 +2,10 @@
 namespace Novel\Tokens;
 
 
-use Novel\Core\Tokens\INamedToken;
 use Novel\Tokens\Base\AbstractTreeToken;
 
 
-class NamedToken extends AbstractTreeToken implements INamedToken
+class NamedToken extends AbstractTreeToken
 {
 	/** @var string */
 	private $name;

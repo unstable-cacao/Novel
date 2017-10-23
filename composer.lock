@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4cfaa8d40094950ea7dd7aaec955a594",
-    "content-hash": "307e6a0938fbb3b0d2f18762863170b8",
+    "hash": "810523f9b140d610cf9546cd9849c330",
+    "content-hash": "63cf54d5a0972ebd08d199a00612ded2",
     "packages": [
         {
             "name": "oktopost/objection",
@@ -54,6 +54,49 @@
             "description": "Objects in PHP",
             "homepage": "https://github.com/Oktopost/Objection",
             "time": "2017-09-18 05:28:08"
+        },
+        {
+            "name": "unstable-cacao/traitor",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/unstable-cacao/Traitor.git",
+                "reference": "31211450441132853d30f03892642712bc77f82a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/unstable-cacao/Traitor/zipball/31211450441132853d30f03892642712bc77f82a",
+                "reference": "31211450441132853d30f03892642712bc77f82a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1-stable"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.1",
+                "satooshi/php-coveralls": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Traitor": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Puchkov",
+                    "email": "alexey.pkv@gmail.com"
+                },
+                {
+                    "name": "Marina Puchkov",
+                    "email": "marinashers@gmail.com"
+                }
+            ],
+            "time": "2017-10-10 13:16:49"
         }
     ],
     "packages-dev": [

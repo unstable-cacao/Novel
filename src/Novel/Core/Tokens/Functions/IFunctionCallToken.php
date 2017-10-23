@@ -2,11 +2,11 @@
 namespace Novel\Core\Tokens\Functions;
 
 
+use Novel\Core\Tokens\Generic\IValueExpression;
 use Novel\Core\Tokens\Generic\ICallableReferenceToken;
-use Novel\Tokens\Base\IExpression;
 
 
-interface IFunctionCallToken extends IExpression, ICallableReferenceToken
+interface IFunctionCallToken extends IValueExpression, ICallableReferenceToken
 {
 	public function getTarget(): ICallableReferenceToken;
 	public function setTarget(ICallableReferenceToken $token): void;
@@ -15,7 +15,7 @@ interface IFunctionCallToken extends IExpression, ICallableReferenceToken
 	public function setParametersList(IInvokeParametersListToken $token);
 
 	/**
-	 * @param IExpression|IExpression[] $item
+	 * @param IValueExpression|IValueExpression[] $item
 	 * @return mixed
 	 */
 	public function addParameter($item);

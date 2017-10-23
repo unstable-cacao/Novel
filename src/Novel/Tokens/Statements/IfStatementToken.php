@@ -4,13 +4,13 @@ namespace Novel\Tokens\Statements;
 
 use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\Tokens\Expressions\IExpression;
-use Novel\Core\Tokens\Statements\IIfStatement;
+use Novel\Core\Tokens\Statements\IIfStatementToken;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\IfStatement\ElseScope;
 use Novel\Tokens\IfStatement\IfScope;
 
 
-class IfStatement extends AbstractStatementToken implements IIfStatement
+class IfStatementToken extends AbstractStatementToken implements IIfStatementToken
 {
 	/** @var IfScope[] */
 	private $ifScopes = [];
@@ -33,7 +33,7 @@ class IfStatement extends AbstractStatementToken implements IIfStatement
 		return $this->ifScopes;
 	}
 	
-	public function getIfStatement($index): ?IfStatement
+	public function getIfStatement($index): ?IfStatementToken
 	{
 		return $this->ifScopes[$index] ?? null;
 	}

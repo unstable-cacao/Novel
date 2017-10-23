@@ -5,7 +5,7 @@ namespace Novel\Core\Tokens;
 use Novel\Core\IToken;
 
 
-interface ICodeScopeToken
+interface ICodeScopeToken extends IScopeToken
 {
 	/**
 	 * @param IToken|IToken[] $token

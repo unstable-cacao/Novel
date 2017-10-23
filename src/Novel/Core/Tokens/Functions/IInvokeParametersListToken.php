@@ -3,16 +3,16 @@ namespace Novel\Core\Tokens\Functions;
 
 
 use Novel\Core\IToken;
-use Novel\Tokens\Base\IExpression;
+use Novel\Core\Tokens\Generic\IValueExpression;
 
 
 interface IInvokeParametersListToken extends IToken
 {
 	/**
-	 * @param IExpression|IExpression[] $item
+	 * @param IValueExpression|IValueExpression[] $item
 	 */
 	public function add($item): void;
 	
-	public function set(int $index, IExpression $item): void;
+	public function set(int $index, IValueExpression $item): void;
 	public function clear(): void;
 }

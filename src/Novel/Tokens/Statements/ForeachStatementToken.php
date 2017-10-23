@@ -6,12 +6,12 @@ use Novel\Consts\Tokens\StatementNames;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Expressions\IForeachIterationExpression;
 use Novel\Core\Tokens\ICodeScopeToken;
-use Novel\Core\Tokens\Statements\IForStatement;
+use Novel\Core\Tokens\Statements\IForStatementToken;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\CodeScopeToken;
 
 
-class ForeachStatement extends AbstractStatementToken implements IForStatement
+class ForeachStatementToken extends AbstractStatementToken implements IForStatementToken
 {
 	/** @var ICodeScopeToken */
 	private $body;
@@ -58,7 +58,7 @@ class ForeachStatement extends AbstractStatementToken implements IForStatement
 		$this->iterationExpression = $this->setupChild($expr);
 	}
 	
-	public function addToScope(IToken $token): ForeachStatement
+	public function addToScope(IToken $token): ForeachStatementToken
 	{
 		$this->scope()->add($token);
 		return $this;

@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Statements;
 
 
-interface IForStatement
+interface IIfStatementToken
 {
 	
 }

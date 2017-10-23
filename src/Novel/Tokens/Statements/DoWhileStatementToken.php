@@ -7,12 +7,12 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\Expressions\IExpression;
 use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\IConstValueToken;
-use Novel\Core\Tokens\Statements\IDoWhileStatement;
+use Novel\Core\Tokens\Statements\IDoWhileStatementToken;
 use Novel\Tokens\Base\AbstractStatementToken;
 use Novel\Tokens\CodeScopeToken;
 
 
-class DoWhileStatement extends AbstractStatementToken implements IDoWhileStatement
+class DoWhileStatementToken extends AbstractStatementToken implements IDoWhileStatementToken
 {
 	/** @var ICodeScopeToken */
 	private $body;

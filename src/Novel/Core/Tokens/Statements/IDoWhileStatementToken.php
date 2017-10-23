@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Statements;
 
 
-interface IForeachStatement
+interface IDoWhileStatementToken
 {
 	
 }
