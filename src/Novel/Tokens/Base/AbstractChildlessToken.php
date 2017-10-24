@@ -1,11 +1,11 @@
 <?php
-
 namespace Novel\Tokens\Base;
 
 
 use Novel\Core\IToken;
 
-class AbstractChildlessToken extends AbstractToken
+
+abstract class AbstractChildlessToken extends AbstractToken
 {
 	public function count(): int
 	{

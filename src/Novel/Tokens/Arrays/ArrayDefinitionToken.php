@@ -6,8 +6,8 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\Arrays\IArrayDefinitionToken;
 use Novel\Core\Tokens\Arrays\IKeyValueToken;
 use Novel\Core\Tokens\Generic\IValueExpression;
-use Novel\Tokens\Base\AbstractToken;
 use Novel\Tokens\ConstValueToken;
+use Novel\Tokens\Base\AbstractToken;
 
 
 class ArrayDefinitionToken extends AbstractToken implements IArrayDefinitionToken
