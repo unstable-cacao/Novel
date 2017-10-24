@@ -25,7 +25,6 @@ interface IKeyValueToken extends IToken
 	/**
 	 * @param IValueExpression|string|int $key
 	 * @param IValueExpression|mixed $val
-	 * @return mixed
 	 */
-	public function set($key, $val);
+	public function set($key, $val): void;
 }
