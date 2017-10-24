@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Operators;
 
 
-interface IAdditionToken
+interface IAdditionToken extends IOperator
 {
 	
 }

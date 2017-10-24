@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Operators;
 
 
-interface IDivisionToken
+interface IDivisionToken extends IOperator
 {
 	
 }

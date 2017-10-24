@@ -10,12 +10,14 @@ interface IConstValueToken extends IValueExpression
 	/**
 	 * @return mixed
 	 */
-	public function value();
-	
+	public function getValue();
+
+	/**
+	 * @param mixed $value
+	 */
+	public function setValue($value): void;
 	
 	public static function true(): IConstValueToken;
-	
 	public static function false(): IConstValueToken;
-	
 	public static function null(): IConstValueToken;
 }

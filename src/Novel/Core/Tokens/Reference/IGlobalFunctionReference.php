@@ -2,7 +2,10 @@
 namespace Novel\Core\Tokens\Reference;
 
 
-interface IGlobalFunctionReference
+use Novel\Core\Tokens\Generic\ICallableReferenceToken;
+
+
+interface IGlobalFunctionReference extends ICallableReferenceToken
 {
 
 }

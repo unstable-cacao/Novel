@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Operators;
 
 
-interface IStringAdditionToken
+interface IStringAdditionToken extends IOperator
 {
 	
 }

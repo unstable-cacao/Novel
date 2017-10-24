@@ -2,7 +2,10 @@
 namespace Novel\Core\Tokens\Generic;
 
 
-interface IVariableReferenceToken
+use Novel\Core\IToken;
+
+
+interface IVariableReferenceToken extends IToken
 {
 
 }

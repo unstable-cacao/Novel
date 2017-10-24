@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Operators;
 
 
-interface ISubtractionToken
+interface ISubtractionToken extends IOperator
 {
 	
 }

@@ -2,10 +2,10 @@
 namespace Novel\Core\Tokens\Operators;
 
 
-use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\IToken;
 
 
-interface IOperator extends IExpression
+interface IOperator extends IToken
 {
 	public function getOperator(): string;
 }

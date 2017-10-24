@@ -1,9 +1,11 @@
 <?php
-
 namespace Novel\Core\Tokens\Reference;
 
 
-class IThisReference
+use Novel\Core\Tokens\Generic\IVariableReferenceToken;
+
+
+interface IThisReferenceToken extends IVariableReferenceToken
 {
 
 }
