@@ -2,15 +2,22 @@
 namespace Novel\Tokens\Strings;
 
 
-use Novel\Core\IToken;
 use Novel\Core\Tokens\Strings\IPlainTextToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractChildlessToken;
 
 
-class PlainTextToken extends AbstractToken implements IPlainTextToken
+class PlainTextToken extends AbstractChildlessToken implements IPlainTextToken
 {
 	/** @var string */
 	private $text;
+	
+	
+	public function __construct(string $text)
+	{
+		// TODO
+		parent::__construct("");
+		$this->text = $text;
+	}
 	
 	
 	public function setText(string $text): void
@@ -18,26 +25,8 @@ class PlainTextToken extends AbstractToken implements IPlainTextToken
 		$this->text = $text;
 	}
 	
-	public function getToken(): string
+	public function text(): string
 	{
 		return $this->text;
-	}
-	
-	public function count(): int
-	{
-		return 1;
-	}
-	
-	public function hasChildren(): bool
-	{
-		return true;
-	}
-	
-	/**
-	 * @return IToken[]
-	 */
-	public function children(): array
-	{
-		return [$this->text];
 	}
 }

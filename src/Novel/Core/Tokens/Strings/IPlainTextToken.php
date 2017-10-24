@@ -2,8 +2,11 @@
 namespace Novel\Core\Tokens\Strings;
 
 
-interface IPlainTextToken
+use Novel\Core\IToken;
+
+
+interface IPlainTextToken extends IToken
 {
 	public function setText(string $text): void;
-	public function getToken(): string;
+	public function text(): string;
 }
