@@ -3,10 +3,10 @@ namespace Novel\Tokens\Functions;
 
 
 use Novel\Core\Tokens\Functions\IAccessibilityToken;
-use Novel\Tokens\Base\AbstractTreeToken;
+use Novel\Tokens\Base\AbstractToken;
 
 
-class AccessibilityToken extends AbstractTreeToken implements IAccessibilityToken
+class AccessibilityToken extends AbstractToken implements IAccessibilityToken
 {
 	public function setLevel(?string $level): void
 	{
