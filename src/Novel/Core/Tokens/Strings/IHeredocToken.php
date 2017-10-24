@@ -10,7 +10,7 @@ use Novel\Core\Tokens\Generic\IValueExpression;
  * 
  * EOF;
  */
-interface IHeredocToken extends IValueExpression
+interface IHeredocToken extends IStringExpressionToken
 {
 
 }

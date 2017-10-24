@@ -2,10 +2,10 @@
 namespace Novel\Core\Tokens;
 
 
-use Novel\Core\Tokens\Expressions\IExpression;
+use Novel\Core\Tokens\Generic\IValueExpression;
 
 
-interface IConstValueToken extends IExpression
+interface IConstValueToken extends IValueExpression
 {
 	/**
 	 * @return mixed
