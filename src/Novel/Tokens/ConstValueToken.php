@@ -31,12 +31,20 @@ class ConstValueToken extends AbstractChildlessToken implements IConstValueToken
 	/**
 	 * @param mixed $value
 	 */
-	public function setValue($value)
+	public function setValue($value): void
 	{
 		if (!is_scalar($value) && !is_null($value))
 			throw new \Exception("ConstValue must be scalar or null");
 		
 		$this->value = $value;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	public function getValue()
+	{
+		return $this->value;
 	}
 	
 	

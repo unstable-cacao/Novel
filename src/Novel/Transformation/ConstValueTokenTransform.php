@@ -19,7 +19,7 @@ class ConstValueTokenTransform implements ITokenTransform
 		if (!($token instanceof IConstValueToken))
 			return;
 		
-		$value = $token->value();
+		$value = $token->getValue();
 		
 		if (is_bool($value))
 		{

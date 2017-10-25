@@ -5,11 +5,11 @@ namespace Novel\Tokens\Comments;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Comments\ICommentToken;
 use Novel\Core\Tokens\Strings\IPlainTextToken;
-use Novel\Tokens\Base\AbstractToken;
+use Novel\Tokens\Base\AbstractSingleChildToken;
 use Novel\Tokens\Strings\PlainTextToken;
 
 
-abstract class AbstractCommentToken extends AbstractToken implements ICommentToken
+abstract class AbstractCommentToken extends AbstractSingleChildToken implements ICommentToken
 {
 	/** @var IPlainTextToken */
 	private $plainTextToken;
@@ -43,16 +43,6 @@ abstract class AbstractCommentToken extends AbstractToken implements ICommentTok
 	{
 		$token->setParent($this);
 		$this->plainTextToken = $token;
-	}
-	
-	public function count(): int
-	{
-		return 1;
-	}
-	
-	public function hasChildren(): bool
-	{
-		return true;
 	}
 	
 	/**
