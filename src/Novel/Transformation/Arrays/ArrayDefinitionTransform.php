@@ -19,7 +19,7 @@ class ArrayDefinitionTransform implements ITokenTransform
 			return;
 		
 		$addComma = false;
-		$stream->push(new SquareBracketOpenSymbol());
+		$stream->push(SquareBracketOpenSymbol::class);
 		
 		foreach ($token->children() as $child)
 		{
@@ -30,6 +30,6 @@ class ArrayDefinitionTransform implements ITokenTransform
 			$stream->push($child);
 		}
 		
-		$stream->push(new SquareBracketCloseSymbol());
+		$stream->push(SquareBracketCloseSymbol::class);
 	}
 }
