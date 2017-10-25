@@ -2,10 +2,20 @@
 namespace Novel\Core\Tokens;
 
 
-use Novel\Core\IToken;
+use Novel\Core\Tokens\Generic\ICallableReferenceToken;
+use Novel\Core\Tokens\Generic\IValueExpression;
 
 
-interface INameToken extends IToken
+/**
+ * Refers to any name:
+ * 
+ * $a - a is INameToken
+ * self::$b - b is INameToken
+ * substr('ab', 1, 2); - substr is INameToken
+ */
+interface INameToken extends 
+	ICallableReferenceToken,
+	IValueExpression
 {
 	public function getName(): string;
 	public function getNameObject(): IName;
