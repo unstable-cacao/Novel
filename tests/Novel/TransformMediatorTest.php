@@ -4,7 +4,7 @@ namespace Novel;
 
 use Novel\Core\ISymbol;
 use Novel\Core\IToken;
-use Novel\Core\Stream\ISymbolWriteStream;
+use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
 use Novel\Core\Transforming\ITokenTransform;
@@ -12,7 +12,7 @@ use Novel\Symbols\WhiteSpace\SpaceSymbol;
 use PHPUnit\Framework\TestCase;
 
 
-class TokenTransformerTest extends TestCase
+class TransformMediatorTest extends TestCase
 {
 	private function mockToken(): IToken
 	{
@@ -25,7 +25,9 @@ class TokenTransformerTest extends TestCase
 	private function mockMainTransform(ISymbol $symbol): ITokenTransform
 	{
 		$mock = $this->getMockBuilder(ITokenTransform::class)->getMock();
-		$mock->method('transform')->willReturn([$symbol]);
+		$mock->method('transform')->willReturnCallback(function (IToken $token, ITokenTransformStream $stream) use ($symbol) {
+			$stream->push($symbol);
+		});
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
 		return $mock;
@@ -34,7 +36,9 @@ class TokenTransformerTest extends TestCase
 	private function mockPreTransform(ISymbol $symbol): ITokenChainTransform
 	{
 		$mock = $this->getMockBuilder(ITokenChainTransform::class)->getMock();
-		$mock->method('preTransform')->willReturn([$symbol]);
+		$mock->method('preTransform')->willReturnCallback(function (IToken $token, ITokenTransformStream $stream) use ($symbol) {
+			$stream->push($symbol);
+		});
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
 		return $mock;
@@ -43,7 +47,9 @@ class TokenTransformerTest extends TestCase
 	private function mockPostTransform(ISymbol $symbol): ITokenChainTransform
 	{
 		$mock = $this->getMockBuilder(ITokenChainTransform::class)->getMock();
-		$mock->method('postTransform')->willReturn([$symbol]);
+		$mock->method('postTransform')->willReturnCallback(function (IToken $token, ITokenTransformStream $stream) use ($symbol) {
+			$stream->push($symbol);
+		});
 		
 		/** @noinspection PhpIncompatibleReturnTypeInspection */
 		return $mock;
@@ -115,7 +121,7 @@ class TokenTransformerTest extends TestCase
 		
 		$middleware2 = $this->getMockBuilder(ITokenMiddlewareTransform::class)->getMock();
 		$middleware2->method('executeTransform')->will($this->returnCallback(
-			function (IToken $token, ISymbolWriteStream $writer, callable $next)
+			function (IToken $token, ITokenTransformStream $writer, callable $next)
 			{
 				$next();
 			}

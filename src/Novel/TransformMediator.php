@@ -5,6 +5,7 @@ namespace Novel;
 use Novel\Core\IToken;
 use Novel\Core\ISymbol;
 use Novel\Core\ITransformMediator;
+use Novel\Core\Transforming\ITokenTransform;
 use Novel\Core\Transforming\ITransformSetup;
 
 use Novel\Stream\TokenTransformStream;
@@ -30,6 +31,7 @@ class TransformMediator implements ITransformMediator
 	private function executeMainTransformers(IToken $target): array
 	{
 		$stream = new TokenTransformStream($this);
+		/** @var ITokenTransform[] $main */
 		$main = $this->setup->getMainFor($target);
 		
 		foreach ($main as $item)

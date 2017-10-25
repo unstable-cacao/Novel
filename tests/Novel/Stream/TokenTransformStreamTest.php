@@ -8,7 +8,7 @@ use Novel\Core\ITransformMediator;
 use PHPUnit\Framework\TestCase;
 
 
-class TransformStreamTest extends TestCase
+class TokenTransformStreamTest extends TestCase
 {
 	private function mockSymbol(): ISymbol
 	{

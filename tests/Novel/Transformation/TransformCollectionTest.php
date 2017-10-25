@@ -7,6 +7,7 @@ use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Tokens\Operators\AdditionToken;
+use Novel\Tokens\Strings\PlainTextToken;
 use PHPUnit\Framework\TestCase;
 
 
@@ -261,7 +262,7 @@ class TransformCollectionTest extends TestCase
 	public function test_addByType_TwoTypesOneTransform_AddsToBoth()
 	{
 		$token = $this->mockToken();
-		$token2 = new AdditionToken();
+		$token2 = new PlainTextToken('');
 		$transformer = $this->mockTransformer();
 		
 		$subject = new TransformCollection();
@@ -286,7 +287,7 @@ class TransformCollectionTest extends TestCase
 	public function test_addByType_TwoTypesTwoParsers_AddsToAllTypesAllParsers()
 	{
 		$token = $this->mockToken();
-		$token2 = new AdditionToken();
+		$token2 = new PlainTextToken('');
 		$transformer = $this->mockTransformer();
 		$transformer2 = $this->mockTransformer();
 		
