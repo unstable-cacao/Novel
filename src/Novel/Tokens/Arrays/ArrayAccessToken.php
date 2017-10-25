@@ -16,15 +16,11 @@ class ArrayAccessToken extends AbstractToken implements IArrayAccessToken
 	/** @var IValueExpression */
 	private $key;
 	
-	/** @var IToken[] */
-	private $children = [];
-	
 	
 	public function setTarget(IValueExpression $value): void
 	{
 		$value->setParent($this);
 		$this->target = $value;
-		$this->children[0] = $this->target;
 	}
 	
 	public function getTarget(): IValueExpression
@@ -36,7 +32,6 @@ class ArrayAccessToken extends AbstractToken implements IArrayAccessToken
 	{
 		$key->setParent($this);
 		$this->key = $key;
-		$this->children[0] = $this->key;
 	}
 	
 	public function getKey(): IValueExpression
@@ -59,6 +54,9 @@ class ArrayAccessToken extends AbstractToken implements IArrayAccessToken
 	 */
 	public function children(): array
 	{
-		return $this->children;
+		return [
+			$this->target,
+			$this->key
+		];
 	}
 }

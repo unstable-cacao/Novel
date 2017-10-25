@@ -17,9 +17,6 @@ class KeyValueToken extends AbstractToken implements IKeyValueToken
 	/** @var IValueExpression */
 	private $value;
 	
-	/** @var IToken[] */
-	private $children = [];
-	
 	
 	public function getKey(): IValueExpression
 	{
@@ -44,7 +41,6 @@ class KeyValueToken extends AbstractToken implements IKeyValueToken
 		}
 		
 		$this->key->setParent($this);
-		$this->children[0] = $this->key;
 	}
 	
 	public function getValue(): IValueExpression
@@ -67,7 +63,6 @@ class KeyValueToken extends AbstractToken implements IKeyValueToken
 		}
 		
 		$this->value->setParent($this);
-		$this->children[1] = $this->value;
 	}
 	
 	/**
@@ -95,6 +90,9 @@ class KeyValueToken extends AbstractToken implements IKeyValueToken
 	 */
 	public function children(): array
 	{
-		return $this->children;
+		return [
+			$this->key,
+			$this->value
+		];
 	}
 }

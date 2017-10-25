@@ -16,15 +16,11 @@ class PushElementOperation extends AbstractToken implements IPushElementOperatio
 	/** @var IValueExpression */
 	private $value;
 	
-	/** @var IToken[] */
-	private $children = [];
-	
 	
 	public function setTarget(IValueExpression $valueExpression): void
 	{
 		$valueExpression->setParent($this);
 		$this->target = $valueExpression;
-		$this->children[0] = $valueExpression;
 	}
 	
 	public function getTarget(): IValueExpression
@@ -36,7 +32,6 @@ class PushElementOperation extends AbstractToken implements IPushElementOperatio
 	{
 		$valueExpression->setParent($this);
 		$this->value = $valueExpression;
-		$this->children[0] = $valueExpression;
 	}
 	
 	public function getValue(): IValueExpression
@@ -59,6 +54,9 @@ class PushElementOperation extends AbstractToken implements IPushElementOperatio
 	 */
 	public function children(): array
 	{
-		return $this->children;
+		return [
+			$this->target,
+			$this->value
+		];
 	}
 }
