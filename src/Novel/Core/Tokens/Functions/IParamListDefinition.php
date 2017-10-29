@@ -2,12 +2,13 @@
 namespace Novel\Core\Tokens\Functions;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\Generic\IValueExpression;
 
 
-interface IParamListDefinition
+interface IParamListDefinition extends IToken
 {
 	/**
 	 * @param array|IParamDefinitionToken|string $item
