@@ -19,4 +19,5 @@ class OperatorNames
 	public const SUBTRACTION 			= '-';
 	public const ARROW 					= '->';
 	public const STATIC_SCOPE 			= '::';
+	public const ARRAY_UNWRAP			= '...';
 }
