@@ -7,29 +7,33 @@ use PHPUnit\Framework\TestCase;
 
 class FileWriterTest extends TestCase
 {
-	public function test_write_PathNotValid_ThrowException()
+	/**
+	 * @expectedException \Novel\FileSystem\Exceptions\PathEmptyException
+	 */
+	public function test_write_PathEmpty_ThrowException()
 	{
-		
-	}
-	
-	public function test_write_NoPermissionToCreateDirectory_ThrowException()
-	{
-		
+		FileWriter::write('', 'Content');
 	}
 	
 	public function test_write_FileExists_OverwriteContent()
 	{
+		$path = __DIR__ . '/testFile.test';
+		file_put_contents($path, 'Hello');
 		
-	}
-	
-	public function test_write_NoPermissionsToFile_ThrowException()
-	{
+		FileWriter::write($path, 'Test');
 		
+		self::assertEquals('Test', file_get_contents($path));
+		unlink($path);
 	}
 	
 	public function test_write_FileNotExists_CreatesFile()
 	{
+		$path = __DIR__ . '/testFile.test';
 		
+		FileWriter::write($path, 'Test');
+		
+		self::assertEquals('Test', file_get_contents($path));
+		unlink($path);
 	}
 	
 	
