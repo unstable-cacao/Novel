@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Transformation;
+namespace Novel\Transformation\Scope;
 
 
 use Novel\Core\IToken;

@@ -34,6 +34,9 @@ class TransformCollection implements ITransformSetup
 	{
 		foreach ($objects as $object) 
 		{
+			if (is_string($object))
+				$object = new $object;
+			
 			if ($object instanceof ITokenTransform)
 			{
 				if (!key_exists($type, $this->transformersByType))
@@ -67,6 +70,9 @@ class TransformCollection implements ITransformSetup
 	 */
 	public function add($object): ITransformSetup
 	{
+		if (is_string($object))
+				$object = new $object;
+		
 		if (is_array($object))
 		{
 			foreach ($object as $item) 
@@ -109,9 +115,9 @@ class TransformCollection implements ITransformSetup
 		else
 		{
 			if (is_array($object))
-					$this->addObjectsByType($type, $object);
-				else
-					$this->addObjectsByType($type, [$object]);
+				$this->addObjectsByType($type, $object);
+			else
+				$this->addObjectsByType($type, [$object]);
 		}
 		
 		return $this;

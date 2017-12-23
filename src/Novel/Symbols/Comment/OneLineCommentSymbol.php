@@ -7,7 +7,7 @@ use Novel\Core\ISymbol;
 use Novel\Symbols\Base\AbstractSingleStringSymbol;
 
 
-class SingleLineCommentSymbol extends AbstractSingleStringSymbol implements ISymbol
+class OneLineCommentSymbol extends AbstractSingleStringSymbol implements ISymbol
 {
 	public function __construct()
 	{

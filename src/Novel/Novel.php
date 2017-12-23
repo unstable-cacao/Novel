@@ -3,6 +3,8 @@ namespace Novel;
 
 
 use Novel\Config\NovelConfig;
+use Novel\Core\IToken;
+use Novel\FileSystem\FileWriter;
 
 
 class Novel
@@ -23,10 +25,22 @@ class Novel
 	
 	public function getConfig(): NovelConfig
 	{
-		$config =  new NovelConfig();
+		$config = new NovelConfig();
 		$config->ParserConfig = $this->parser->getSetup();
 		$config->TransferConfig = $this->transfer->getSetup();
 		
 		return $config;
+	}
+	
+	public function stringify(IToken $root): string
+	{
+		$tokens = $this->transfer->transform($root);
+		return $this->parser->parse($tokens);
+	}
+	
+	public function write(string $fullPath, IToken $root): void
+	{
+		$code = $this->stringify($root);
+		FileWriter::write($fullPath, $code);
 	}
 }

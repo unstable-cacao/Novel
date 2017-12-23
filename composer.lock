@@ -57,16 +57,16 @@
         },
         {
             "name": "unstable-cacao/traitor",
-            "version": "1.0",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/unstable-cacao/Traitor.git",
-                "reference": "31211450441132853d30f03892642712bc77f82a"
+                "reference": "9568cf58c5b53111f304b1e4c3c401925802f542"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/unstable-cacao/Traitor/zipball/31211450441132853d30f03892642712bc77f82a",
-                "reference": "31211450441132853d30f03892642712bc77f82a",
+                "url": "https://api.github.com/repos/unstable-cacao/Traitor/zipball/9568cf58c5b53111f304b1e4c3c401925802f542",
+                "reference": "9568cf58c5b53111f304b1e4c3c401925802f542",
                 "shasum": ""
             },
             "require": {
@@ -96,7 +96,7 @@
                     "email": "marinashers@gmail.com"
                 }
             ],
-            "time": "2017-10-10 13:16:49"
+            "time": "2017-11-13 07:22:17"
         }
     ],
     "packages-dev": [
