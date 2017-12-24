@@ -5,7 +5,7 @@ namespace Novel\Tokens\Arrays;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Arrays\IArrayDefinitionToken;
 use Novel\Core\Tokens\Arrays\IKeyValueToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Tokens\ConstValueToken;
 use Novel\Tokens\Base\AbstractToken;
 
@@ -17,7 +17,7 @@ class ArrayDefinitionToken extends AbstractToken implements IArrayDefinitionToke
 	
 	
 	/**
-	 * @param array|IKeyValueToken|IValueExpression|mixed $item
+	 * @param array|IKeyValueToken|IValueExpressionToken|mixed $item
 	 */
 	public function addItems($item): void
 	{
@@ -28,7 +28,7 @@ class ArrayDefinitionToken extends AbstractToken implements IArrayDefinitionToke
 				$this->addItems($value);
 			}
 		}
-		else if ($item instanceof IKeyValueToken || $item instanceof IValueExpression)
+		else if ($item instanceof IKeyValueToken || $item instanceof IValueExpressionToken)
 		{
 			$item->setParent($this);
 			$this->children[] = $item;

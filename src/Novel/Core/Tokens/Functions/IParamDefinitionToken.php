@@ -5,7 +5,7 @@ namespace Novel\Core\Tokens\Functions;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 interface IParamDefinitionToken extends INamedToken
@@ -28,8 +28,8 @@ interface IParamDefinitionToken extends INamedToken
 	public function setType($type): void;
 	
 	/**
-	 * @param null|IValueExpression|mixed $value
+	 * @param null|IValueExpressionToken|mixed $value
 	 */
 	public function setDefaultValue($value): void;
-	public function getDefaultValue(): ?IValueExpression;
+	public function getDefaultValue(): ?IValueExpressionToken;
 }

@@ -3,28 +3,28 @@ namespace Novel\Core\Tokens\Arrays;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 interface IKeyValueToken extends IToken
 {
-	public function getKey(): IValueExpression;
+	public function getKey(): IValueExpressionToken;
 
 	/**
-	 * @param IValueExpression|string|int $exp
+	 * @param IValueExpressionToken|string|int $exp
 	 */
 	public function setKey($exp): void;
 	
-	public function getValue(): IValueExpression;
+	public function getValue(): IValueExpressionToken;
 
 	/**
-	 * @param IValueExpression|mixed $exp
+	 * @param IValueExpressionToken|mixed $exp
 	 */
 	public function setValue($exp): void;
 
 	/**
-	 * @param IValueExpression|string|int $key
-	 * @param IValueExpression|mixed $val
+	 * @param IValueExpressionToken|string|int $key
+	 * @param IValueExpressionToken|mixed $val
 	 */
 	public function set($key, $val): void;
 }

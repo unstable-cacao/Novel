@@ -2,14 +2,14 @@
 namespace Novel\Core\Tokens\Arrays;
 
 
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
-interface IArrayAccessToken extends IValueExpression
+interface IArrayAccessToken extends IValueExpressionToken
 {
-	public function setTarget(IValueExpression $value): void;
-	public function getTarget(): IValueExpression;
+	public function setTarget(IValueExpressionToken $value): void;
+	public function getTarget(): IValueExpressionToken;
 	
-	public function setKey(IValueExpression $key): void;
-	public function getKey(): IValueExpression;
+	public function setKey(IValueExpressionToken $key): void;
+	public function getKey(): IValueExpressionToken;
 }

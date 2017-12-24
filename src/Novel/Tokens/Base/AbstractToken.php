@@ -7,20 +7,8 @@ use Novel\Core\IToken;
 
 abstract class AbstractToken implements IToken
 {
-	private $name;
 	private $parent;
 	
-	
-	public function __construct(string $name)
-	{
-		$this->name = $name;
-	}
-
-
-	public function name(): string
-	{
-		return $this->name;
-	}
 
 	public function parent(): ?IToken
 	{

@@ -4,37 +4,37 @@ namespace Novel\Tokens\Arrays;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Arrays\IPushElementOperation;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Tokens\Base\AbstractToken;
 
 
 class PushElementOperation extends AbstractToken implements IPushElementOperation
 {
-	/** @var IValueExpression */
+	/** @var IValueExpressionToken */
 	private $target;
 	
-	/** @var IValueExpression */
+	/** @var IValueExpressionToken */
 	private $value;
 	
 	
-	public function setTarget(IValueExpression $valueExpression): void
+	public function setTarget(IValueExpressionToken $valueExpression): void
 	{
 		$valueExpression->setParent($this);
 		$this->target = $valueExpression;
 	}
 	
-	public function getTarget(): IValueExpression
+	public function getTarget(): IValueExpressionToken
 	{
 		return $this->target;
 	}
 	
-	public function setValue(IValueExpression $valueExpression): void
+	public function setValue(IValueExpressionToken $valueExpression): void
 	{
 		$valueExpression->setParent($this);
 		$this->value = $valueExpression;
 	}
 	
-	public function getValue(): IValueExpression
+	public function getValue(): IValueExpressionToken
 	{
 		return $this->value;
 	}

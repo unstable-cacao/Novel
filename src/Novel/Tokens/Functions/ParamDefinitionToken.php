@@ -4,7 +4,7 @@ namespace Novel\Tokens\Functions;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Functions\IParamDefinitionToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Tokens\Base\AbstractToken;
@@ -77,14 +77,14 @@ class ParamDefinitionToken extends AbstractToken implements IParamDefinitionToke
 	}
 	
 	/**
-	 * @param null|IValueExpression|mixed $value
+	 * @param null|IValueExpressionToken|mixed $value
 	 */
 	public function setDefaultValue($value): void
 	{
 		// TODO: Implement setDefaultValue() method.
 	}
 	
-	public function getDefaultValue(): ?IValueExpression
+	public function getDefaultValue(): ?IValueExpressionToken
 	{
 		// TODO: Implement getDefaultValue() method.
 	}

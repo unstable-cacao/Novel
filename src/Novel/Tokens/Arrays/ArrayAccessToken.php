@@ -4,37 +4,37 @@ namespace Novel\Tokens\Arrays;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Arrays\IArrayAccessToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Tokens\Base\AbstractToken;
 
 
 class ArrayAccessToken extends AbstractToken implements IArrayAccessToken
 {
-	/** @var IValueExpression */
+	/** @var IValueExpressionToken */
 	private $target;
 	
-	/** @var IValueExpression */
+	/** @var IValueExpressionToken */
 	private $key;
 	
 	
-	public function setTarget(IValueExpression $value): void
+	public function setTarget(IValueExpressionToken $value): void
 	{
 		$value->setParent($this);
 		$this->target = $value;
 	}
 	
-	public function getTarget(): IValueExpression
+	public function getTarget(): IValueExpressionToken
 	{
 		return $this->target;
 	}
 	
-	public function setKey(IValueExpression $key): void
+	public function setKey(IValueExpressionToken $key): void
 	{
 		$key->setParent($this);
 		$this->key = $key;
 	}
 	
-	public function getKey(): IValueExpression
+	public function getKey(): IValueExpressionToken
 	{
 		return $this->key;
 	}

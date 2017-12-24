@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Strings;
 
 
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 /**

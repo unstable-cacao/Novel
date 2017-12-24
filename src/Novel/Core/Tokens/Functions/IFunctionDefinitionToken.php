@@ -5,7 +5,7 @@ namespace Novel\Core\Tokens\Functions;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 interface IFunctionDefinitionToken extends INamedToken 
@@ -22,7 +22,7 @@ interface IFunctionDefinitionToken extends INamedToken
 	/**
 	 * @param string|INameToken|IName null $type
 	 * @param string|INameToken|IName $name
-	 * @param IValueExpression|null|mixed $defaultValue
+	 * @param IValueExpressionToken|null|mixed $defaultValue
 	 * @return IParamListDefinition
 	 */
 	public function addParameter($type, $name, $defaultValue): IParamListDefinition;

@@ -3,7 +3,7 @@ namespace Novel\Core\Tokens;
 
 
 use Novel\Core\Tokens\Generic\ICallableReferenceToken;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 /**
@@ -15,7 +15,7 @@ use Novel\Core\Tokens\Generic\IValueExpression;
  */
 interface INameToken extends 
 	ICallableReferenceToken,
-	IValueExpression
+	IValueExpressionToken
 {
 	public function getName(): string;
 	public function getNameObject(): IName;

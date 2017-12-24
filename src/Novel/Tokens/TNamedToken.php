@@ -2,6 +2,7 @@
 namespace Novel\Tokens;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 
@@ -27,6 +28,7 @@ trait TNamedToken
 			throw new \Exception("Name must be string, instance of IName or instance of INameToken");
 		}
 		
+		/** @var IToken $this */
 		$name->setParent($this);
 		$this->name = $name;
 	}

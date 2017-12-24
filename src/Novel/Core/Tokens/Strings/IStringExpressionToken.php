@@ -2,11 +2,11 @@
 namespace Novel\Core\Tokens\Strings;
 
 
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\Generic\IVariableReferenceToken;
 
 
-interface IStringExpressionToken extends IValueExpression
+interface IStringExpressionToken extends IValueExpressionToken
 {
 	public function addText(string $plain): IStringExpressionToken;
 	public function addVariableReference(IVariableReferenceToken $token): IStringExpressionToken;

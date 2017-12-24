@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\Functions\IFunctionToken;
 use Novel\Core\Tokens\Functions\IParamDefinitionToken;
 use Novel\Core\Tokens\Functions\IParamListDefinition;
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
@@ -53,7 +53,7 @@ abstract class AbstractFunctionToken extends AbstractToken implements IFunctionT
 	/**
 	 * @param string|INameToken|IName null $type
 	 * @param string|INameToken|IName $name
-	 * @param IValueExpression|null|mixed $defaultValue
+	 * @param IValueExpressionToken|null|mixed $defaultValue
 	 * @return IParamListDefinition
 	 */
 	public function addParameter($type, $name, $defaultValue): IParamListDefinition

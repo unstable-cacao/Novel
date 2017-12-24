@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Strings;
 
 
-use Novel\Core\Tokens\Generic\IValueExpression;
+use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 /**
@@ -10,7 +10,7 @@ use Novel\Core\Tokens\Generic\IValueExpression;
  * 
  * EOF;
  */
-interface INowdocToken extends IValueExpression
+interface INowdocToken extends IValueExpressionToken
 {
 	/**
 	 * @param string|IPlainTextToken $text
