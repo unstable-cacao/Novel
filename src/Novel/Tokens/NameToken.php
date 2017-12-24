@@ -3,6 +3,7 @@ namespace Novel\Tokens;
 
 
 use Novel\Core\Tokens\IName;
+use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\INameToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
@@ -40,5 +41,18 @@ class NameToken extends AbstractChildlessToken implements INameToken
 	public function getNameObject(): IName
 	{
 		return $this->name;
+	}
+	
+	
+	/**
+	 * @param string|INameToken|NameObject $name
+	 * @return INameToken
+	 */
+	public static function getNameToken($name): INameToken
+	{
+		if (is_string($name))
+			return new NameToken($name);
+		
+		return $name;
 	}
 }

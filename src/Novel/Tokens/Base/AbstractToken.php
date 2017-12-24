@@ -32,8 +32,8 @@ abstract class AbstractToken implements IToken
 		$this->parent = $parent;
 	}
 	
-	public function getIterator()
+	public function hasChildren(): bool
 	{
-		return new \ArrayIterator();
+		return (bool)$this->count();
 	}
 }

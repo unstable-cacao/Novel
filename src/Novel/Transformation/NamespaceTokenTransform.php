@@ -4,7 +4,7 @@ namespace Novel\Transformation;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
-use Novel\Core\Tokens\INamespaceToken;
+use Novel\Core\Tokens\ClassName\INamespaceToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\SemicolonSymbol;
 use Novel\Symbols\ConstStringSymbol;
