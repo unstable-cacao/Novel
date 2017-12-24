@@ -77,6 +77,9 @@ class ParsersCollection implements IParseSetup
 		}
 		else
 		{
+			if (is_string($object))
+				$object = new $object;
+			
 			if ($object instanceof ISymbolParser)
 				$this->parsers[] = $object;
 			

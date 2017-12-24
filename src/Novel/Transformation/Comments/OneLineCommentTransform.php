@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Tokens\Comments\IOneLineCommentToken;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Symbols\Comment\SingleLineCommentSymbol;
+use Novel\Symbols\Comment\OneLineCommentSymbol;
 
 
 class OneLineCommentTransform implements ITokenTransform
@@ -16,7 +16,7 @@ class OneLineCommentTransform implements ITokenTransform
 		if (!($token instanceof IOneLineCommentToken))
 			return;
 		
-		$stream->push(SingleLineCommentSymbol::class);
+		$stream->push(OneLineCommentSymbol::class);
 		$stream->push($token->getTextToken());
 	}
 }

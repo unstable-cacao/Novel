@@ -100,7 +100,7 @@ class TokenTransformStream implements ITokenTransformStream
 
 	public function isEmpty(): bool
 	{
-		return (bool)$this->symbols;
+		return !((bool)$this->symbols);
 	}
 
 	public function clear(): void
