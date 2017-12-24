@@ -34,8 +34,8 @@ class Novel
 	
 	public function stringify(IToken $root): string
 	{
-		$tokens = $this->transfer->transform($root);
-		return $this->parser->parse($tokens);
+		$symbols = $this->transfer->transform($root);
+		return $this->parser->parse($symbols);
 	}
 	
 	public function write(string $fullPath, IToken $root): void

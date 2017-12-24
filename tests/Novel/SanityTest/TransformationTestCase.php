@@ -22,8 +22,7 @@ class TransformationTestCase extends TestCase
 			array_merge(
 				$setup,
 				StandardClasses::PARSERS
-			),
-			SORT_STRING
+			)
 		));
 		
 		$result = $novel->stringify($root);
