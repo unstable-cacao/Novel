@@ -21,7 +21,6 @@ trait TNamedToken
 		if (is_string($name) || $name instanceof IName)
 		{
 			$name = new NameToken($name);
-			$this->name = new NameToken($name);
 		}
 		else if (!($name instanceof INameToken))
 		{
