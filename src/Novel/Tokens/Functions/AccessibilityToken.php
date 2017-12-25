@@ -15,7 +15,6 @@ class AccessibilityToken extends AbstractChildlessToken implements IAccessibilit
 	
 	public function __construct(?string $level = null)
 	{
-		parent::__construct("");
 		$this->setLevel($level);
 	}
 	

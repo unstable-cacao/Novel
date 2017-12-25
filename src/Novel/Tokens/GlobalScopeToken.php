@@ -14,8 +14,6 @@ class GlobalScopeToken extends AbstractParentToken implements IGlobalScopeToken
 	 */
 	public function __construct(?array $children = null)
 	{
-		parent::__construct('');
-		
 		if ($children)
 			$this->addChildren($children);
 	}

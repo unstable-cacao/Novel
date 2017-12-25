@@ -3,7 +3,6 @@ namespace Novel\Tokens;
 
 
 use Novel\Core\Tokens\IName;
-use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\INameToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
@@ -19,9 +18,6 @@ class NameToken extends AbstractChildlessToken implements INameToken
 	 */
 	public function __construct($name)
 	{
-		// TODO
-		parent::__construct("");
-		
 		if (is_string($name))
 		{
 			$name = new NameObject($name);

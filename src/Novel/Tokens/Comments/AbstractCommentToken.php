@@ -17,8 +17,6 @@ abstract class AbstractCommentToken extends AbstractSingleChildToken implements 
 	
 	public function __construct(string $text)
 	{
-		// TODO
-		parent::__construct("");
 		$this->plainTextToken = new PlainTextToken($text);
 		$this->plainTextToken->setParent($this);
 	}

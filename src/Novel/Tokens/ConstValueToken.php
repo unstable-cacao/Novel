@@ -14,8 +14,6 @@ class ConstValueToken extends AbstractChildlessToken implements IConstValueToken
 	
 	public function __construct($value)
 	{
-		// TODO: what is the name
-		parent::__construct("");
 		$this->setValue($value);
 	}
 	

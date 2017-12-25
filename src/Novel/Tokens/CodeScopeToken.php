@@ -14,8 +14,6 @@ class CodeScopeToken extends AbstractParentToken implements ICodeScopeToken
 	 */
 	public function __construct(?array $children = null)
 	{
-		parent::__construct('');
-		
 		if ($children)
 			$this->addChildren($children);
 	}

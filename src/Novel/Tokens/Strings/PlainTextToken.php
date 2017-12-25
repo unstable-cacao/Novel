@@ -14,8 +14,6 @@ class PlainTextToken extends AbstractChildlessToken implements IPlainTextToken
 	
 	public function __construct(string $text)
 	{
-		// TODO
-		parent::__construct("");
 		$this->text = $text;
 	}
 	
