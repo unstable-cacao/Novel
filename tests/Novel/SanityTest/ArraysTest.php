@@ -9,12 +9,14 @@ use Novel\Tokens\Arrays\KeyValueToken;
 use Novel\Tokens\Arrays\PushElementOperation;
 use Novel\Tokens\ConstValueToken;
 use Novel\Tokens\NameToken;
+use Novel\Tokens\Reference\NamedVariableToken;
 use Novel\Transformation\Arrays\ArrayAccessTransform;
 use Novel\Transformation\Arrays\ArrayDefinitionTransform;
 use Novel\Transformation\Arrays\ArrayPushElementOperationTransform;
 use Novel\Transformation\Arrays\ArrayUnwrapTransform;
 use Novel\Transformation\Arrays\SimpleKeyValueTransform;
 use Novel\Transformation\ConstValueTokenTransform;
+use Novel\Transformation\Reference\NamedVariableTransform;
 
 
 class ArraysTest extends TransformationTestCase
@@ -22,7 +24,9 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayAccess()
 	{
 		$token = new ArrayAccessToken('');
-		$token->setTarget(new NameToken('$arr'));
+		$var = new NamedVariableToken();
+		$var->setName('arr');
+		$token->setTarget($var);
 		$token->setKey(new ConstValueToken(0));
 		
 		self::assertTransformation(
@@ -30,7 +34,8 @@ class ArraysTest extends TransformationTestCase
 			$token,
 			[
 				ArrayAccessTransform::class,
-				ConstValueTokenTransform::class
+				ConstValueTokenTransform::class,
+				NamedVariableTransform::class
 			]
 		);
 	}
@@ -53,7 +58,9 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayPushElementOperation()
 	{
 		$token = new PushElementOperation('');
-		$token->setTarget(new NameToken('$arr'));
+		$var = new NamedVariableToken();
+		$var->setName('arr');
+		$token->setTarget($var);
 		$token->setValue(new ConstValueToken(15));
 		
 		self::assertTransformation(
@@ -61,7 +68,8 @@ class ArraysTest extends TransformationTestCase
 			$token,
 			[
 				ArrayPushElementOperationTransform::class,
-				ConstValueTokenTransform::class
+				ConstValueTokenTransform::class,
+				NamedVariableTransform::class
 			]
 		);
 	}
@@ -69,13 +77,16 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayUnwrap()
 	{
 		$token = new ArrayUnwrapToken('');
-		$token->setTarget(new NameToken('$arr'));
+		$var = new NamedVariableToken();
+		$var->setName('arr');
+		$token->setTarget($var);
 		
 		self::assertTransformation(
 			'...$arr',
 			$token,
 			[
-				ArrayUnwrapTransform::class
+				ArrayUnwrapTransform::class,
+				NamedVariableTransform::class
 			]
 		);
 	}
