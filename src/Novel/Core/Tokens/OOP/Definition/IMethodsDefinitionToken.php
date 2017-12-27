@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens\OOP\Declaration;
+namespace Novel\Core\Tokens\OOP\Definition;
 
 
 interface IMethodsDefinitionToken extends IMethodStubsDefinitionToken

@@ -1,12 +1,13 @@
 <?php
-namespace Novel\Core\Tokens\OOP\Common;
+namespace Novel\Core\Tokens\OOP\Declaration;
 
 
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INamedToken;
+use Novel\Core\Tokens\OOP\Common\IDeclarationToken;
 
 
-interface IExtendsToken extends IDeclarationToken
+interface IExtendsDeclarationToken extends IDeclarationToken
 {
 	/**
 	 * @param string|INamedToken|IName $target
