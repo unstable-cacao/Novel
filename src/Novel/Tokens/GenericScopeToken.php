@@ -3,11 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\IGenericScopeToken;
 use Novel\Tokens\Base\AbstractParentToken;
 
 
-class CodeScopeToken extends AbstractParentToken implements ICodeScopeToken
+class GenericScopeToken extends AbstractParentToken implements IGenericScopeToken
 {
 	/**
 	 * @param IToken[] $children

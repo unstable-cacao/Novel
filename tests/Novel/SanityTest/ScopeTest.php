@@ -2,7 +2,7 @@
 namespace Novel\SanityTest;
 
 
-use Novel\Tokens\CodeScopeToken;
+use Novel\Tokens\GenericScopeToken;
 use Novel\Tokens\GlobalScopeToken;
 use Novel\Transformation\ConstValueTokenTransform;
 use Novel\Transformation\Scope\CodeScopeTokenTransform;
@@ -26,7 +26,7 @@ class ScopeTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"{}",
-			new CodeScopeToken(),
+			new GenericScopeToken(),
 			[
 				CodeScopeTokenTransform::class
 			]

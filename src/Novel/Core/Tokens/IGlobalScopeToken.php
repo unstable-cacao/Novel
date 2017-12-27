@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens;
 
 
-interface IGlobalScopeToken extends IScopeToken
+interface IGlobalScopeToken extends ICodeScopeToken
 {
 	
 }

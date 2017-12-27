@@ -15,7 +15,7 @@ class StringTransform implements ITokenTransform
 	{
 		
 	}
-		
+	
 	
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
