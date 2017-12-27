@@ -9,5 +9,5 @@ namespace Novel\Core\Tokens\Strings;
  */
 interface IHeredocToken extends IStringExpressionToken
 {
-
+	public function getName(): IPlainTextToken;
 }

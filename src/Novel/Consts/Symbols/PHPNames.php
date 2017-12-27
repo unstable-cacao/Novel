@@ -18,4 +18,5 @@ class PHPNames
 	public const NAMED 					= 'named';
 	public const PLAIN_TEXT 			= 'plain_text';
 	public const STRING_EXPRESSION_TEXT = 'spring_expression_text';
+	public const TRIPLE_ARROW 			= '<<<';
 }
