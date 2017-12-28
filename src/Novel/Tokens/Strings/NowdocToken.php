@@ -56,7 +56,7 @@ class NowdocToken extends AbstractChildlessToken implements INowdocToken
 	
 	public function getText(): string
 	{
-		return $this->text->text();
+		return $this->text ? $this->text->text() : '';
 	}
 	
 	public function getPlainText(): IPlainTextToken

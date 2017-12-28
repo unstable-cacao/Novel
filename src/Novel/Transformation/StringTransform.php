@@ -11,6 +11,7 @@ use Novel\Core\Tokens\Strings\INowdocToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\Bracket\CurlyBracketCloseSymbol;
 use Novel\Symbols\Bracket\CurlyBracketOpenSymbol;
+use Novel\Symbols\ConstStringSymbol;
 use Novel\Symbols\DoubleQuotationMarkSymbol;
 use Novel\Symbols\SingleQuotationMarkSymbol;
 use Novel\Symbols\TripleArrowSymbol;
@@ -29,21 +30,32 @@ class StringTransform implements ITokenTransform
 	private function transformHeredoc(IHeredocToken $token, ITokenTransformStream $stream): void
 	{
 		$stream->push(TripleArrowSymbol::class);
-		$stream->push($token->getName());
+		
+		$symbol = new ConstStringSymbol($token->getName());
+		$stream->push($symbol);
+		
 		$stream->push(NewLineSymbol::class);
 		$stream->transformChildren($token);
-		$stream->push($token->getName());
+		$stream->push(NewLineSymbol::class);
+		
+		$stream->push($symbol);
 	}
 	
 	private function transformNowdoc(INowdocToken $token, ITokenTransformStream $stream): void
 	{
 		$stream->push(TripleArrowSymbol::class);
 		$stream->push(SingleQuotationMarkSymbol::class);
-		$stream->push($token->getName());
+		
+		$symbol = new ConstStringSymbol($token->getName());
+		$stream->push($symbol);
+		
 		$stream->push(SingleQuotationMarkSymbol::class);
+		
 		$stream->push(NewLineSymbol::class);
-		$stream->push($token->getText());
-		$stream->push($token->getName());
+		$stream->transformToken($token->getPlainText());
+		$stream->push(NewLineSymbol::class);
+		
+		$stream->push($symbol);
 	}
 	
 	private function transformInStringExpression(IInStringExpressionToken $token, ITokenTransformStream $stream): void

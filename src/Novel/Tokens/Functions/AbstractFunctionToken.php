@@ -7,6 +7,7 @@ use Novel\Core\Tokens\Functions\IFunctionToken;
 use Novel\Core\Tokens\Functions\IParamDefinitionToken;
 use Novel\Core\Tokens\Functions\IParamListDefinition;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
+use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\IGenericScopeToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
@@ -94,12 +95,12 @@ abstract class AbstractFunctionToken extends AbstractToken implements IFunctionT
 		return $this->returnType;
 	}
 	
-	public function setBody(IGenericScopeToken $body): void
+	public function setBody(ICodeScopeToken $body): void
 	{
 		$this->body = $body;
 	}
 	
-	public function getBody(): IGenericScopeToken
+	public function getBody(): ICodeScopeToken
 	{
 		return $this->body;
 	}
