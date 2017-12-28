@@ -18,6 +18,11 @@ interface INowdocToken extends IValueExpressionToken, INamedToken
 	 */
 	public function setText($text): void;
 	
+	/**
+	 * @param string|IPlainTextToken $text
+	 */
+	public function addText($text): void;
+	
 	public function getText(): string;
 	public function getPlainText(): IPlainTextToken;
 }

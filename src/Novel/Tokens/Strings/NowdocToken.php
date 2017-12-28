@@ -33,7 +33,28 @@ class NowdocToken extends AbstractChildlessToken implements INowdocToken
 		$this->text = $text;
 	}
 	
-	public function getText($text): string
+	/**
+	 * @param string|IPlainTextToken $text
+	 */
+	public function addText($text): void
+	{
+		if (is_string($text))
+		{
+			$newText = $this->getText() . $text;
+		}
+		else if ($text instanceof IPlainTextToken)
+		{
+			$newText = $this->getText() . $text->text();
+		}
+		else
+		{
+			throw new \Exception('Text must be string or IPlainTextToken');
+		}
+		
+		$this->setText($newText);
+	}
+	
+	public function getText(): string
 	{
 		return $this->text->text();
 	}
