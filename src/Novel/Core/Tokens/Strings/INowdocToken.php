@@ -3,6 +3,7 @@ namespace Novel\Core\Tokens\Strings;
 
 
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
+use Novel\Core\Tokens\INamedToken;
 
 
 /**
@@ -10,15 +11,13 @@ use Novel\Core\Tokens\Generic\IValueExpressionToken;
  * 
  * EOF;
  */
-interface INowdocToken extends IValueExpressionToken
+interface INowdocToken extends IValueExpressionToken, INamedToken
 {
 	/**
 	 * @param string|IPlainTextToken $text
 	 */
 	public function setText($text): void;
 	
-	public function getName(): IPlainTextToken;
-	
-	public function getText($text): string;
+	public function getText(): string;
 	public function getPlainText(): IPlainTextToken;
 }

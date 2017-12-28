@@ -29,21 +29,21 @@ class StringTransform implements ITokenTransform
 	private function transformHeredoc(IHeredocToken $token, ITokenTransformStream $stream): void
 	{
 		$stream->push(TripleArrowSymbol::class);
-		$stream->transformToken($token->getName());
+		$stream->push($token->getName());
 		$stream->push(NewLineSymbol::class);
 		$stream->transformChildren($token);
-		$stream->transformToken($token->getName());
+		$stream->push($token->getName());
 	}
 	
 	private function transformNowdoc(INowdocToken $token, ITokenTransformStream $stream): void
 	{
 		$stream->push(TripleArrowSymbol::class);
 		$stream->push(SingleQuotationMarkSymbol::class);
-		$stream->transformToken($token->getName());
+		$stream->push($token->getName());
 		$stream->push(SingleQuotationMarkSymbol::class);
 		$stream->push(NewLineSymbol::class);
-		$stream->transformChildren($token);
-		$stream->transformToken($token->getName());
+		$stream->push($token->getText());
+		$stream->push($token->getName());
 	}
 	
 	private function transformInStringExpression(IInStringExpressionToken $token, ITokenTransformStream $stream): void
