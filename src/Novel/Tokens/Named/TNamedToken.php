@@ -1,10 +1,11 @@
 <?php
-namespace Novel\Tokens;
+namespace Novel\Tokens\Named;
 
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
+use Novel\Tokens\Named\NameToken;
 
 
 trait TNamedToken

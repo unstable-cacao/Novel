@@ -5,12 +5,12 @@ namespace Novel\Tokens\Strings;
 use Novel\Core\Tokens\Strings\INowdocToken;
 use Novel\Core\Tokens\Strings\IPlainTextToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
-use Novel\Tokens\TNamedToken;
+use Novel\Tokens\Named\TNamedToken;
 
 
 class NowdocToken extends AbstractChildlessToken implements INowdocToken
 {
-	use TNamedToken;
+	use Novel\Tokens\Named\TNamedToken;
 	
 	
 	/** @var IPlainTextToken */

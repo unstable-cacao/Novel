@@ -2,12 +2,12 @@
 namespace Novel\Core\Tokens\OOP\Declaration;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\OOP\Common\IDeclarationToken;
 
 
-interface IExtendsDeclarationToken extends IDeclarationToken
+interface IExtendsDeclarationToken extends IToken
 {
 	/**
 	 * @param string|INamedToken|IName $target

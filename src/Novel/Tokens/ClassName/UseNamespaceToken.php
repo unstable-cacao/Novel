@@ -5,7 +5,7 @@ namespace Novel\Tokens\ClassName;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\ClassName\IUseNamespaceToken;
-use Novel\Tokens\NameToken;
+use Novel\Tokens\Named\NameToken;
 
 
 class UseNamespaceToken extends AbstractClassNameToken implements IUseNamespaceToken

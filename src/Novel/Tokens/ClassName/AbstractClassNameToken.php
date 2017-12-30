@@ -5,7 +5,7 @@ namespace Novel\Tokens\ClassName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\ClassName\IClassNameToken;
 
-use Novel\Tokens\NameToken;
+use Novel\Tokens\Named\NameToken;
 use Novel\Tokens\Base\AbstractToken;
 
 

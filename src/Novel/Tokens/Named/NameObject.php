@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Tokens;
+namespace Novel\Tokens\Named;
 
 
 use Novel\Core\Tokens\IName;

@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens\Functions;
+namespace Novel\Core\Tokens\OOP\Accessibility;
 
 
 use Novel\Core\IToken;

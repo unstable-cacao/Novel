@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens\Functions;
+namespace Novel\Core\Tokens\Functions\Params;
 
 
 use Novel\Core\Tokens\IName;
@@ -18,9 +18,6 @@ interface IParamDefinitionToken extends INamedToken
 	
 	public function isByReference(): bool;
 	public function setIsByReference(bool $isByReference): void;
-	
-	public function getNameObject(): IName;
-	public function getName(): string;
 
 	/**
 	 * @param INameToken|IName|string $type
@@ -28,8 +25,10 @@ interface IParamDefinitionToken extends INamedToken
 	public function setType($type): void;
 	
 	/**
-	 * @param null|IValueExpressionToken|mixed $value
+	 * @param IValueExpressionToken|string|int|double|bool|null $value
 	 */
 	public function setDefaultValue($value): void;
+	
 	public function getDefaultValue(): ?IValueExpressionToken;
+	public function removeDefaultValue(): void;
 }

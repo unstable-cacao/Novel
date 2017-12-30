@@ -2,10 +2,10 @@
 namespace Novel\Core\Tokens\OOP\Definition;
 
 
-use Novel\Core\Tokens\OOP\Common\IDeclarationToken;
+use Novel\Core\IToken;
 
 
-interface IMethodStubsDefinitionToken extends IDeclarationToken
+interface IMethodStubsDefinitionToken extends IToken
 {
 	
 }

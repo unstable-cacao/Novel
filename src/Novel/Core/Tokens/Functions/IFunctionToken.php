@@ -2,17 +2,13 @@
 namespace Novel\Core\Tokens\Functions;
 
 
-use Novel\Core\IToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Functions\Common\IWithParamListToken;
+use Novel\Core\Tokens\Functions\Common\IWithReturnTypeToken;
 
 
-interface IFunctionToken extends IFunctionDefinitionToken
+interface IFunctionToken extends 
+	IWithParamListToken,
+	IWithReturnTypeToken
 {
-	public function setBody(ICodeScopeToken $body): void;
-	public function getBody(): ICodeScopeToken;
-
-	/**
-	 * @param IToken|IToken[] $item
-	 */
-	public function addToBody($item): void;
+	
 }
