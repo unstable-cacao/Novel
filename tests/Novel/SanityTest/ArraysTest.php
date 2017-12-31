@@ -7,7 +7,7 @@ use Novel\Tokens\Arrays\ArrayDefinitionToken;
 use Novel\Tokens\Arrays\ArrayUnwrapToken;
 use Novel\Tokens\Arrays\KeyValueToken;
 use Novel\Tokens\Arrays\PushElementOperation;
-use Novel\Tokens\ConstValueToken;
+use Novel\Tokens\Consts\ConstValueToken;
 use Novel\Tokens\Reference\NamedVariableToken;
 use Novel\Transformation\Arrays\ArrayAccessTransform;
 use Novel\Transformation\Arrays\ArrayDefinitionTransform;

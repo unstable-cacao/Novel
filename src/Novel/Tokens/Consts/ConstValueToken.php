@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Tokens;
+namespace Novel\Tokens\Consts;
 
 
 use Novel\Core\Tokens\Consts\IConstValueToken;

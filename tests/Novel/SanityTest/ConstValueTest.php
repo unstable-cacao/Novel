@@ -2,7 +2,7 @@
 namespace Novel\SanityTest;
 
 
-use Novel\Tokens\ConstValueToken;
+use Novel\Tokens\Consts\ConstValueToken;
 use Novel\Transformation\ConstValueTokenTransform;
 
 

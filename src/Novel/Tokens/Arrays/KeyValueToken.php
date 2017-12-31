@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\Arrays\IKeyValueToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Tokens\Base\AbstractToken;
-use Novel\Tokens\ConstValueToken;
+use Novel\Tokens\Consts\ConstValueToken;
 
 
 class KeyValueToken extends AbstractToken implements IKeyValueToken
