@@ -9,8 +9,7 @@ use Novel\Core\Tokens\OOP\Definition\IUseTraitsDefinitionToken;
 use Novel\Core\Tokens\OOP\Definition\IVariablesDefinitionToken;
 
 
-interface ITraitDefinitionToken extends 
-	IScopeToken,
+interface ITraitDefinitionToken extends
 	IUseTraitsDefinitionToken,
 	IConstsDefinitionToken,
 	IMethodsDefinitionToken,

@@ -4,7 +4,7 @@ namespace Novel\Transformation;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
-use Novel\Core\Tokens\IConstValueToken;
+use Novel\Core\Tokens\Consts\IConstValueToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\Constant\FalseSymbol;
 use Novel\Symbols\Constant\NullSymbol;

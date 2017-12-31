@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens;
+namespace Novel\Core\Tokens\Consts;
 
 
 use Novel\Core\Tokens\Generic\IValueExpressionToken;

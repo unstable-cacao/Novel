@@ -2,7 +2,7 @@
 namespace Novel\Tokens;
 
 
-use Novel\Core\Tokens\IConstValueToken;
+use Novel\Core\Tokens\Consts\IConstValueToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
 
