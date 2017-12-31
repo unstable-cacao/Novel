@@ -2,14 +2,13 @@
 namespace Novel\Core\Tokens\OOP;
 
 
-use Novel\Core\IToken;
 use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\OOP\InterfaceType\IInterfaceDefinitionToken;
 use Novel\Core\Tokens\OOP\InterfaceType\IInterfaceDeclarationToken;
 
 
 interface IInterfaceToken extends 
-	IToken, 
+	IOOPToken, 
 	INamedToken
 {
 	public function getDefinitionToken(): IInterfaceDefinitionToken;
