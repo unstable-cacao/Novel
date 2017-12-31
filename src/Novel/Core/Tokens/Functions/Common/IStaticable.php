@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Functions\Common;
 
 
-interface IStaticableToken
+interface IStaticable
 {
 	public function isStatic(): bool;
 	public function setIsStatic(bool $isStatic): void;

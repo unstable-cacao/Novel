@@ -3,11 +3,11 @@ namespace Novel\Tokens;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\IGenericScopeToken;
+use Novel\Core\Tokens\IFileScopeToken;
 use Novel\Tokens\Base\AbstractParentToken;
 
 
-class GenericScopeToken extends AbstractParentToken implements IGenericScopeToken
+class FileScopeToken extends AbstractParentToken implements IFileScopeToken
 {
 	/**
 	 * @param IToken[] $children

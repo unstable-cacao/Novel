@@ -2,8 +2,8 @@
 namespace Novel\SanityTest;
 
 
-use Novel\Tokens\GenericScopeToken;
-use Novel\Tokens\GlobalScopeToken;
+use Novel\Tokens\CodeScopeToken;
+use Novel\Tokens\FileScopeToken;
 use Novel\Transformation\ConstValueTokenTransform;
 use Novel\Transformation\Scope\CodeScopeTokenTransform;
 use Novel\Transformation\Scope\GlobalScopeTokenTransform;
@@ -15,7 +15,7 @@ class ScopeTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"<?php\n",
-			new GlobalScopeToken(),
+			new FileScopeToken(),
 			[
 				GlobalScopeTokenTransform::class
 			]
@@ -26,7 +26,7 @@ class ScopeTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"{}",
-			new GenericScopeToken(),
+			new CodeScopeToken(),
 			[
 				CodeScopeTokenTransform::class
 			]
