@@ -2,12 +2,12 @@
 namespace Novel\Core\Tokens\OOP\Methods;
 
 
-use Novel\Core\Tokens\Functions\Common\IWithBodyToken;
+use Novel\Core\Tokens\Functions\Common\IWithBody;
 
 
 interface IMethodToken extends
 	IMethodStubToken,
-	IWithBodyToken
+	IWithBody
 {
 	
 }

@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\ICodeScopeToken;
 
 
-interface IWithBodyToken
+interface IWithBody
 {
 	public function getBody(): ICodeScopeToken;
 

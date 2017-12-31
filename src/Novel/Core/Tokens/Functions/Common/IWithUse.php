@@ -6,7 +6,7 @@ use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\Functions\UseScope\IUseScopeToken;
 
 
-interface IWithUseToken
+interface IWithUse
 {
 	public function hasUseScope(): bool;
 	public function getUseToken(): IUseScopeToken;

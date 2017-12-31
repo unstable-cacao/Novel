@@ -3,14 +3,14 @@ namespace Novel\Core\Tokens\Functions;
 
 
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\Functions\Common\IWithUseToken;
-use Novel\Core\Tokens\Functions\Common\IWithBodyToken;
+use Novel\Core\Tokens\Functions\Common\IWithUse;
+use Novel\Core\Tokens\Functions\Common\IWithBody;
 
 
 interface IGlobalFunctionToken extends 
 	IFunctionToken,
-	IWithBodyToken,
-	IWithUseToken,
+	IWithBody,
+	IWithUse,
 	INamedToken
 {
 	
