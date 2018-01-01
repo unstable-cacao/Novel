@@ -3,9 +3,9 @@ namespace Novel\Core\Tokens\FlowControl;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\FlowControl\ForStatement\IForIterationToken;
 use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\Statements\IFlowControlStatmentToken;
+use Novel\Core\Tokens\FlowControl\ForStatement\IForIterationToken;
 
 
 interface IForStatementToken extends IFlowControlStatmentToken

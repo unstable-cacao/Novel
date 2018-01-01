@@ -6,7 +6,7 @@ use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\INamedToken;
 
 
-interface IConstDefinitionToken extends INamedToken
+interface IConstDeclarationToken extends INamedToken
 {
 	/**
 	 * @param IValueExpressionToken|string|int|float|double|null $value
