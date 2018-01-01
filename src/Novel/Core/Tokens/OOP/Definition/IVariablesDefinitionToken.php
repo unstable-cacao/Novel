@@ -2,10 +2,13 @@
 namespace Novel\Core\Tokens\OOP\Definition;
 
 
-use Novel\Core\Tokens\IScopeToken;
+use Novel\Core\Tokens\INamedToken;
+use Novel\Core\Tokens\OOP\Accessibility\IWithAccessibilityToken;
 
 
-interface IVariablesDefinitionToken extends IScopeToken
+interface IVariablesDefinitionToken extends
+	INamedToken,
+	IWithAccessibilityToken
 {
 	
 }

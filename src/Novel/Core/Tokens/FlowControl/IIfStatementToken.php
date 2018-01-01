@@ -6,7 +6,7 @@ use Novel\Core\IToken;
 use Novel\Core\Tokens\ICodeScopeToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\Statements\IFlowControlStatmentToken;
-use Novel\Core\Tokens\FlowControl\IfStatment\IIfConditionToken;
+use Novel\Core\Tokens\FlowControl\IfStatement\IIfConditionToken;
 
 
 interface IIfStatementToken extends IFlowControlStatmentToken

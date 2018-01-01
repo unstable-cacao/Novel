@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens\FlowControl\IfStatment;
+namespace Novel\Core\Tokens\FlowControl\IfStatement;
 
 
 use Novel\Core\IToken;
