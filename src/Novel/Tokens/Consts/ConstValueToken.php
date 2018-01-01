@@ -2,6 +2,7 @@
 namespace Novel\Tokens\Consts;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\Consts\IConstValueToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
@@ -59,5 +60,12 @@ class ConstValueToken extends AbstractChildlessToken implements IConstValueToken
 	public static function null(): IConstValueToken
 	{
 		return new static(null);
+	}
+	
+	public static function toToken($value): IToken
+	{
+		return ($value instanceof IToken ? 
+			$value : 
+			new ConstValueToken($value));
 	}
 }

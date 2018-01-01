@@ -10,7 +10,7 @@ use Novel\Tokens\Named\TNamedToken;
 
 class NowdocToken extends AbstractChildlessToken implements INowdocToken
 {
-	use Novel\Tokens\Named\TNamedToken;
+	use TNamedToken;
 	
 	
 	/** @var IPlainTextToken */
