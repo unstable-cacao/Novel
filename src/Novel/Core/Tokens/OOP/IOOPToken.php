@@ -2,10 +2,10 @@
 namespace Novel\Core\Tokens\OOP;
 
 
-use Novel\Core\IToken;
+use Novel\Core\Tokens\Statements\IDefinitionStatementToken;
 
 
-interface IOOPToken extends IToken
+interface IOOPToken extends IDefinitionStatementToken
 {
 
 }

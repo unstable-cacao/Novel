@@ -5,7 +5,7 @@ namespace Novel\Tokens\Functions\Common;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Functions\Common\IWithBody;
 use Novel\Core\Tokens\ICodeScopeToken;
-use Novel\Tokens\CodeScopeToken;
+use Novel\Tokens\Scope\CodeScopeToken;
 
 
 class WithBody implements IWithBody
