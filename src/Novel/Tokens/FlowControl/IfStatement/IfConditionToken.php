@@ -17,6 +17,13 @@ class IfConditionToken extends AbstractChildlessToken implements IIfConditionTok
 	private $body;
 	
 	
+	public function __construct(?IValueExpressionToken $condition = null)
+	{
+		if ($condition)
+			$this->setCondition($condition);
+	}
+
+
 	public function setBody(ICodeScopeToken $body): void
 	{
 		$this->body = $body;
