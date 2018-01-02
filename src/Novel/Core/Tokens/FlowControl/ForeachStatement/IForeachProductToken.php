@@ -4,7 +4,6 @@ namespace Novel\Core\Tokens\FlowControl\ForeachStatement;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 
 interface IForeachProductToken extends IToken

@@ -10,8 +10,7 @@ class ReferenceTest extends TransformationTestCase
 {
 	public function test_NamedVariable()
 	{
-		$token = new NamedVariableToken();
-		$token->setName('var');
+		$token = new NamedVariableToken('var');
 		
 		self::assertTransformation(
 			'$var',

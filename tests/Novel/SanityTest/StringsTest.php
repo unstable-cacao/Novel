@@ -20,8 +20,7 @@ class StringsTest extends TransformationTestCase
 		
 		$token->addText('Hello ');
 		
-		$var = new NamedVariableToken();
-		$var->setName('arr');
+		$var = new NamedVariableToken('arr');
 		$inString = new InStringExpressionToken();
 		$inString->setExpression($var);
 		
@@ -47,8 +46,7 @@ class StringsTest extends TransformationTestCase
 		
 		$token->addText("Hello\n");
 		
-		$var = new NamedVariableToken();
-		$var->setName('arr');
+		$var = new NamedVariableToken('arr');
 		$inString = new InStringExpressionToken();
 		$inString->setExpression($var);
 		
@@ -71,8 +69,7 @@ class StringsTest extends TransformationTestCase
 	public function test_InStringExpression()
 	{
 		$token = new InStringExpressionToken();
-		$namedVar = new NamedVariableToken();
-		$namedVar->setName('Test');
+		$namedVar = new NamedVariableToken('Test');
 		$token->setExpression($namedVar);
 		
 		self::assertTransformation(

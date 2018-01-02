@@ -23,8 +23,7 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayAccess()
 	{
 		$token = new ArrayAccessToken('');
-		$var = new NamedVariableToken();
-		$var->setName('arr');
+		$var = new NamedVariableToken('arr');
 		$token->setTarget($var);
 		$token->setKey(new ConstValueToken(0));
 		
@@ -57,8 +56,7 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayPushElementOperation()
 	{
 		$token = new PushElementOperation('');
-		$var = new NamedVariableToken();
-		$var->setName('arr');
+		$var = new NamedVariableToken('arr');
 		$token->setTarget($var);
 		$token->setValue(new ConstValueToken(15));
 		
@@ -76,8 +74,7 @@ class ArraysTest extends TransformationTestCase
 	public function test_ArrayUnwrap()
 	{
 		$token = new ArrayUnwrapToken('');
-		$var = new NamedVariableToken();
-		$var->setName('arr');
+		$var = new NamedVariableToken('arr');
 		$token->setTarget($var);
 		
 		self::assertTransformation(
