@@ -3,8 +3,8 @@ namespace Novel\Core\Tokens\Functions\Params;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
+use Novel\Core\Tokens\INameToken;
 
 
 interface IParamListDefinition extends IToken
@@ -13,14 +13,14 @@ interface IParamListDefinition extends IToken
 	
 	
 	/**
-	 * @param IParamDefinitionToken[]|string[]|INamedToken[]|IParamDefinitionToken|string|INamedToken $item
+	 * @param IParamDefinitionToken[]|string[]|INameToken[]|IParamDefinitionToken|string|INameToken $item
 	 * @return IParamListDefinition
 	 */
 	public function add(...$item): IParamListDefinition;
 
 	/**
-	 * @param string|INamedToken null $type
-	 * @param string|INamedToken $name
+	 * @param string|INameToken null $type
+	 * @param string|INameToken $name
 	 * @param IValueExpressionToken|null|mixed $defaultValue
 	 * @return IParamListDefinition
 	 */

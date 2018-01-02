@@ -23,6 +23,10 @@ interface IParamDefinitionToken extends INamedToken
 	 * @param INameToken|IName|string $type
 	 */
 	public function setType($type): void;
+	public function getTypeToken(): ?INameToken;
+	public function getTypeName(): ?IName;
+	public function getType(): ?string;
+	public function removeType(): void;
 	
 	/**
 	 * @param IValueExpressionToken|string|int|double|bool|null $value
