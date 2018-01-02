@@ -4,7 +4,6 @@ namespace Novel\SanityTest;
 
 use Novel\Tokens\Scope\CodeScopeToken;
 use Novel\Tokens\Scope\FileScopeToken;
-use Novel\Transformation\ConstValueTokenTransform;
 use Novel\Transformation\Scope\CodeScopeTokenTransform;
 use Novel\Transformation\Scope\GlobalScopeTokenTransform;
 

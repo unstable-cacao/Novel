@@ -2,7 +2,10 @@
 namespace Novel\Tokens\Scope;
 
 
-class CodeScopeToken extends AbstractScopeToken
+use Novel\Core\Tokens\ICodeScopeToken;
+
+
+class CodeScopeToken extends AbstractScopeToken implements ICodeScopeToken
 {
 	
 }

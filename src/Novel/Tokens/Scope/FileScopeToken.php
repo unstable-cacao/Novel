@@ -2,7 +2,10 @@
 namespace Novel\Tokens\Scope;
 
 
-class FileScopeToken extends AbstractScopeToken
+use Novel\Core\Tokens\IFileScopeToken;
+
+
+class FileScopeToken extends AbstractScopeToken implements IFileScopeToken
 {
 	
 }

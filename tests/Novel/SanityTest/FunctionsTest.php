@@ -2,7 +2,7 @@
 namespace Novel\SanityTest;
 
 
-use Novel\Tokens\Functions\AccessibilityToken;
+use Novel\Tokens\OOP\Accessibility\AccessibilityToken;
 use Novel\Transformation\Functions\AccessibilityTransform;
 
 
