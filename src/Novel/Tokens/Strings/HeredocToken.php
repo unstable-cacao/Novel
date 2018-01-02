@@ -8,5 +8,5 @@ use Novel\Tokens\Named\TNamedToken;
 
 class HeredocToken extends AbstractExpressionStringToken implements IHeredocToken
 {
-	use Novel\Tokens\Named\TNamedToken;
+	use TNamedToken;
 }

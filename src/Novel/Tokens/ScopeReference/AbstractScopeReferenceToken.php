@@ -8,7 +8,7 @@ use Novel\Core\Tokens\ScopeReference\IScopeReferenceToken;
 use Novel\Tokens\Base\AbstractToken;
 
 
-class AbstractScopeReferenceToken extends AbstractToken implements IScopeReferenceToken
+abstract class AbstractScopeReferenceToken extends AbstractToken implements IScopeReferenceToken
 {
 	private $left;
 	private $referenceOperator;

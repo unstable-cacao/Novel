@@ -9,7 +9,7 @@ use Novel\Tokens\Base\AbstractParentToken;
 use Novel\Tokens\Statements\ExpressionStatementToken;
 
 
-class AbstractScopeToken extends AbstractParentToken implements IScopeToken
+abstract class AbstractScopeToken extends AbstractParentToken implements IScopeToken
 {
 	/**
 	 * @param IToken[] $children
