@@ -2,10 +2,7 @@
 namespace Novel\Tokens\Functions\Common;
 
 
-use Novel\Core\Tokens\Functions\Common\IAbstractable;
-
-
-class Abstractable implements IAbstractable
+trait TAbstractable
 {
 	/** @var bool */
 	private $abstractable = false;

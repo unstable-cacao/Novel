@@ -5,7 +5,6 @@ namespace Novel\Tokens\Named;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
-use Novel\Tokens\Named\NameObject;
 
 
 class NameToken extends AbstractChildlessToken implements INameToken

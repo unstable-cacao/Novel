@@ -2,10 +2,7 @@
 namespace Novel\Tokens\Functions\Common;
 
 
-use Novel\Core\Tokens\Functions\Common\IStaticable;
-
-
-class Staticable implements IStaticable
+trait TStaticable
 {
 	/** @var bool */
 	private $staticable = false;
