@@ -3,19 +3,12 @@ namespace Novel\Tokens\Functions;
 
 
 use Novel\Core\Tokens\Functions\IGlobalFunctionToken;
-use Novel\Tokens\Base\AbstractChildlessToken;
-use Novel\Tokens\Functions\Common\TWithBody;
-use Novel\Tokens\Functions\Common\TWithParamListToken;
-use Novel\Tokens\Functions\Common\TWithReturnTypeToken;
 use Novel\Tokens\Functions\Common\TWithUse;
-use Novel\Tokens\Named\TNamedToken;
+use Novel\Tokens\Functions\Common\TWithBody;
 
 
-class GlobalFunctionToken extends AbstractChildlessToken implements IGlobalFunctionToken
+class GlobalFunctionToken extends AbstractFunctionToken implements IGlobalFunctionToken
 {
-	use TNamedToken;
 	use TWithBody;
 	use TWithUse;
-	use TWithParamListToken;
-	use TWithReturnTypeToken;
 }
