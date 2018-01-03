@@ -8,7 +8,7 @@ use Novel\Core\Tokens\OOP\Definition\IUseTraitsDefinitionToken;
 use Novel\Core\Tokens\OOP\Definition\IMemberVariablesDefinitionToken;
 
 
-interface IMemberClassDefinitionToken extends
+interface IClassDefinitionToken extends
 	IUseTraitsDefinitionToken,
 	IConstsDefinitionToken,
 	IMethodsDefinitionToken,
