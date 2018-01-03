@@ -33,7 +33,5 @@ trait TUseTraitsDefinitionToken
 				$this->add($token);
 			}
 		}
-		
-		return $this;
 	}
 }

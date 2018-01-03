@@ -65,6 +65,6 @@ class AccessibilityTransform implements ITokenTransform
 			}
 		}
 		
-		$stream->push($this->getSymbolFor($this->defaultAccessibility));
+		$stream->push($this->getSymbolFor($token->getLevel()));
 	}
 }

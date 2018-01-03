@@ -12,5 +12,5 @@ interface IImplementsDeclarationToken extends IToken
 	/**
 	 * @param string|INamedToken|IName $target
 	 */
-	public function add($target): void;
+	public function addImplement($target): void;
 }
