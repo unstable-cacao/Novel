@@ -12,10 +12,6 @@ use Novel\Tokens\OOP\Methods\MethodStubToken;
 
 trait TMethodStubsDefinitionToken
 {
-	/** @var IMethodStubToken[] */
-	private $children = [];
-	
-	
 	/**
 	 * @param IMethodStubToken[] ...$token
 	 * @return IMethodStubsDefinitionToken
@@ -37,7 +33,7 @@ trait TMethodStubsDefinitionToken
 					throw new \Exception("Token can be instance of IMethodStubToken or array only");
 				
 				$token->setParent($this);
-				$this->children[] = $token;
+				$this->children()[] = $token;
 			}
 		}
 		

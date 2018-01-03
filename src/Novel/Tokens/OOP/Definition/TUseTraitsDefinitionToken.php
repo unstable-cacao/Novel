@@ -3,16 +3,11 @@ namespace Novel\Tokens\OOP\Definition;
 
 
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\INameToken;
 use Novel\Tokens\Named\NameToken;
 
 
 trait TUseTraitsDefinitionToken
 {
-	/** @var INameToken[] */
-	private $children = [];
-	
-	
 	/**
 	 * @param string|INamedToken|string[]|INamedToken[] $item
 	 */
@@ -39,7 +34,7 @@ trait TUseTraitsDefinitionToken
 				
 				$token = new NameToken($token);
 				$token->setParent($this);
-				$this->children[] = $token;
+				$this->children()[] = $token;
 			}
 		}
 		

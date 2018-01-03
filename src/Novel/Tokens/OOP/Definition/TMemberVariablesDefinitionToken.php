@@ -13,10 +13,6 @@ use Novel\Tokens\OOP\Variables\MemberVariableToken;
 
 trait TMemberVariablesDefinitionToken
 {
-	/** @var IToken[] */
-	private $children = [];
-	
-	
 	/**
 	 * @param IMemberVariableToken[] ...$token
 	 * @return IMemberVariablesDefinitionToken
@@ -38,7 +34,7 @@ trait TMemberVariablesDefinitionToken
 					throw new \Exception("Token can be instance of IMemberVariableToken or array only");
 				
 				$token->setParent($this);
-				$this->children[] = $token;
+				$this->children()[] = $token;
 			}
 		}
 		

@@ -12,10 +12,6 @@ use Novel\Tokens\OOP\Methods\MethodToken;
 
 trait TMethodsDefinitionToken
 {
-	/** @var IMethodToken[] */
-	private $children = [];
-	
-	
 	/**
 	 * @param IMethodToken[] ...$token
 	 * @return IMethodsDefinitionToken
@@ -37,7 +33,7 @@ trait TMethodsDefinitionToken
 					throw new \Exception("Token can be instance of IMethodToken or array only");
 				
 				$token->setParent($this);
-				$this->children[] = $token;
+				$this->children()[] = $token;
 			}
 		}
 		

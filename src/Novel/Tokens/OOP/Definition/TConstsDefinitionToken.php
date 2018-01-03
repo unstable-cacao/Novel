@@ -3,7 +3,6 @@ namespace Novel\Tokens\OOP\Definition;
 
 
 use Novel\AccessType;
-use Novel\Core\IToken;
 use Novel\Core\Tokens\Consts\IConstValueToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
@@ -13,14 +12,10 @@ use Novel\Tokens\OOP\Consts\ClassConstDeclarationToken;
 
 trait TConstsDefinitionToken
 {
-	/** @var IToken[] */
-	private $children = [];
-	
-	
 	public function addConst(IClassConstDeclarationToken $token): void
 	{
 		$token->setParent($this);
-		$this->children[] = $token;
+		$this->children()[] = $token;
 	}
 	
 	public function createConst(): IClassConstDeclarationToken
