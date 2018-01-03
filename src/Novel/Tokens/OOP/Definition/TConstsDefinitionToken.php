@@ -14,8 +14,7 @@ trait TConstsDefinitionToken
 {
 	public function addConst(IClassConstDeclarationToken $token): void
 	{
-		$token->setParent($this);
-		$this->children()[] = $token;
+		$this->add($token);
 	}
 	
 	public function createConst(): IClassConstDeclarationToken

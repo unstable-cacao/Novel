@@ -14,7 +14,7 @@ trait TMethodStubsDefinitionToken
 {
 	/**
 	 * @param IMethodStubToken[] ...$token
-	 * @return IMethodStubsDefinitionToken
+	 * @return static|IMethodStubsDefinitionToken
 	 */
 	public function addMethodStubToken(IMethodStubToken ...$token): IMethodStubsDefinitionToken
 	{
@@ -22,18 +22,14 @@ trait TMethodStubsDefinitionToken
 		{
 			if (is_array($item))
 			{
-				foreach ($item as $singleToken)
-				{
-					$this->addMethodStubToken($singleToken);
-				}
+				$this->addMethodStubToken(...$item);
 			}
 			else
 			{
 				if (!($token instanceof IMethodStubToken))
 					throw new \Exception("Token can be instance of IMethodStubToken or array only");
 				
-				$token->setParent($this);
-				$this->children()[] = $token;
+				$this->add($token);
 			}
 		}
 		

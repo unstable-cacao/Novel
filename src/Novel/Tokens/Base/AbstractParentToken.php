@@ -18,6 +18,11 @@ class AbstractParentToken extends AbstractToken implements IToken
 		if (!is_array($children))
 			$children = [$children];
 		
+		foreach ($children as $child) 
+		{
+			$child->setParent($this);
+		}
+		
 		$this->children = array_merge($this->children, $children);
 	}
 	

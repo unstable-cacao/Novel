@@ -17,10 +17,7 @@ trait TUseTraitsDefinitionToken
 		{
 			if (is_array($token))
 			{
-				foreach ($token as $singleToken)
-				{
-					$this->addTrait($singleToken);
-				}
+				$this->addTrait(...$token);
 			}
 			else
 			{
@@ -33,8 +30,7 @@ trait TUseTraitsDefinitionToken
 					throw new \Exception("Token can be instance of INamedToken, string or array only");
 				
 				$token = new NameToken($token);
-				$token->setParent($this);
-				$this->children()[] = $token;
+				$this->add($token);
 			}
 		}
 		

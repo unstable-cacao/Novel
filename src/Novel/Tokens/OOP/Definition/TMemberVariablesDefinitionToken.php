@@ -15,7 +15,7 @@ trait TMemberVariablesDefinitionToken
 {
 	/**
 	 * @param IMemberVariableToken[] ...$token
-	 * @return IMemberVariablesDefinitionToken
+	 * @return static|IMemberVariablesDefinitionToken
 	 */
 	public function addVariableToken(IMemberVariableToken ...$token): IMemberVariablesDefinitionToken
 	{
@@ -23,18 +23,14 @@ trait TMemberVariablesDefinitionToken
 		{
 			if (is_array($item))
 			{
-				foreach ($item as $singleToken) 
-				{
-					$this->addVariableToken($singleToken);
-				}
+				$this->addVariableToken(...$item);
 			}
 			else 
 			{
 				if (!($token instanceof IMemberVariableToken))
 					throw new \Exception("Token can be instance of IMemberVariableToken or array only");
 				
-				$token->setParent($this);
-				$this->children()[] = $token;
+				$this->add($token);
 			}
 		}
 		

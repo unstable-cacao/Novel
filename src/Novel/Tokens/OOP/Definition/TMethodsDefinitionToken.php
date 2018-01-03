@@ -14,7 +14,7 @@ trait TMethodsDefinitionToken
 {
 	/**
 	 * @param IMethodToken[] ...$token
-	 * @return IMethodsDefinitionToken
+	 * @return static|IMethodsDefinitionToken
 	 */
 	public function addMethodToken(IMethodToken ...$token): IMethodsDefinitionToken
 	{
@@ -22,18 +22,14 @@ trait TMethodsDefinitionToken
 		{
 			if (is_array($item))
 			{
-				foreach ($item as $singleToken)
-				{
-					$this->addMethodToken($singleToken);
-				}
+				$this->addMethodToken(...$item);
 			}
 			else
 			{
 				if (!($token instanceof IMethodToken))
 					throw new \Exception("Token can be instance of IMethodToken or array only");
 				
-				$token->setParent($this);
-				$this->children()[] = $token;
+				$this->add($token);
 			}
 		}
 		
