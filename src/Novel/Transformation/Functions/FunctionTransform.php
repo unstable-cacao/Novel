@@ -30,15 +30,14 @@ class FunctionTransform implements ITokenTransform
 		if (!($token instanceof IFunctionToken))
 			return;
 		
-		if ($token instanceof IAbstractable && $token->isAbstract())
-		{
-			$stream->push(AbstractSymbol::class);
-			$stream->push(SpaceSymbol::class);
-		}
-		
 		if ($token instanceof IWithAccessibilityToken)
 		{
 			$stream->transformToken($token->getAccessibilityToken());
+		}
+		
+		if ($token instanceof IAbstractable && $token->isAbstract())
+		{
+			$stream->push(AbstractSymbol::class);
 			$stream->push(SpaceSymbol::class);
 		}
 		
@@ -52,23 +51,22 @@ class FunctionTransform implements ITokenTransform
 		$stream->push(SpaceSymbol::class);
 		$stream->push($token->getNameToken());
 		
-		$stream->push(RoundBracketOpenSymbol::class);
 		$stream->transformToken($token->getParamListToken());
-		$stream->push(RoundBracketCloseSymbol::class);
 		
 		if ($token instanceof IWithUse && $token->hasUseScope())
 		{
 			$stream->transformToken($token->getUseToken());
 		}
 		
-		$stream->push(ColonSymbol::class);
-		$stream->transformToken($token->getReturnTypeToken());
+		if ($token->hasReturnType())
+		{
+			$stream->push(ColonSymbol::class);
+			$stream->transformToken($token->getReturnTypeToken());
+		}
 		
 		if ($token instanceof IWithBody)
 		{
-			$stream->push(CurlyBracketOpenSymbol::class);
 			$stream->transformToken($token->getBody());
-			$stream->push(CurlyBracketCloseSymbol::class);
 		}
 		else
 		{

@@ -14,11 +14,12 @@ interface IConstsDefinitionToken extends IOODefinitionScopeToken
 {
 	public function addConst(IClassConstDeclarationToken $token): void;
 	public function createConst(): IClassConstDeclarationToken;
-	
+
 	/**
 	 * @param string|IName|INameToken $name
 	 * @param IConstValueToken|string|int|double|bool|null $value
 	 * @param string $access
+	 * @return IClassConstDeclarationToken
 	 */
-	public function addConstValue($name, $value, string $access = AccessType::PUBLIC): void;
+	public function addConstValue($name, $value, string $access = AccessType::PUBLIC): IClassConstDeclarationToken;
 }

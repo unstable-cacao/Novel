@@ -7,9 +7,9 @@ use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
 use Novel\Core\Tokens\OOP\Variables\IMemberVariableToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
-use Novel\Tokens\Functions\Common\TStaticable;
-use Novel\Tokens\Named\TNamedToken;
 use Novel\Tokens\OOP\Accessibility\TWithAccessibilityToken;
+use Novel\Tokens\Named\TNamedToken;
+use Novel\Tokens\Functions\Common\TStaticable;
 
 
 class MemberVariableToken extends AbstractChildlessToken implements IMemberVariableToken

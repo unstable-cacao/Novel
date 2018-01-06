@@ -3,7 +3,7 @@ namespace Novel\Tokens\ScopeReference;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Operators\IOperator;
+use Novel\Core\Tokens\Operators\IOperatorToken;
 use Novel\Core\Tokens\ScopeReference\IScopeReferenceToken;
 use Novel\Tokens\Base\AbstractToken;
 
@@ -15,7 +15,7 @@ abstract class AbstractScopeReferenceToken extends AbstractToken implements ISco
 	private $right;
 	
 	
-	public function __construct(IOperator $refOperator)
+	public function __construct(IOperatorToken $refOperator)
 	{
 		$this->referenceOperator = $refOperator;
 	}

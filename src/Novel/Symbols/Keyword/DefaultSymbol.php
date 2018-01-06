@@ -11,7 +11,7 @@ class DefaultSymbol extends AbstractSingleStringSymbol implements ISymbol
 {
 	public function __construct()
 	{
-		parent::__construct("default");
+		parent::__construct('default');
 	}
 	
 	

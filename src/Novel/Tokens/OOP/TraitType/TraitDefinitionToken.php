@@ -8,10 +8,10 @@ use Novel\Tokens\OOP\Definition\TMemberVariablesDefinitionToken;
 use Novel\Tokens\OOP\Definition\TMethodsDefinitionToken;
 use Novel\Tokens\OOP\Definition\TMethodStubsDefinitionToken;
 use Novel\Tokens\OOP\Definition\TUseTraitsDefinitionToken;
-use Novel\Tokens\Scope\AbstractStatementsScopeToken;
+use Novel\Tokens\Scope\AbstractOODefinitionScopeToken;
 
 
-class TraitDefinitionToken extends AbstractStatementsScopeToken implements ITraitDefinitionToken
+class TraitDefinitionToken extends AbstractOODefinitionScopeToken implements ITraitDefinitionToken
 {
 	use TUseTraitsDefinitionToken;
 	use TConstsDefinitionToken;

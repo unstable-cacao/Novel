@@ -10,10 +10,12 @@ use Novel\Core\Tokens\INameToken;
 interface IWithReturnTypeToken extends IToken
 {
 	/**
-	 * @param string|INameToken|IName $type
+	 * @param string|INameToken|IName|null $type
 	 */
 	public function setReturnType($type): void;
-	public function getReturnType(): string;
-	public function getReturnTypeName(): IName;
-	public function getReturnTypeToken(): INameToken;
+	
+	public function getReturnType(): ?string;
+	public function getReturnTypeName(): ?IName;
+	public function getReturnTypeToken(): ?INameToken;
+	public function hasReturnType(): bool;
 }

@@ -10,35 +10,39 @@ use Novel\Tokens\Named\NameToken;
 trait TWithReturnTypeToken
 {
 	/** @var INameToken */
-	private $returnTypeToken;
+	private $returnTypeToken = null;
 	
 	
 	/**
-	 * @param string|INameToken|IName $type
+	 * @param string|INameToken|IName|null $type
 	 */
 	public function setReturnType($type): void
 	{
-		if (!($type instanceof INameToken))
+		if (!is_null($type) && !($type instanceof INameToken))
 		{
 			$type = new NameToken($type);
 		}
 		
-		$type->setParent($this);
 		$this->returnTypeToken = $type;
 	}
 	
-	public function getReturnType(): string
+	public function getReturnType(): ?string
 	{
-		return $this->returnTypeToken->getName();
+		return ($this->returnTypeToken ? $this->returnTypeToken->getName() : null);
 	}
 	
-	public function getReturnTypeName(): IName
+	public function getReturnTypeName(): ?IName
 	{
-		return $this->returnTypeToken->getNameObject();
+		return ($this->returnTypeToken ? $this->returnTypeToken->getNameObject() : null);
 	}
 	
-	public function getReturnTypeToken(): INameToken
+	public function getReturnTypeToken(): ?INameToken
 	{
 		return $this->returnTypeToken;
+	}
+	
+	public function hasReturnType(): bool
+	{
+		return !is_null($this->returnTypeToken);
 	}
 }
