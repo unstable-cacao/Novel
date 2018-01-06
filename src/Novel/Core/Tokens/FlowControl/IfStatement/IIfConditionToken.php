@@ -3,7 +3,7 @@ namespace Novel\Core\Tokens\FlowControl\IfStatement;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Scope\ICodeScopeToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
 
 

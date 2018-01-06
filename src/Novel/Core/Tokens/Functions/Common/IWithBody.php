@@ -3,7 +3,7 @@ namespace Novel\Core\Tokens\Functions\Common;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Scope\ICodeScopeToken;
 
 
 interface IWithBody

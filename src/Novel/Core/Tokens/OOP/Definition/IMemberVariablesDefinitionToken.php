@@ -5,11 +5,11 @@ namespace Novel\Core\Tokens\OOP\Definition;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
-use Novel\Core\Tokens\IScopeToken;
 use Novel\Core\Tokens\OOP\Variables\IMemberVariableToken;
+use Novel\Core\Tokens\Scope\IOODefinitionScopeToken;
 
 
-interface IMemberVariablesDefinitionToken extends IScopeToken
+interface IMemberVariablesDefinitionToken extends IOODefinitionScopeToken
 {
 	/**
 	 * @param IMemberVariableToken[] ...$token

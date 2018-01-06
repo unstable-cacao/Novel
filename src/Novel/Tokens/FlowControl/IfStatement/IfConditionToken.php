@@ -4,7 +4,7 @@ namespace Novel\Tokens\FlowControl\IfStatement;
 
 use Novel\Core\Tokens\FlowControl\IfStatement\IIfConditionToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Scope\ICodeScopeToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
 

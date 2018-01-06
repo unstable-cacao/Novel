@@ -5,7 +5,7 @@ namespace Novel\Tokens\FlowControl;
 use Novel\Core\IToken;
 use Novel\Core\Tokens\FlowControl\ForStatement\IForIterationToken;
 use Novel\Core\Tokens\FlowControl\IForStatementToken;
-use Novel\Core\Tokens\ICodeScopeToken;
+use Novel\Core\Tokens\Scope\ICodeScopeToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 use Novel\Tokens\FlowControl\ForStatement\ForIterationToken;
 use Novel\Tokens\Scope\CodeScopeToken;

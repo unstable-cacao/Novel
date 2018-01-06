@@ -3,10 +3,10 @@ namespace Novel\Core\Tokens\OOP\Definition;
 
 
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\IScopeToken;
+use Novel\Core\Tokens\Scope\IOODefinitionScopeToken;
 
 
-interface IUseTraitsDefinitionToken extends IScopeToken
+interface IUseTraitsDefinitionToken extends IOODefinitionScopeToken
 {
 	/**
 	 * @param string|INamedToken|string[]|INamedToken[] $item

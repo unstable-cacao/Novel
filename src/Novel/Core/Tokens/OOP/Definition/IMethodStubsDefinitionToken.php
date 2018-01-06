@@ -4,11 +4,11 @@ namespace Novel\Core\Tokens\OOP\Definition;
 
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
-use Novel\Core\Tokens\IScopeToken;
 use Novel\Core\Tokens\OOP\Methods\IMethodStubToken;
+use Novel\Core\Tokens\Scope\IOODefinitionScopeToken;
 
 
-interface IMethodStubsDefinitionToken extends IScopeToken
+interface IMethodStubsDefinitionToken extends IOODefinitionScopeToken 
 {
 	/**
 	 * @param IMethodStubToken[] ...$token

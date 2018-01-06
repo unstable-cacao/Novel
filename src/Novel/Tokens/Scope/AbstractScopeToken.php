@@ -3,7 +3,7 @@ namespace Novel\Tokens\Scope;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\IScopeToken;
+use Novel\Core\Tokens\Scope\IScopeToken;
 use Novel\Core\Tokens\Statements\IStatementToken;
 use Novel\Tokens\Base\AbstractParentToken;
 use Novel\Tokens\Statements\ExpressionStatementToken;

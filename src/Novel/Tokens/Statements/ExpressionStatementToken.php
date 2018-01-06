@@ -3,12 +3,12 @@ namespace Novel\Tokens\Statements;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Statements\IExpressionStatementToken;
 use Novel\Core\Tokens\Statements\IStatementToken;
-use Novel\Tokens\Base\AbstractSingleChildToken;
+use Novel\Core\Tokens\Statements\IExpressionStatementToken;
+use Novel\Tokens\Base\AbstractChildlessToken;
 
 
-class ExpressionStatementToken extends AbstractSingleChildToken implements IExpressionStatementToken
+class ExpressionStatementToken extends AbstractChildlessToken implements IExpressionStatementToken
 {
 	/** @var IToken */
 	private $statement;
@@ -30,15 +30,6 @@ class ExpressionStatementToken extends AbstractSingleChildToken implements IExpr
 	{
 		return $this->statement;
 	}
-	
-	/**
-	 * @return IToken[]
-	 */
-	public function children(): array
-	{
-		return [$this->statement];
-	}
-	
 	
 	public static function toStatement(IToken $target): IStatementToken
 	{

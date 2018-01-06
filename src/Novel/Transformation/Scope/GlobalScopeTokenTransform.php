@@ -3,7 +3,7 @@ namespace Novel\Transformation\Scope;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\IFileScopeToken;
+use Novel\Core\Tokens\Scope\IFileScopeToken;
 use Novel\Core\Stream\ITokenTransformStream;
 use Novel\Core\Transforming\ITokenTransform;
 

@@ -5,12 +5,12 @@ namespace Novel\Core\Tokens\OOP\Definition;
 use Novel\AccessType;
 use Novel\Core\Tokens\IName;
 use Novel\Core\Tokens\INameToken;
-use Novel\Core\Tokens\IScopeToken;
 use Novel\Core\Tokens\OOP\Consts\IClassConstDeclarationToken;
+use Novel\Core\Tokens\Scope\IOODefinitionScopeToken;
 use Novel\Core\Tokens\Consts\IConstValueToken;
 
 
-interface IConstsDefinitionToken extends IScopeToken
+interface IConstsDefinitionToken extends IOODefinitionScopeToken 
 {
 	public function addConst(IClassConstDeclarationToken $token): void;
 	public function createConst(): IClassConstDeclarationToken;
