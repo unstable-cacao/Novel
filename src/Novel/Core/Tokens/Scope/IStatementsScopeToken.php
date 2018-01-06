@@ -10,6 +10,7 @@ interface IStatementsScopeToken extends IScopeToken
 {
 	/**
 	 * @param IToken|IToken[]|IStatementToken|IStatementToken[] $token
+	 * @return static
 	 */
-	public function add(...$token);
+	public function add(...$token): IStatementsScopeToken;
 }

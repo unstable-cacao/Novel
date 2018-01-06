@@ -3,13 +3,13 @@ namespace Novel\Tokens\Scope;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Scope\IScopeToken;
+use Novel\Core\Tokens\Scope\IStatementsScopeToken;
 use Novel\Core\Tokens\Statements\IStatementToken;
 use Novel\Tokens\Base\AbstractParentToken;
 use Novel\Tokens\Statements\ExpressionStatementToken;
 
 
-abstract class AbstractScopeToken extends AbstractParentToken implements IScopeToken
+abstract class AbstractStatementsScopeToken extends AbstractParentToken implements IStatementsScopeToken
 {
 	/**
 	 * @param IToken[] $children
@@ -19,12 +19,13 @@ abstract class AbstractScopeToken extends AbstractParentToken implements IScopeT
 		if ($children)
 			$this->add($children);
 	}
-	
-	
+
+
 	/**
 	 * @param IToken|IToken[]|IStatementToken|IStatementToken[] $tokens
+	 * @return static|IStatementsScopeToken
 	 */
-	public function add(...$tokens)
+	public function add(...$tokens): IStatementsScopeToken
 	{
 		foreach ($tokens as $token)
 		{

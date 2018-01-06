@@ -9,6 +9,7 @@ interface IOODefinitionScopeToken extends IScopeToken
 {
 	/**
 	 * @param IToken|IToken[] $token
+	 * @return static
 	 */
-	public function add(...$token);
+	public function add(...$token): IOODefinitionScopeToken;
 }
