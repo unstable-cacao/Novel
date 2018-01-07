@@ -18,7 +18,7 @@ class CodeScopeTokenTransform implements ITokenTransform
 			return;
 		
 		$stream->push(CurlyBracketOpenSymbol::class);
-		$stream->push($stream->transformChildren($token));
+		$stream->transformChildren($token);
 		$stream->push(CurlyBracketCloseSymbol::class);
 	}
 }

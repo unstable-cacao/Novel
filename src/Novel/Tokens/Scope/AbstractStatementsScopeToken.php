@@ -38,5 +38,7 @@ abstract class AbstractStatementsScopeToken extends AbstractParentToken implemen
 				$this->addChildren(ExpressionStatementToken::toStatement($token));
 			}
 		}
+		
+		return $this;
 	}
 }

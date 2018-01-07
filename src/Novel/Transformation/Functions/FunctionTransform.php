@@ -19,6 +19,7 @@ use Novel\Symbols\ColonSymbol;
 use Novel\Symbols\Keyword\AbstractSymbol;
 use Novel\Symbols\Keyword\FunctionSymbol;
 use Novel\Symbols\Keyword\StaticSymbol;
+use Novel\Symbols\Keyword\UseSymbol;
 use Novel\Symbols\SemicolonSymbol;
 use Novel\Symbols\WhiteSpace\SpaceSymbol;
 
@@ -48,13 +49,22 @@ class FunctionTransform implements ITokenTransform
 		}
 		
 		$stream->push(FunctionSymbol::class);
-		$stream->push(SpaceSymbol::class);
-		$stream->push($token->getNameToken());
+		
+		$name = $token->getNameToken();
+		
+		if ($name->getName()) 
+		{
+			$stream->push(SpaceSymbol::class);
+			$stream->push($name);
+		}
 		
 		$stream->transformToken($token->getParamListToken());
 		
 		if ($token instanceof IWithUse && $token->hasUseScope())
 		{
+			$stream->push(SpaceSymbol::class);
+			$stream->push(UseSymbol::class);
+			$stream->push(SpaceSymbol::class);
 			$stream->transformToken($token->getUseToken());
 		}
 		

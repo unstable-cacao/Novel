@@ -56,7 +56,7 @@ class ParamDefinitionToken extends AbstractChildlessToken implements IParamDefin
 		if ($type)
 			$this->setType($type);
 		
-		if ($default != IParamListDefinition::NO_DEFAULT_VALUE)
+		if ($default !== IParamListDefinition::NO_DEFAULT_VALUE)
 			$this->setDefaultValue($default);
 		
 		$this->isNullable = $isNullable;
@@ -66,7 +66,7 @@ class ParamDefinitionToken extends AbstractChildlessToken implements IParamDefin
 	
 	public function isNullable(): bool
 	{
-		return $this->isNullable();
+		return $this->isNullable;
 	}
 	
 	public function setIsNullable(bool $isNullable): void
