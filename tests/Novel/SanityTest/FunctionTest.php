@@ -3,18 +3,20 @@ namespace Novel\SanityTest;
 
 
 use Novel\Tokens\Consts\ConstValueToken;
+use Novel\Tokens\Functions\ReturnToken;
 use Novel\Tokens\Functions\GlobalFunctionToken;
 use Novel\Tokens\Functions\Params\ParamDefinitionToken;
-use Novel\Tokens\Functions\ReturnStatementToken;
+
+use Novel\Transformation\NameTokenTransform;
+use Novel\Transformation\StatementTransform;
 use Novel\Transformation\ConstValueTokenTransform;
+use Novel\Transformation\Scope\CodeScopeTokenTransform;
 use Novel\Transformation\Functions\FunctionTransform;
 use Novel\Transformation\Functions\ParamDefinitionTransform;
 use Novel\Transformation\Functions\ParamListDefinitionTransform;
-use Novel\Transformation\Functions\ReturnStatementTokenTransform;
+use Novel\Transformation\Functions\ReturnExpressionTokenTransform;
 use Novel\Transformation\Functions\UseItemTokenTransform;
 use Novel\Transformation\Functions\UseScopeTransform;
-use Novel\Transformation\NameTokenTransform;
-use Novel\Transformation\Scope\CodeScopeTokenTransform;
 
 
 class FunctionTest extends TransformationTestCase
@@ -33,7 +35,7 @@ class FunctionTest extends TransformationTestCase
 				ParamDefinitionTransform::class,
 				NameTokenTransform::class,
 				ConstValueTokenTransform::class,
-				ReturnStatementTokenTransform::class,
+				ReturnExpressionTokenTransform::class,
 				UseScopeTransform::class,
 				UseItemTokenTransform::class
 			]
@@ -46,19 +48,20 @@ class FunctionTest extends TransformationTestCase
 		$token->addParam(new ParamDefinitionToken('p'), new ParamDefinitionToken('i', 'int', 0, true));
 		$token->addUseItem('param');
 		$token->setReturnType('int');
-		$token->addToBody(new ReturnStatementToken(new ConstValueToken(1)));
+		$token->addToBody(new ReturnToken(new ConstValueToken(1)));
 		
 		self::assertTransformation(
 			'function($p,?int $i=0) use ($param):int{return 1;}',
 			$token,
 			[
+				StatementTransform::class,
 				FunctionTransform::class,
 				CodeScopeTokenTransform::class,
 				ParamListDefinitionTransform::class,
 				ParamDefinitionTransform::class,
 				NameTokenTransform::class,
 				ConstValueTokenTransform::class,
-				ReturnStatementTokenTransform::class,
+				ReturnExpressionTokenTransform::class,
 				UseScopeTransform::class,
 				UseItemTokenTransform::class
 			]
