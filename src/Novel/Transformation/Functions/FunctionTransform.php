@@ -11,10 +11,6 @@ use Novel\Core\Tokens\Functions\Common\IWithUse;
 use Novel\Core\Tokens\Functions\IFunctionToken;
 use Novel\Core\Tokens\OOP\Accessibility\IWithAccessibilityToken;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Symbols\Bracket\CurlyBracketCloseSymbol;
-use Novel\Symbols\Bracket\CurlyBracketOpenSymbol;
-use Novel\Symbols\Bracket\RoundBracketCloseSymbol;
-use Novel\Symbols\Bracket\RoundBracketOpenSymbol;
 use Novel\Symbols\ColonSymbol;
 use Novel\Symbols\Keyword\AbstractSymbol;
 use Novel\Symbols\Keyword\FunctionSymbol;
@@ -31,15 +27,15 @@ class FunctionTransform implements ITokenTransform
 		if (!($token instanceof IFunctionToken))
 			return;
 		
-		if ($token instanceof IWithAccessibilityToken)
-		{
-			$stream->transformToken($token->getAccessibilityToken());
-		}
-		
 		if ($token instanceof IAbstractable && $token->isAbstract())
 		{
 			$stream->push(AbstractSymbol::class);
 			$stream->push(SpaceSymbol::class);
+		}
+		
+		if ($token instanceof IWithAccessibilityToken)
+		{
+			$stream->transformToken($token->getAccessibilityToken());
 		}
 		
 		if ($token instanceof IStaticable && $token->isStatic())

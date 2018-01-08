@@ -7,6 +7,7 @@ use Novel\Core\Tokens\Functions\IFunctionCallToken;
 use Novel\Core\Tokens\Functions\Params\IInvokeParametersListToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
+use Novel\Tokens\Functions\Params\InvokeParametersListToken;
 
 
 class FunctionCallToken extends AbstractChildlessToken implements IFunctionCallToken
@@ -16,6 +17,13 @@ class FunctionCallToken extends AbstractChildlessToken implements IFunctionCallT
 	
 	/** @var IInvokeParametersListToken */
 	private $parameterList;
+	
+	
+	public function __construct(IToken $token)
+	{
+		$this->target = $token;
+		$this->parameterList = new InvokeParametersListToken();
+	}
 	
 	
 	public function getTarget(): IToken

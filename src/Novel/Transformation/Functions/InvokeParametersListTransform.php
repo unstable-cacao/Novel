@@ -4,20 +4,21 @@ namespace Novel\Transformation\Functions;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
-use Novel\Core\Tokens\Functions\IFunctionCallToken;
+use Novel\Core\Tokens\Functions\Params\IInvokeParametersListToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\Bracket\RoundBracketCloseSymbol;
 use Novel\Symbols\Bracket\RoundBracketOpenSymbol;
 
 
-class FunctionCallTransform implements ITokenTransform
+class InvokeParametersListTransform implements ITokenTransform
 {
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if (!($token instanceof IFunctionCallToken))
+		if (!($token instanceof IInvokeParametersListToken))
 			return;
 		
-		$stream->transformToken($token->getTarget());
-		$stream->transformToken($token->getParametersList());
+		$stream->push(RoundBracketOpenSymbol::class);
+		$stream->transformChildren($token);
+		$stream->push(RoundBracketCloseSymbol::class);
 	}
 }
