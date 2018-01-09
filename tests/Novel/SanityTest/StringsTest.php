@@ -7,9 +7,6 @@ use Novel\Tokens\Strings\DoubleQuoteStringToken;
 use Novel\Tokens\Strings\HeredocToken;
 use Novel\Tokens\Strings\InStringExpressionToken;
 use Novel\Tokens\Strings\NowdocToken;
-use Novel\Transformation\PlainTextTransformer;
-use Novel\Transformation\Reference\NamedVariableTransform;
-use Novel\Transformation\StringTransform;
 
 
 class StringsTest extends TransformationTestCase
@@ -30,12 +27,7 @@ class StringsTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'"Hello {$arr} $arr"',
-			$token,
-			[
-				StringTransform::class,
-				PlainTextTransformer::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -57,12 +49,7 @@ class StringsTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			"<<<TEST\nHello\n" . '{$arr}' . "\n" . '$arr' . "\nTest\nTEST",
-			$token,
-			[
-				StringTransform::class,
-				PlainTextTransformer::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -74,12 +61,7 @@ class StringsTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'{$Test}',
-			$token,
-			[
-				StringTransform::class,
-				PlainTextTransformer::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -93,11 +75,7 @@ class StringsTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			"<<<'TEST'\nHello\n\nTest\nTEST",
-			$token,
-			[
-				StringTransform::class,
-				PlainTextTransformer::class
-			]
+			$token
 		);
 	}
 }

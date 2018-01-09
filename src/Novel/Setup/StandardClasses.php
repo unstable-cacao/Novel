@@ -8,6 +8,11 @@ use Novel\Parsing\SingleStringSymbolParser;
 
 use Novel\Transformation\Arrays;
 use Novel\Transformation\Comments;
+use Novel\Transformation;
+use Novel\Transformation\Functions;
+use Novel\Transformation\OOP;
+use Novel\Transformation\Reference;
+use Novel\Transformation\Scope;
 
 
 class StandardClasses
@@ -21,7 +26,32 @@ class StandardClasses
 		Arrays\SimpleKeyValueTransform::class,
 		
 		Comments\MultiLineCommentTransform::class,
-		Comments\OneLineCommentTransform::class
+		Comments\OneLineCommentTransform::class,
+		
+		Functions\FunctionCallTransform::class,
+		Functions\FunctionTransform::class,
+		Functions\InvokeParametersListTransform::class,
+		Functions\ParamDefinitionTransform::class,
+		Functions\ParamListDefinitionTransform::class,
+		Functions\ReturnExpressionTokenTransform::class,
+		Functions\UseItemTokenTransform::class,
+		Functions\UseScopeTransform::class,
+		
+		OOP\AccessibilityTransform::class,
+		
+		Reference\NamedVariableTransform::class,
+		
+		Scope\CodeScopeTokenTransform::class,
+		Scope\GlobalScopeTokenTransform::class,
+		
+		Transformation\ConstValueTokenTransform::class,
+		Transformation\GeneralTokenTransformer::class,
+		Transformation\NamespaceTokenTransform::class,
+		Transformation\NameTokenTransform::class,
+		Transformation\OperatorTokenTransformer::class,
+		Transformation\PlainTextTransformer::class,
+		Transformation\StatementTransform::class,
+		Transformation\StringTransform::class
 	];
 	
 	public const PARSERS = 

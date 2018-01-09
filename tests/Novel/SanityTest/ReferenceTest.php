@@ -3,7 +3,6 @@ namespace Novel\SanityTest;
 
 
 use Novel\Tokens\Reference\NamedVariableToken;
-use Novel\Transformation\Reference\NamedVariableTransform;
 
 
 class ReferenceTest extends TransformationTestCase
@@ -14,10 +13,7 @@ class ReferenceTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'$var',
-			$token,
-			[
-				NamedVariableTransform::class,
-			]
+			$token
 		);
 	}
 }

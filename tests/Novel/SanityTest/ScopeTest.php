@@ -4,8 +4,6 @@ namespace Novel\SanityTest;
 
 use Novel\Tokens\Scope\CodeScopeToken;
 use Novel\Tokens\Scope\FileScopeToken;
-use Novel\Transformation\Scope\CodeScopeTokenTransform;
-use Novel\Transformation\Scope\GlobalScopeTokenTransform;
 
 
 class ScopeTest extends TransformationTestCase
@@ -14,10 +12,7 @@ class ScopeTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"<?php\n",
-			new FileScopeToken(),
-			[
-				GlobalScopeTokenTransform::class
-			]
+			new FileScopeToken()
 		);
 	}
 	
@@ -25,10 +20,7 @@ class ScopeTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"{}",
-			new CodeScopeToken(),
-			[
-				CodeScopeTokenTransform::class
-			]
+			new CodeScopeToken()
 		);
 	}
 }

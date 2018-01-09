@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 
 class TransformationTestCase extends TestCase
 {
-	public static function assertTransformation(string $expected, IToken $root, $setup): void
+	public static function assertTransformation(string $expected, IToken $root, $setup = []): void
 	{
 		if (!is_array($setup))
 			$setup = [$setup];
@@ -21,6 +21,7 @@ class TransformationTestCase extends TestCase
 		$config->add(array_unique(
 			array_merge(
 				$setup,
+				StandardClasses::TRANSFORMERS,
 				StandardClasses::PARSERS
 			)
 		));

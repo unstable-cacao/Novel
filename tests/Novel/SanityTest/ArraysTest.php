@@ -9,13 +9,6 @@ use Novel\Tokens\Arrays\KeyValueToken;
 use Novel\Tokens\Arrays\PushElementOperation;
 use Novel\Tokens\Consts\ConstValueToken;
 use Novel\Tokens\Reference\NamedVariableToken;
-use Novel\Transformation\Arrays\ArrayAccessTransform;
-use Novel\Transformation\Arrays\ArrayDefinitionTransform;
-use Novel\Transformation\Arrays\ArrayPushElementOperationTransform;
-use Novel\Transformation\Arrays\ArrayUnwrapTransform;
-use Novel\Transformation\Arrays\SimpleKeyValueTransform;
-use Novel\Transformation\ConstValueTokenTransform;
-use Novel\Transformation\Reference\NamedVariableTransform;
 
 
 class ArraysTest extends TransformationTestCase
@@ -29,12 +22,7 @@ class ArraysTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'$arr[0]',
-			$token,
-			[
-				ArrayAccessTransform::class,
-				ConstValueTokenTransform::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -45,11 +33,7 @@ class ArraysTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'[1,2,3,4]',
-			$token,
-			[
-				ArrayDefinitionTransform::class,
-				ConstValueTokenTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -62,12 +46,7 @@ class ArraysTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'$arr[]=15',
-			$token,
-			[
-				ArrayPushElementOperationTransform::class,
-				ConstValueTokenTransform::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -79,11 +58,7 @@ class ArraysTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'...$arr',
-			$token,
-			[
-				ArrayUnwrapTransform::class,
-				NamedVariableTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -95,11 +70,7 @@ class ArraysTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			"\'Test\'=>\'Five\'",
-			$token,
-			[
-				SimpleKeyValueTransform::class,
-				ConstValueTokenTransform::class
-			]
+			$token
 		);
 	}
 }

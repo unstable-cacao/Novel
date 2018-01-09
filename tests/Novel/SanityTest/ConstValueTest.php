@@ -3,7 +3,6 @@ namespace Novel\SanityTest;
 
 
 use Novel\Tokens\Consts\ConstValueToken;
-use Novel\Transformation\ConstValueTokenTransform;
 
 
 class ConstValueTest extends TransformationTestCase
@@ -12,10 +11,7 @@ class ConstValueTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"true",
-			new ConstValueToken(true),
-			[
-				ConstValueTokenTransform::class
-			]
+			new ConstValueToken(true)
 		);
 	}
 	
@@ -23,10 +19,7 @@ class ConstValueTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"null",
-			new ConstValueToken(null),
-			[
-				ConstValueTokenTransform::class
-			]
+			new ConstValueToken(null)
 		);
 	}
 	
@@ -34,10 +27,7 @@ class ConstValueTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"\'Test\'",
-			new ConstValueToken('Test'),
-			[
-				ConstValueTokenTransform::class
-			]
+			new ConstValueToken('Test')
 		);
 	}
 	
@@ -45,10 +35,7 @@ class ConstValueTest extends TransformationTestCase
 	{
 		self::assertTransformation(
 			"15",
-			new ConstValueToken(15),
-			[
-				ConstValueTokenTransform::class
-			]
+			new ConstValueToken(15)
 		);
 	}
 }

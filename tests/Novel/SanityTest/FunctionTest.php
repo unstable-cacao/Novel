@@ -12,21 +12,6 @@ use Novel\Tokens\Functions\Params\ParamDefinitionToken;
 use Novel\Tokens\OOP\Methods\MethodStubToken;
 use Novel\Tokens\OOP\Methods\MethodToken;
 use Novel\Tokens\Reference\NamedVariableToken;
-use Novel\Tokens\Statements\ExpressionStatementToken;
-use Novel\Transformation\Functions\FunctionCallTransform;
-use Novel\Transformation\Functions\InvokeParametersListTransform;
-use Novel\Transformation\NameTokenTransform;
-use Novel\Transformation\OOP\AccessibilityTransform;
-use Novel\Transformation\Reference\NamedVariableTransform;
-use Novel\Transformation\StatementTransform;
-use Novel\Transformation\ConstValueTokenTransform;
-use Novel\Transformation\Scope\CodeScopeTokenTransform;
-use Novel\Transformation\Functions\FunctionTransform;
-use Novel\Transformation\Functions\ParamDefinitionTransform;
-use Novel\Transformation\Functions\ParamListDefinitionTransform;
-use Novel\Transformation\Functions\ReturnExpressionTokenTransform;
-use Novel\Transformation\Functions\UseItemTokenTransform;
-use Novel\Transformation\Functions\UseScopeTransform;
 
 
 class FunctionTest extends TransformationTestCase
@@ -37,19 +22,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'function(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -63,20 +36,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'function($p,?int $i=0) use ($param):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -86,19 +46,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'function test(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -112,20 +60,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'function test($p,?int $i=0) use ($param):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -135,19 +70,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public function test(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -158,19 +81,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'protected function test();',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -181,19 +92,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'abstract public function test(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -204,19 +103,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public static function test(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -227,19 +114,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public static function test();',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -251,19 +126,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'abstract public static function test(){}',
-			$token,
-			[
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -276,20 +139,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public function test($p,?int $i=0):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -301,20 +151,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public function test($p,?int $i=0):int;',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -328,20 +165,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'abstract public function test($p,?int $i=0):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -355,20 +179,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public static function test($p,?int $i=0):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -381,20 +192,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'public static function test($p,?int $i=0):int;',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -409,20 +207,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'abstract public static function test($p,?int $i=0):int{return 1;}',
-			$token,
-			[
-				StatementTransform::class,
-				FunctionTransform::class,
-				CodeScopeTokenTransform::class,
-				ParamListDefinitionTransform::class,
-				ParamDefinitionTransform::class,
-				NameTokenTransform::class,
-				ConstValueTokenTransform::class,
-				ReturnExpressionTokenTransform::class,
-				UseScopeTransform::class,
-				UseItemTokenTransform::class,
-				AccessibilityTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -432,12 +217,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'$test()',
-			$token,
-			[
-				FunctionCallTransform::class,
-				NamedVariableTransform::class,
-				InvokeParametersListTransform::class
-			]
+			$token
 		);
 	}
 	
@@ -448,12 +228,7 @@ class FunctionTest extends TransformationTestCase
 		
 		self::assertTransformation(
 			'$test($p)',
-			$token,
-			[
-				FunctionCallTransform::class,
-				NamedVariableTransform::class,
-				InvokeParametersListTransform::class
-			]
+			$token
 		);
 	}
 }
