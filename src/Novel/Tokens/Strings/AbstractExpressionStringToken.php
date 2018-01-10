@@ -17,6 +17,13 @@ abstract class AbstractExpressionStringToken extends AbstractToken implements IS
 	private $children = [];
 	
 	
+	public function __construct(?string $string = null)
+	{
+		if ($string)
+			$this->add($string);
+	}
+	
+	
 	/**
 	 * @param string|string[]|IToken|IToken[] $token
 	 */

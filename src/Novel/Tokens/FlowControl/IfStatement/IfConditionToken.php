@@ -2,22 +2,22 @@
 namespace Novel\Tokens\FlowControl\IfStatement;
 
 
+use Novel\Core\IToken;
 use Novel\Core\Tokens\FlowControl\IfStatement\IIfConditionToken;
-use Novel\Core\Tokens\Generic\IValueExpressionToken;
 use Novel\Core\Tokens\Scope\ICodeScopeToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
 
 class IfConditionToken extends AbstractChildlessToken implements IIfConditionToken
 {
-	/** @var IValueExpressionToken */
+	/** @var IToken */
 	private $condition;
 	
 	/** @var  ICodeScopeToken */
 	private $body;
 	
 	
-	public function __construct(?IValueExpressionToken $condition = null)
+	public function __construct(?IToken $condition = null)
 	{
 		if ($condition)
 			$this->setCondition($condition);
@@ -34,12 +34,12 @@ class IfConditionToken extends AbstractChildlessToken implements IIfConditionTok
 		return $this->body;
 	}
 	
-	public function getCondition(): IValueExpressionToken
+	public function getCondition(): IToken
 	{
 		return $this->condition;
 	}
 	
-	public function setCondition(IValueExpressionToken $exp): void
+	public function setCondition(IToken $exp): void
 	{
 		$this->condition = $exp;
 	}
