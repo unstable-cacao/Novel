@@ -42,6 +42,7 @@ class StandardClasses
 		OOP\ConstDeclarationTransform::class,
 		OOP\TraitTransform::class,
 		OOP\MemberVariableTransform::class,
+		OOP\ClassTransform::class,
 		
 		Reference\NamedVariableTransform::class,
 		

@@ -13,4 +13,6 @@ interface IImplementsDeclarationToken extends IToken
 	 * @param string|INamedToken|IName $target
 	 */
 	public function addImplement($target): void;
+	public function getImplement(): array;
+	public function isImplement(): bool;
 }

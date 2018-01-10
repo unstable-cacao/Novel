@@ -2,6 +2,7 @@
 namespace Novel\Core\Tokens\OOP\ClassType;
 
 
+use Novel\Core\Tokens\Functions\Common\IAbstractable;
 use Novel\Core\Tokens\INamedToken;
 use Novel\Core\Tokens\OOP\Declaration\IExtendsDeclarationToken;
 use Novel\Core\Tokens\OOP\Declaration\IImplementsDeclarationToken;
@@ -10,7 +11,8 @@ use Novel\Core\Tokens\OOP\Declaration\IImplementsDeclarationToken;
 interface IClassDeclarationToken extends 
 	INamedToken,
 	IExtendsDeclarationToken,
-	IImplementsDeclarationToken
+	IImplementsDeclarationToken,
+	IAbstractable
 {
 
 }

@@ -31,4 +31,14 @@ trait TImplementsDeclarationToken
 		$target->setParent($this);
 		$this->implementTargets[] = $target;
 	}
+	
+	public function getImplement(): array 
+	{
+		return $this->implementTargets;
+	}
+	
+	public function isImplement(): bool
+	{
+		return $this->implementTargets ? true : false;
+	}
 }
