@@ -38,6 +38,8 @@ class StandardClasses
 		Functions\UseScopeTransform::class,
 		
 		OOP\AccessibilityTransform::class,
+		OOP\InterfaceTransformer::class,
+		OOP\ConstDeclarationTransform::class,
 		
 		Reference\NamedVariableTransform::class,
 		

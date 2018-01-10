@@ -31,4 +31,14 @@ trait TExtendsDeclarationToken
 		$target->setParent($this);
 		$this->extendTarget = $target;
 	}
+	
+	public function getExtend(): INameToken
+	{
+		return $this->extendTarget;
+	}
+	
+	public function isExtend(): bool 
+	{
+		return $this->extendTarget ? true : false;
+	}
 }

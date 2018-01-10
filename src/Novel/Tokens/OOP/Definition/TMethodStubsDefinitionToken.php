@@ -26,10 +26,10 @@ trait TMethodStubsDefinitionToken
 			}
 			else
 			{
-				if (!($token instanceof IMethodStubToken))
+				if (!($item instanceof IMethodStubToken))
 					throw new \Exception("Token can be instance of IMethodStubToken or array only");
 				
-				$this->add($token);
+				$this->add($item);
 			}
 		}
 		
