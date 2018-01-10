@@ -4,7 +4,7 @@ namespace Novel\Transformation;
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
-use Novel\Core\Tokens\OOP\InterfaceType\IInterfaceDefinitionToken;
+use Novel\Core\Tokens\Scope\IOODefinitionScopeToken;
 use Novel\Core\Tokens\ScopeReference\IScopeReferenceToken;
 use Novel\Core\Transforming\ITokenTransform;
 
@@ -13,7 +13,7 @@ class GeneralTokenTransformer implements ITokenTransform
 {
 	private const GENERAL_TOKENS = [
 		IScopeReferenceToken::class,
-		IInterfaceDefinitionToken::class
+		IOODefinitionScopeToken::class
 	];
 	
 	

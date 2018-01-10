@@ -40,6 +40,8 @@ class StandardClasses
 		OOP\AccessibilityTransform::class,
 		OOP\InterfaceTransformer::class,
 		OOP\ConstDeclarationTransform::class,
+		OOP\TraitTransform::class,
+		OOP\MemberVariableTransform::class,
 		
 		Reference\NamedVariableTransform::class,
 		

@@ -26,10 +26,10 @@ trait TMethodsDefinitionToken
 			}
 			else
 			{
-				if (!($token instanceof IMethodToken))
+				if (!($item instanceof IMethodToken))
 					throw new \Exception("Token can be instance of IMethodToken or array only");
 				
-				$this->add($token);
+				$this->add($item);
 			}
 		}
 		

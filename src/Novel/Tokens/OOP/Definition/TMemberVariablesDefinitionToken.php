@@ -27,10 +27,10 @@ trait TMemberVariablesDefinitionToken
 			}
 			else 
 			{
-				if (!($token instanceof IMemberVariableToken))
+				if (!($item instanceof IMemberVariableToken))
 					throw new \Exception("Token can be instance of IMemberVariableToken or array only");
 				
-				$this->add($token);
+				$this->add($item);
 			}
 		}
 		
