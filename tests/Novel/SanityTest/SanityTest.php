@@ -99,6 +99,6 @@ class SanityTest extends TransformationTestCase
 		$definition->add($function);
 		$fileToken->add($class);
 		
-		self::assertTransformation(file_get_contents('TestFiles/TestClass.php'), $fileToken);
+		self::assertTransformation(file_get_contents(__DIR__ . '/TestFiles/TestClass.php'), $fileToken);
 	}
 }

@@ -6,7 +6,6 @@ use Novel\Core\IToken;
 use Novel\Core\Transforming\ITokenChainTransform;
 use Novel\Core\Transforming\ITokenMiddlewareTransform;
 use Novel\Core\Transforming\ITokenTransform;
-use Novel\Tokens\Operators\AdditionToken;
 use Novel\Tokens\Strings\PlainTextToken;
 use PHPUnit\Framework\TestCase;
 
