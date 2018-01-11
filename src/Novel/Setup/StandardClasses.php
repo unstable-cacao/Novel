@@ -13,6 +13,8 @@ use Novel\Transformation\Functions;
 use Novel\Transformation\OOP;
 use Novel\Transformation\Reference;
 use Novel\Transformation\Scope;
+use Novel\Transformation\FlowControl;
+use Novel\Transformation\Operators;
 
 
 class StandardClasses
@@ -54,10 +56,16 @@ class StandardClasses
 		Transformation\GeneralTokenTransformer::class,
 		Transformation\NamespaceTokenTransform::class,
 		Transformation\NameTokenTransform::class,
-		Transformation\OperatorTokenTransformer::class,
 		Transformation\PlainTextTransformer::class,
 		Transformation\StatementTransform::class,
-		Transformation\StringTransform::class
+		Transformation\StringTransform::class,
+		
+		FlowControl\IfConditionTransform::class,
+		FlowControl\IfStatementTransform::class,
+		
+		Operators\BinaryOperationTransform::class,
+		Operators\OperatorTokenTransformer::class,
+		Operators\UnaryOperationTransform::class
 	];
 	
 	public const PARSERS = 

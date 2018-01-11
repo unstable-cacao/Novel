@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Transformation;
+namespace Novel\Transformation\Operators;
 
 
 use Novel\Core\IToken;

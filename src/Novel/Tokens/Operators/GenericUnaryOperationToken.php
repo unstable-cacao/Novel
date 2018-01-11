@@ -11,6 +11,9 @@ class GenericUnaryOperationToken extends AbstractSingleOperatorToken implements 
 	/** @var IToken */
 	private $target;
 	
+	/** @var bool */
+	private $isLeft = true;
+	
 	
 	public function setOperand(IToken $target): void
 	{
@@ -20,5 +23,15 @@ class GenericUnaryOperationToken extends AbstractSingleOperatorToken implements 
 	public function getOperand(): IToken
 	{
 		return $this->target;
+	}
+	
+	public function isLeft(): bool
+	{
+		return $this->isLeft;
+	}
+	
+	public function setIsLeft(bool $isLeft): void
+	{
+		$this->isLeft = $isLeft;
 	}
 }

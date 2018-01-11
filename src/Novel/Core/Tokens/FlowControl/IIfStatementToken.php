@@ -23,4 +23,6 @@ interface IIfStatementToken extends IFlowControlStatmentToken
 	 * @return ICodeScopeToken
 	 */
 	public function getElseStatement(): ICodeScopeToken;
+	
+	public function hasElseStatement(): bool;
 }

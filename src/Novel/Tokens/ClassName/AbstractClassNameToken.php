@@ -62,8 +62,8 @@ abstract class AbstractClassNameToken extends AbstractToken implements IClassNam
 			}
 			
 			$this->namespace = ($this->namespace ? '\\' : '') . $part->getName();
-			$this->parts[] = [$part->getName()];
-			$this->partTokens[] = [$part];
+			$this->parts[] = $part->getName();
+			$this->partTokens[] = $part;
 		}
 	}
 }

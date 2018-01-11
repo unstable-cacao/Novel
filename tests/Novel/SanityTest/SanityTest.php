@@ -40,7 +40,7 @@ class SanityTest extends TransformationTestCase
 		$real = new NamedVariableToken('real');
 		$message = new NamedVariableToken('message');
 		
-		$function->addParam($expected->getNameToken(), $real->getNameToken(), new ParamDefinitionToken('message', 'string', ''));
+		$function->addParam($expected->getNameToken(), $real->getNameToken(), new ParamDefinitionToken('message', 'string', '', false));
 		
 		$condition = new GenericUnaryOperationToken('!');
 		$condition->setOperand($message);
@@ -72,8 +72,10 @@ class SanityTest extends TransformationTestCase
 		// add the parts together
 		$ifBody->add($statement);
 		$if->setBody($ifBody);
+		$ifStatement = new IfStatementToken();
+		$ifStatement->addCondition($if);
 		
-		$definition->add($if);
+		$function->addToBody($ifStatement);
 		
 		// create if token with condition
 		$condition = new GenericBinaryOperation('!==');
@@ -89,9 +91,12 @@ class SanityTest extends TransformationTestCase
 		// add the parts together
 		$ifBody->add($echo);
 		$if->setBody($ifBody);
+		$ifStatement = new IfStatementToken();
+		$ifStatement->addCondition($if);
 		
-		$definition->add($if);
+		$function->addToBody($ifStatement);
 		
+		$definition->add($function);
 		$fileToken->add($class);
 		
 		self::assertTransformation(file_get_contents('TestFiles/TestClass.php'), $fileToken);

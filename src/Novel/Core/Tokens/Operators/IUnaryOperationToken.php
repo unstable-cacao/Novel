@@ -9,4 +9,7 @@ interface IUnaryOperationToken extends ISingleOperatorToken
 {
 	public function setOperand(IToken $target): void;
 	public function getOperand(): IToken;
+	
+	public function isLeft(): bool;
+	public function setIsLeft(bool $isLeft): void;
 }

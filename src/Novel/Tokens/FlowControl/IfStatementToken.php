@@ -54,4 +54,9 @@ class IfStatementToken extends AbstractChildlessToken implements IIfStatementTok
 		
 		return $this->else;
 	}
+	
+	public function hasElseStatement(): bool
+	{
+		return $this->else ? true : false;
+	}
 }
