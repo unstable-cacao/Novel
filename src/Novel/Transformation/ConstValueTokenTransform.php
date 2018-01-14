@@ -38,7 +38,7 @@ class ConstValueTokenTransform implements ITokenTransform
 		}
 		else if (is_string($value))
 		{
-			$stream->push(new ConstStringSymbol("\'$value\'"));
+			$stream->push(new ConstStringSymbol("'$value'"));
 		}
 		else
 		{

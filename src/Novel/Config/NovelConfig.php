@@ -4,6 +4,8 @@ namespace Novel\Config;
 
 use Novel\Core\Parsing\IParseSetup;
 use Novel\Core\Parsing\ISymbolParser;
+use Novel\Core\Transforming\ITokenChainTransform;
+use Novel\Core\Transforming\ITokenMiddlewareTransform;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Core\Transforming\ITransformSetup;
 use Novel\Setup\StandardClasses;
@@ -51,7 +53,9 @@ class NovelConfig extends LiteObject
 				if (is_string($item))
 					$item = new $item;
 				
-				if ($item instanceof ITokenTransform)
+				if ($item instanceof ITokenTransform || 
+					$item instanceof ITokenChainTransform || 
+					$item instanceof ITokenMiddlewareTransform)
 					$this->TransferConfig->add($item);
 				
 				if ($item instanceof ISymbolParser)

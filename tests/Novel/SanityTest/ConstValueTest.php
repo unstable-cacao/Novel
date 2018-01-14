@@ -26,7 +26,7 @@ class ConstValueTest extends TransformationTestCase
 	public function test_ConstValueToken_string()
 	{
 		self::assertTransformation(
-			"\'Test\'",
+			"'Test'",
 			new ConstValueToken('Test')
 		);
 	}

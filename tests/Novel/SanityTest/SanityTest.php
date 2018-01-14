@@ -17,6 +17,7 @@ use Novel\Tokens\Reference\NamedVariableToken;
 use Novel\Tokens\Scope\CodeScopeToken;
 use Novel\Tokens\Scope\FileScopeToken;
 use Novel\Tokens\Strings\DoubleQuoteStringToken;
+use Novel\Transformation\Utils\SymbolDumperPostTransform;
 
 
 class SanityTest extends TransformationTestCase
@@ -55,7 +56,7 @@ class SanityTest extends TransformationTestCase
 		$lastPart = new GenericBinaryOperation('.');
 		$printFunction = new FunctionCallToken(new NameToken('print_r'));
 		$printFunction->addParameter($real, ConstValueToken::true());
-		$lastPart->setOperands(new DoubleQuoteStringToken("\nequals to expected\n"), $printFunction);
+		$lastPart->setOperands(new DoubleQuoteStringToken(" equals to expected "), $printFunction);
 		
 		$middlePart = new GenericBinaryOperation('.');
 		$printFunction = new FunctionCallToken(new NameToken('print_r'));
@@ -63,7 +64,7 @@ class SanityTest extends TransformationTestCase
 		$middlePart->setOperands($printFunction, $lastPart);
 		
 		$firstPart = new GenericBinaryOperation('.');
-		$firstPart->setOperands(new DoubleQuoteStringToken("Failed asserting that\n"), $middlePart);
+		$firstPart->setOperands(new DoubleQuoteStringToken("Failed asserting that "), $middlePart);
 		
 		$statement = new GenericBinaryOperation('=');
 		$statement->setOperands($message, $firstPart);
@@ -99,6 +100,7 @@ class SanityTest extends TransformationTestCase
 		$definition->add($function);
 		$fileToken->add($class);
 		
+		$setup = [SymbolDumperPostTransform::class];
 		self::assertTransformation(file_get_contents(__DIR__ . '/TestFiles/TestClass.php'), $fileToken);
 	}
 }

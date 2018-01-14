@@ -69,7 +69,7 @@ class ArraysTest extends TransformationTestCase
 		$token->setValue('Five');
 		
 		self::assertTransformation(
-			"\'Test\'=>\'Five\'",
+			"'Test'=>'Five'",
 			$token
 		);
 	}
