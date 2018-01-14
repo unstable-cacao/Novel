@@ -40,7 +40,7 @@ class StandardClasses
 		Functions\UseScopeTransform::class,
 		
 		OOP\AccessibilityTransform::class,
-		OOP\InterfaceTransformer::class,
+		OOP\InterfaceTransform::class,
 		OOP\ConstDeclarationTransform::class,
 		OOP\TraitTransform::class,
 		OOP\MemberVariableTransform::class,
@@ -53,10 +53,10 @@ class StandardClasses
 		Scope\GlobalScopeTokenTransform::class,
 		
 		Transformation\ConstValueTokenTransform::class,
-		Transformation\GeneralTokenTransformer::class,
+		Transformation\GeneralTokenTransform::class,
 		Transformation\NamespaceTokenTransform::class,
 		Transformation\NameTokenTransform::class,
-		Transformation\PlainTextTransformer::class,
+		Transformation\PlainTextTransform::class,
 		Transformation\StatementTransform::class,
 		Transformation\StringTransform::class,
 		
@@ -64,7 +64,7 @@ class StandardClasses
 		FlowControl\IfStatementTransform::class,
 		
 		Operators\BinaryOperationTransform::class,
-		Operators\OperatorTokenTransformer::class,
+		Operators\OperatorTokenTransform::class,
 		Operators\UnaryOperationTransform::class
 	];
 	

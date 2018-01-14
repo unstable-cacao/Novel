@@ -13,7 +13,7 @@ use Novel\Symbols\Keyword\InterfaceSymbol;
 use Novel\Symbols\WhiteSpace\SpaceSymbol;
 
 
-class InterfaceTransformer implements ITokenTransform
+class InterfaceTransform implements ITokenTransform
 {
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{

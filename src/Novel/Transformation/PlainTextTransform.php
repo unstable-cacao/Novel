@@ -1,21 +1,21 @@
 <?php
-namespace Novel\Transformation\Operators;
+namespace Novel\Transformation;
 
 
 use Novel\Core\IToken;
 use Novel\Core\Stream\ITokenTransformStream;
-use Novel\Core\Tokens\Operators\IOperatorToken;
+use Novel\Core\Tokens\Strings\IPlainTextToken;
 use Novel\Core\Transforming\ITokenTransform;
 use Novel\Symbols\PlainTextSymbol;
 
 
-class OperatorTokenTransformer implements ITokenTransform
+class PlainTextTransform implements ITokenTransform
 {
 	public function transform(IToken $token, ITokenTransformStream $stream): void
 	{
-		if (!($token instanceof IOperatorToken))
+		if (!($token instanceof IPlainTextToken))
 			return;
 		
-		$stream->push(new PlainTextSymbol($token->getOperator()));
+		$stream->push(new PlainTextSymbol($token->text()));
 	}
 }

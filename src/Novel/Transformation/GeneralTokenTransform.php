@@ -9,7 +9,7 @@ use Novel\Core\Tokens\ScopeReference\IScopeReferenceToken;
 use Novel\Core\Transforming\ITokenTransform;
 
 
-class GeneralTokenTransformer implements ITokenTransform
+class GeneralTokenTransform implements ITokenTransform
 {
 	private const GENERAL_TOKENS = [
 		IScopeReferenceToken::class,
