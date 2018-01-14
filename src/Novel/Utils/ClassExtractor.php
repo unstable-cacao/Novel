@@ -80,6 +80,7 @@ class ClassExtractor
 		$saveClass = false;
 		$saveImplements = false;
 		$saveUses = false;
+		$static = false;
 		
 		foreach ($tokens as $token)
 		{
@@ -90,6 +91,9 @@ class ClassExtractor
 				
 				switch ($token[0])
 				{
+					case T_DOUBLE_COLON:
+						$static = true;
+						continue;
 					case T_WHITESPACE:
 						continue;
 					case T_NAMESPACE:
@@ -98,7 +102,15 @@ class ClassExtractor
 					case T_CLASS:
 					case T_INTERFACE:
 					case T_TRAIT:
-						$saveClass = true;
+						if ($static)
+						{
+							$static = false;
+						}
+						else
+						{
+							$saveClass = true;
+						}
+						
 						continue;
 					case T_EXTENDS:
 					case T_IMPLEMENTS:

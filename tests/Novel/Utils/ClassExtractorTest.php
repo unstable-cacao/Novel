@@ -80,4 +80,13 @@ class ClassExtractorTest extends TestCase
 			ClassExtractor::extract(__DIR__ . '/TestFiles/TestParentAndInterfaceExist.php')
 		);
 	}
+	
+	public function test_extract_ClassTokenThatIsNotClass()
+	{
+		self::assertEquals([
+			'Novel\Utils\TestFiles\TestClassNotClass' => []
+		],
+			ClassExtractor::extract(__DIR__ . '/TestFiles/TestClassNotClass.php')
+		);
+	}
 }
