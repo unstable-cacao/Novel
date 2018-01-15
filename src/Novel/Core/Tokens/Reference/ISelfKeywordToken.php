@@ -2,10 +2,10 @@
 namespace Novel\Core\Tokens\Reference;
 
 
-use Novel\Core\IToken;
+use Novel\Core\Tokens\INameToken;
 
 
-interface ISelfKeywordToken extends IToken
+interface ISelfKeywordToken extends INameToken
 {
 	
 }

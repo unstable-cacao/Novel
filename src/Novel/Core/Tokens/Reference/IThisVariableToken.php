@@ -7,7 +7,7 @@ namespace Novel\Core\Tokens\Reference;
  * 
  * $this
  */
-interface IThisVariableToken extends IVariableToken
+interface IThisVariableToken extends INamedVariableToken
 {
 	
 }
