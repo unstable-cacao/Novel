@@ -3,8 +3,8 @@ namespace Novel\Tokens\Statements;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Statements\IStatementToken;
-use Novel\Core\Tokens\Statements\IExpressionStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IExpressionStatementToken;
 use Novel\Tokens\Base\AbstractChildlessToken;
 
 

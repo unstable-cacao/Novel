@@ -4,11 +4,11 @@ namespace Novel\Core\Tokens\FlowControl;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Scope\ICodeScopeToken;
-use Novel\Core\Tokens\Statements\IFlowControlStatmentToken;
+use Novel\Core\Tokens\Abstraction\Statements\IFlowControlStatementToken;
 use Novel\Core\Tokens\FlowControl\ForeachStatement\IForeachIterationToken;
 
 
-interface IForeachStatementToken extends IFlowControlStatmentToken
+interface IForeachStatementToken extends IFlowControlStatementToken
 {
 	public function getIteration(): IForeachIterationToken;
 	public function getBody(): ICodeScopeToken;

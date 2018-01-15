@@ -3,7 +3,7 @@ namespace Novel\Core\Tokens\Scope;
 
 
 use Novel\Core\IToken;
-use Novel\Core\Tokens\Statements\IStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IStatementToken;
 
 
 interface IStatementsScopeToken extends IScopeToken 

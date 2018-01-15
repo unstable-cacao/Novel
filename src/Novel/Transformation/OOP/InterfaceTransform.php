@@ -34,8 +34,6 @@ class InterfaceTransform implements ITokenTransform
 			$stream->transformToken($declaration->getExtend());
 		}
 		
-		$stream->push(CurlyBracketOpenSymbol::class);
 		$stream->transformToken($token->getDefinitionToken());
-		$stream->push(CurlyBracketCloseSymbol::class);
 	}
 }

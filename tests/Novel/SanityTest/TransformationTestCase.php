@@ -5,6 +5,7 @@ namespace Novel\SanityTest;
 use Novel\Novel;
 use Novel\Core\IToken;
 use Novel\Setup\StandardClasses;
+use Novel\Transformation\Utils\StatementNewLineMiddlewareTransform;
 use PHPUnit\Framework\TestCase;
 
 
@@ -25,6 +26,7 @@ class TransformationTestCase extends TestCase
 				StandardClasses::PARSERS
 			)
 		));
+		$config->TransferConfig->add(StatementNewLineMiddlewareTransform::class);
 		
 		$result = $novel->stringify($root);
 		

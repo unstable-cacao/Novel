@@ -24,8 +24,6 @@ class TraitTransform implements ITokenTransform
 		
 		$stream->transformToken($token->getDeclarationToken()->getNameToken());
 		
-		$stream->push(CurlyBracketOpenSymbol::class);
 		$stream->transformToken($token->getDefinitionToken());
-		$stream->push(CurlyBracketCloseSymbol::class);
 	}
 }

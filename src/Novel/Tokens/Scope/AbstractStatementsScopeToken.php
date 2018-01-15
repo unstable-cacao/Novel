@@ -4,7 +4,7 @@ namespace Novel\Tokens\Scope;
 
 use Novel\Core\IToken;
 use Novel\Core\Tokens\Scope\IStatementsScopeToken;
-use Novel\Core\Tokens\Statements\IStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IStatementToken;
 use Novel\Tokens\Base\AbstractParentToken;
 use Novel\Tokens\Statements\ExpressionStatementToken;
 

@@ -46,6 +46,7 @@ class StandardClasses
 		OOP\MemberVariableTransform::class,
 		OOP\ClassTransform::class,
 		OOP\NewTransform::class,
+		OOP\OOPDefinitionTransform::class,
 		
 		Reference\NamedVariableTransform::class,
 		

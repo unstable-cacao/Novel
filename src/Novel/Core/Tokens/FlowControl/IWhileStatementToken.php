@@ -4,10 +4,10 @@ namespace Novel\Core\Tokens\FlowControl;
 
 use Novel\Core\Tokens\Scope\ICodeScopeToken;
 use Novel\Core\Tokens\Generic\IValueExpressionToken;
-use Novel\Core\Tokens\Statements\IFlowControlStatmentToken;
+use Novel\Core\Tokens\Abstraction\Statements\IFlowControlStatementToken;
 
 
-interface IWhileStatementToken extends IFlowControlStatmentToken
+interface IWhileStatementToken extends IFlowControlStatementToken
 {
 	public function setCondition(IValueExpressionToken $token): void;
 	public function getCondition(): IValueExpressionToken;

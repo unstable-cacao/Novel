@@ -2,7 +2,7 @@
 namespace Novel\Core\Tokens\Scope;
 
 
-use Novel\Core\Tokens\Statements\IStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IStatementToken;
 
 
 interface IFileScopeToken extends IStatementToken 

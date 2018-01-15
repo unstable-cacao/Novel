@@ -3,10 +3,10 @@ namespace Novel\Core\Tokens\OOP;
 
 
 use Novel\Core\Tokens\INamedToken;
-use Novel\Core\Tokens\Statements\IDefinitionStatementToken;
+use Novel\Core\Tokens\Abstraction\Statements\IDefinitionStatementToken;
 
 
-interface IOODefinitionToken extends 
+interface IOOToken extends 
 	IDefinitionStatementToken,
 	INamedToken
 {

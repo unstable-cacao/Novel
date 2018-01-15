@@ -1,5 +1,5 @@
 <?php
-namespace Novel\Core\Tokens\Statements;
+namespace Novel\Core\Tokens\Abstraction\Statements;
 
 
 interface IDefinitionStatementToken extends IStatementToken

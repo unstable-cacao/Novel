@@ -61,8 +61,6 @@ class ClassTransform implements ITokenTransform
 			$stream->transformToken($implements[$i]);
 		}
 		
-		$stream->push(CurlyBracketOpenSymbol::class);
 		$stream->transformToken($token->getDefinitionToken());
-		$stream->push(CurlyBracketCloseSymbol::class);
 	}
 }
