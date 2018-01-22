@@ -118,8 +118,7 @@ class SanityTest extends TransformationTestCase
 			$fileToken, 
 			[], 
 			[
-				StatementNewLineMiddlewareTransform::class,
-				TokenPrintMiddleware::class
+				StatementNewLineMiddlewareTransform::class
 			]
 		);
 	}
