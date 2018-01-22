@@ -1,4 +1,5 @@
 <?php
+
 namespace Novel\SanityTest\TestFiles;
 class TestClass
 {
@@ -11,6 +12,7 @@ $message="Failed asserting that ".print_r($expected,true)." equals to expected "
 if($expected!==$real)
 {
 echo($message);
+$a=25;
 }
 }
 }

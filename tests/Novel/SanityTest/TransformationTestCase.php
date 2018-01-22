@@ -5,13 +5,12 @@ namespace Novel\SanityTest;
 use Novel\Novel;
 use Novel\Core\IToken;
 use Novel\Setup\StandardClasses;
-use Novel\Transformation\Utils\StatementNewLineMiddlewareTransform;
 use PHPUnit\Framework\TestCase;
 
 
 class TransformationTestCase extends TestCase
 {
-	public static function assertTransformation(string $expected, IToken $root, $setup = []): void
+	public static function assertTransformation(string $expected, IToken $root, $setup = [], array $extra = []): void
 	{
 		if (!is_array($setup))
 			$setup = [$setup];
@@ -26,7 +25,9 @@ class TransformationTestCase extends TestCase
 				StandardClasses::PARSERS
 			)
 		));
-		$config->TransferConfig->add(StatementNewLineMiddlewareTransform::class);
+		
+		if ($extra)
+			$config->TransferConfig->add($extra);
 		
 		$result = $novel->stringify($root);
 		

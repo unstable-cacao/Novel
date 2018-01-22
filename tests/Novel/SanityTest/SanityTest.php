@@ -12,12 +12,16 @@ use Novel\Tokens\Named\NameToken;
 use Novel\Tokens\OOP\ClassToken;
 use Novel\Tokens\OOP\Methods\MethodToken;
 use Novel\Tokens\Operators\GenericBinaryOperation;
+use Novel\Tokens\Operators\GenericOperatorToken;
 use Novel\Tokens\Operators\GenericUnaryOperationToken;
 use Novel\Tokens\Reference\NamedVariableToken;
 use Novel\Tokens\Scope\CodeScopeToken;
 use Novel\Tokens\Scope\FileScopeToken;
+use Novel\Tokens\Statements\ExpressionStatementToken;
 use Novel\Tokens\Strings\DoubleQuoteStringToken;
+use Novel\Transformation\Utils\StatementNewLineMiddlewareTransform;
 use Novel\Transformation\Utils\SymbolDumperPostTransform;
+use Novel\Transformation\Utils\TokenPrintMiddleware;
 
 
 class SanityTest extends TransformationTestCase
@@ -89,8 +93,15 @@ class SanityTest extends TransformationTestCase
 		$echo = new FunctionCallToken(new NameToken('echo'));
 		$echo->addParameter($message);
 		
+		$assignment = new GenericBinaryOperation('=');
+		$assignment->setOperands(
+			new NamedVariableToken('a'),
+			25
+		);
+		
 		// add the parts together
 		$ifBody->add($echo);
+		$ifBody->add($assignment);
 		$if->setBody($ifBody);
 		$ifStatement = new IfStatementToken();
 		$ifStatement->addCondition($if);
@@ -101,6 +112,15 @@ class SanityTest extends TransformationTestCase
 		$fileToken->add($class);
 		
 		$setup = [SymbolDumperPostTransform::class];
-		self::assertTransformation(file_get_contents(__DIR__ . '/TestFiles/TestClass.php'), $fileToken);
+		
+		self::assertTransformation(
+			file_get_contents(__DIR__ . '/TestFiles/TestClass.php'), 
+			$fileToken, 
+			[], 
+			[
+				StatementNewLineMiddlewareTransform::class,
+				TokenPrintMiddleware::class
+			]
+		);
 	}
 }
